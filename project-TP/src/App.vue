@@ -14,6 +14,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.container {
+  margin: 0;
+  padding: 0;
+}
 </style>

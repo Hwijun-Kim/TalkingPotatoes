@@ -198,7 +198,7 @@ button:hover {
 
 .contents-wrap {
   flex: 1;
-  width: 100%;
+  width: 100vw;
   box-sizing: border-box;
   padding: 80px;
   overflow: hidden;

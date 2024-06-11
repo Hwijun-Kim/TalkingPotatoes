@@ -278,7 +278,7 @@ button:hover {
 }
 
 .item-input {
-  width: 40%;
-  padding-right: 50px;
+  width: 50%;
+  padding-right: 200px;
 }
 </style>

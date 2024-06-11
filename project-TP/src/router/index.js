@@ -5,6 +5,7 @@ import Login from "@/pages/Login.vue";
 import Home from "@/pages/Home.vue";
 import Profile from "@/pages/Profile.vue";
 import UpdateItem from "@/pages/UpdateItem.vue";
+import TotalView from "@/pages/TotalView.vue"
 
 const router = createRouter({
   history: createWebHistory(),
@@ -14,6 +15,7 @@ const router = createRouter({
     { path: "/updateitem", component: UpdateItem },
     { path: "/home", component: Home },
     { path: "/createItem", component: CreateItem },
+    { path: "/TotalView", component: TotalView },
   ],
 });
 

@@ -58,8 +58,18 @@ export const accountListStore = defineStore("userAccount", () => {
             return itemDate.getMonth() === month;
         }) 
     }
+    
+    const sortListByHighAmount = () => {
+        state.lists.sort((a,b) => b.money - a.money);
+    }
+
+    const sortListByLowAmount = () => {
+        state.lists.sort((a,b) => a.money - b.money);
+    }
+
     return {
         state, fetchLists, totalMoney, getItemById, getListByCategory, addItem,
-        deleteItem, updateItem, getListByDateRange, getListByMonth
+        deleteItem, updateItem, getListByDateRange, getListByMonth,
+        sortListByHighAmount, sortListByLowAmount
     };
 });

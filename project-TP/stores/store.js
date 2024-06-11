@@ -37,8 +37,29 @@ export const accountListStore = defineStore("userAccount", () => {
     const deleteItem = (id) => {
         state.lists = state.lists.filter(item => item.id !== id);
     }
+
+    const updateItem = (id, date, money, inout, category, memo) => {
+        const itemIndex = state.lists.findIndex(item => item.id === id);
+        if (itemIndex !== -1) {
+            state.lists[itemIndex] = {...state.lists[itemIndex], date, money, inout, category, memo };
+        }
+    }
+
+    const getListByDateRange = (startDate, endDate) => {
+        return state.lists.filter(item => {
+            const itemDate = new Date(item.date);
+            return itemDate >= new Date(startDate) && itemDate <= new Date(endDate);
+        })
+    }
+
+    const getListByMonth = (month) => {
+        return state.lists.filter(item => {
+            const itemDate = new Date(item.date);
+            return itemDate.getMonth() === month;
+        }) 
+    }
     return {
         state, fetchLists, totalMoney, getItemById, getListByCategory, addItem,
-        deleteItem
+        deleteItem, updateItem, getListByDateRange, getListByMonth
     };
 });

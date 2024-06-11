@@ -22,81 +22,73 @@
           <div class="flex-table">
             <div class="flex-cell grid-1">
               <div class="flex-table-item">
-                <div class="item-text width-per-40 m-width-per-30">
+                <div class="item-text">
                   <div class="flex-align-self-center">이름</div>
                 </div>
-                <div class="item-text width-per-60 m-width-per-70">
-                  <div class="flex-align-self-center">
-                    <input
-                      type="text"
-                      id="uname"
-                      name="uid"
-                      maxlength="20"
-                      size="15"
-                      style="text-align: center"
-                      title="orderFrom"
-                    />
-                  </div>
+                <div class="item-input">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    name="name"
+                    maxlength="20"
+                    size="15"
+                    style="text-align: center"
+                  />
                 </div>
               </div>
             </div>
             <div class="flex-cell grid-1">
               <div class="flex-table-item">
-                <div class="item-text width-per-40 m-width-per-30">
+                <div class="item-text">
                   <div class="flex-align-self-center">아이디</div>
                 </div>
-                <div class="item-text width-per-60 m-width-per-70">
-                  <div class="flex-align-self-center">
-                    <input
-                      type="text"
-                      id="uid"
-                      name="uid"
-                      maxlength="20"
-                      size="15"
-                      style="text-align: center"
-                      title="orderFrom"
-                    />
-                  </div>
+                <div class="item-input">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="id"
+                    name="id"
+                    maxlength="20"
+                    size="15"
+                    style="text-align: center"
+                  />
                 </div>
               </div>
             </div>
             <div class="flex-cell grid-1">
               <div class="flex-table-item">
-                <div class="item-text width-per-40 m-width-per-30">
+                <div class="item-text">
                   <div class="flex-align-self-center">비밀번호</div>
                 </div>
-                <div class="item-text width-per-60 m-width-per-70">
-                  <div class="flex-align-self-center">
-                    <input
-                      type="text"
-                      id="pw"
-                      name="pw"
-                      maxlength="20"
-                      size="15"
-                      style="text-align: center"
-                      title="orderFrom"
-                    />
-                  </div>
+                <div class="item-input">
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="pw"
+                    name="pw"
+                    maxlength="20"
+                    size="15"
+                    style="text-align: center"
+                  />
                 </div>
               </div>
             </div>
             <div class="flex-cell grid-1">
               <div class="flex-table-item">
-                <div class="item-text width-per-40 m-width-per-30">
+                <div class="item-text">
                   <div class="flex-align-self-center">이메일</div>
                 </div>
-                <div class="item-text width-per-60 m-width-per-70">
-                  <div class="flex-align-self-center">
-                    <input
-                      type="text"
-                      id="email"
-                      name="email"
-                      maxlength="20"
-                      size="15"
-                      style="text-align: center"
-                      title="orderFrom"
-                    />
-                  </div>
+                <div class="item-input">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    maxlength="20"
+                    size="15"
+                    style="text-align: center"
+                  />
                 </div>
               </div>
             </div>
@@ -160,7 +152,7 @@ button:hover {
 }
 
 .card-item.basic {
-  padding: 30px;
+  padding: 50px;
   background: #fff;
   border-radius: 20px;
 }
@@ -181,10 +173,6 @@ button:hover {
   position: relative;
   display: flex;
   flex-wrap: wrap;
-}
-
-.grid-2 {
-  width: 50%;
 }
 
 .grid-1 {
@@ -221,7 +209,8 @@ button:hover {
 
 .item-text {
   display: flex;
-  padding: 10px 20px;
+  justify-content: center;
+  padding: 10px 40px;
   font-size: 20px;
   line-height: 20px;
   color: #333;
@@ -231,7 +220,7 @@ button:hover {
 
 .item-text-bold {
   display: flex;
-  padding: 10px 20px;
+  padding: 10px 40px;
   font-size: 20px;
   font-weight: 700;
   line-height: 20px;
@@ -264,5 +253,32 @@ button:hover {
 
 .width-per-60 {
   width: 60%;
+}
+
+.flex-table {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.flex-cell {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.flex-table-item {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.item-text {
+  width: 40%;
+}
+
+.item-input {
+  width: 40%;
+  padding-right: 50px;
 }
 </style>

@@ -2,7 +2,7 @@
   <section class="contents-wrap">
     <div class="con_title-group">
       <div class="con-title">
-        <h3>신규 등록</h3>
+        <h3>상세 정보</h3>
       </div>
     </div>
     <div class="basic-group">
@@ -30,6 +30,7 @@
                   <div class="item-input">
                     <input
                       type="date"
+                      class="form-control"
                       id="date"
                       name="date"
                       style="text-align: center"
@@ -45,6 +46,7 @@
                   <div class="item-input">
                     <input
                       type="text"
+                      class="form-control"
                       id="amount"
                       name="amount"
                       maxlength="20"
@@ -62,6 +64,7 @@
                   <div class="item-input">
                     <select
                       id="type"
+                      class="form-select"
                       v-model="formData.type"
                       @change="updateCategories"
                     >
@@ -77,7 +80,11 @@
                     <label for="category">카테고리</label>
                   </div>
                   <div class="item-input">
-                    <select id="category" v-model="formData.category">
+                    <select
+                      class="form-select"
+                      id="category"
+                      v-model="formData.category"
+                    >
                       <option
                         v-for="option in categoryOptions"
                         :key="option"
@@ -97,6 +104,7 @@
                 </div>
                 <div class="item-input">
                   <textarea
+                    class="form-control"
                     name="memo"
                     id="memo"
                     placeholder="점심값 10,000원 지출"
@@ -148,7 +156,7 @@ export default {
   background-color: #f0ecca;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 100%;
+  width: 100vx;
   text-align: center;
   padding-left: 100px;
   padding-right: 100px;
@@ -253,7 +261,7 @@ button:hover {
 
 .item-text {
   display: flex;
-  padding: 10px 20px;
+  padding: 10px 39px;
   font-size: 20px;
   line-height: 20px;
   color: #333;
@@ -263,7 +271,7 @@ button:hover {
 
 .item-text-bold {
   display: flex;
-  padding: 10px 20px;
+  padding: 10px 39px;
   font-size: 20px;
   font-weight: 700;
   line-height: 20px;

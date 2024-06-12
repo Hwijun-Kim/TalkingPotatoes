@@ -33,7 +33,7 @@
                     <select
                       id="type"
                       class="form-select"
-                      v-model="formData.type"
+                      v-model="formData.inout"
                       @change="updateCategories"
                     >
                       <option value="spend">지출</option>
@@ -143,18 +143,19 @@ export default {
     const formData = reactive({
       startDate: "",
       endDate: "",
-      type: "spend",
+      inout: "spend",
       category: "",
     });
 
     const fliterHandler = () => {
       filterLists(formData);
+       //console.log(state.lists);
     };
 
     const transactions = computed(() => state.lists);
 
     const updateCategories = () => {
-      if (formData.type === "income") {
+      if (formData.inout === "income") {
         store.state.categoryOptions = store.state.incomeCategories;
       } else {
         store.state.categoryOptions = store.state.spendCategories;
@@ -177,7 +178,7 @@ export default {
     return {
       formData,
       categoryOptions: computed(() =>
-        formData.type === "income"
+        formData.inout === "income"
           ? store.state.incomeCategories
           : store.state.spendCategories
       ),

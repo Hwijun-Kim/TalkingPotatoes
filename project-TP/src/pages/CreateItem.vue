@@ -136,7 +136,14 @@ export default {
 
     const saveItem = async () => {
       console.log('Form data before addItem:', formData.value); // 로그 추가
-      await addItem(formData.value);
+  
+      //inout 변환
+      const newItem = {
+          ...formData.value,
+          inout: formData.value.inout === 'spend' ? false : true
+      }
+
+      await addItem(newItem);
       router.push({ name: 'Home' });
     };
 

@@ -159,14 +159,6 @@
       "inout": false,
       "category": 1,
       "memo": ""
-    },
-    {
-      "id": "5709",
-      "date": "2024-06-21",
-      "money": "20000",
-      "inout": "income",
-      "category": "용돈",
-      "memo": "용돈"
     }
   ]
 }

@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { reactive, computed } from 'vue';
+import { reactive } from 'vue';
 import axios from 'axios';
 
 export const useAccountListStore = defineStore('userAccount', () => {
@@ -15,8 +15,8 @@ export const useAccountListStore = defineStore('userAccount', () => {
             memo: ''
         },
         formData: {
-            date: '',
-            money: '',
+            startDate: '',
+            endDate: '',
             inout: 'spend',
             category: '',
             memo: ''
@@ -50,12 +50,10 @@ export const useAccountListStore = defineStore('userAccount', () => {
 
     const addItem = async (item) => {
         try {
-            console.log('Adding item:', item); // 로그 추가
-            // const newId = item
-            // const newItem = { ...item, id: newId };
+            console.log('Adding item:', item);
             const response = await axios.post('/api/user', item);
             state.lists.push(response.data);
-            console.log('Item added successfully:', response.data); // 로그 추가
+            console.log('Item added successfully:', response.data);
         } catch (error) {
             console.error('Failed to add item:', error);
         }
@@ -66,7 +64,7 @@ export const useAccountListStore = defineStore('userAccount', () => {
             await axios.delete(`/api/user/${id}`);
             state.lists = state.lists.filter(item => item.id !== id);
         } catch (error) {
-            console.error('Fail delete', error);
+            console.error('Failed to delete item:', error);
         }
     };
 
@@ -78,7 +76,7 @@ export const useAccountListStore = defineStore('userAccount', () => {
                 state.lists[index] = response.data;
             }
         } catch (error) {
-            console.error('Fail update item', error.response ? error.response.data : error);
+            console.error('Failed to update item', error.response ? error.response.data : error);
         }
     };
 
@@ -91,22 +89,59 @@ export const useAccountListStore = defineStore('userAccount', () => {
     };
 
     const filterLists = (formData) => {
-        //fetchLists();
-        const startDate = new Date(formData.startDate);
-        const endDate = new Date(formData.endDate);
-  
-        state.lists = state.lists.filter(item => {
-          const itemDate = new Date(item.date);
+        const { startDate, endDate, inout, category } = formData;
 
-          return (
-            itemDate >= startDate &&
-            itemDate <= endDate &&
-            item.type === formData.type &&
-            item.category.includes(formData.category)
-          );
+        // 날짜 형식이 유효한지 확인합니다.
+        const start = startDate ? new Date(startDate) : null;
+        const end = endDate ? new Date(endDate) : null;
+        
+        //inout 형식 변환
+        const inoutChange = inout === 'income' ? true : false;
+
+        if ((startDate && isNaN(start)) || (endDate && isNaN(end))) {
+            console.error("formData에 유효하지 않은 날짜 형식이 포함되어 있습니다.");
+            return;
+        }
+
+        // 종료일을 하루의 끝까지 포함하도록 설정합니다.
+        if (end) end.setHours(23, 59, 59, 999);
+
+        state.filteredLists = state.lists.filter(item => {
+            const itemDate = new Date(item.date);
+
+            // 날짜 범위에 따라 아이템을 필터링합니다.
+            const dateInRange = (!start || itemDate >= start) && (!end || itemDate <= end);
+
+            // 유형 및 카테고리에 따라 아이템을 필터링합니다.
+            const typeMatches = item.inout === inoutChange ? true : false;
+
+            // inout(수입/지출에서 선택한 값) : spend, income 
+            // item.inout : false, true
+            //console.log(`inoutChange : ${inoutChange}`);
+            //console.log(`item.inout : ${item.inout}` );
+
+
+            let categoryMatches; // 변수를 여기서 선언합니다.
+
+            //income
+            if (inoutChange) {
+                categoryMatches = state.incomeCategories ? state.incomeCategories.includes(item.category) : true;
+                console.log("income category");
+            }
+            //spend
+            else {
+                categoryMatches = state.spendCategories ? state.spendCategories.includes(item.category) : true;
+                console.log("spend category");
+            }
+
+            // 모든 조건을 만족하는 경우에만 필터링합니다.
+            return dateInRange 
+            && typeMatches 
+            && categoryMatches;
         });
-        console.log(state.lists);
-      };
+
+        console.log(state.filteredLists);
+    };
 
     return {
         state,

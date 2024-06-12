@@ -1,146 +1,150 @@
 <template>
-    <div class="main">
-        <br /><br />
-        <h3>수입 / 지출 전체 조회</h3>
-        <div class="basic-group-1">
-            <div class="card-item basic">
-                <div>
-                    <div class="flex-table">
-                        <div class="left-section">
-                            <div class="flex-cell">
-                                <div class="flex-table-item">
-                                    <div class="item-text">
-                                        <label for="date">시작 날짜</label>
-                                    </div>
-                                    <div class="item-input">
-                                        <input
-                                            type="date"
-                                            class="form-control"
-                                            id="date"
-                                            name="date"
-                                            style="text-align: center"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex-cell">
-                                <div class="flex-table-item">
-                                    <div class="item-text">
-                                        <label for="type">수입/지출</label>
-                                    </div>
-                                    <div class="item-input">
-                                        <select
-                                            id="type"
-                                            class="form-select"
-                                            v-model="formData.type"
-                                            @change="updateCategories"
-                                        >
-                                            <option value="spend">지출</option>
-                                            <option value="income">수입</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="right-section">
-                            <div class="flex-cell">
-                                <div class="flex-table-item">
-                                    <div class="item-text">
-                                        <label for="date">종료 날짜</label>
-                                    </div>
-                                    <div class="item-input">
-                                        <input
-                                            type="date"
-                                            class="form-control"
-                                            id="date"
-                                            name="date"
-                                            style="text-align: center"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex-cell">
-                                <div class="flex-table-item">
-                                    <div class="item-text">
-                                        <label for="category">카테고리</label>
-                                    </div>
-                                    <div class="item-input">
-                                        <select
-                                            class="form-select"
-                                            id="category"
-                                            v-model="formData.category"
-                                        >
-                                            <option
-                                                v-for="option in categoryOptions"
-                                                :key="option"
-                                                :value="option"
-                                            >
-                                                {{ option }}
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="center-section">
-                            <button type="button" class="search_btn">조회</button>
-                        </div>
-                    </div>
+  <div class="main">
+    <br /><br />
+    <h3>수입 / 지출 전체 조회</h3>
+    <div class="basic-group-1">
+      <div class="card-item basic">
+        <div>
+          <div class="flex-table">
+            <div class="left-section">
+              <div class="flex-cell">
+                <div class="flex-table-item">
+                  <div class="item-text">
+                    <label for="date">시작 날짜</label>
+                  </div>
+                  <div class="item-input">
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="date"
+                      name="date"
+                      style="text-align: center"
+                      v-model="startDate"
+                    />
+                  </div>
                 </div>
+              </div>
+              <div class="flex-cell">
+                <div class="flex-table-item">
+                  <div class="item-text">
+                    <label for="type">수입/지출</label>
+                  </div>
+                  <div class="item-input">
+                    <select
+                      id="type"
+                      class="form-select"
+                      v-model="formData.type"
+                      @change="updateCategories"
+                    >
+                      <option value="spend">지출</option>
+                      <option value="income">수입</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
             </div>
+            <div class="right-section">
+              <div class="flex-cell">
+                <div class="flex-table-item">
+                  <div class="item-text">
+                    <label for="date">종료 날짜</label>
+                  </div>
+                  <div class="item-input">
+                    <input
+                      v-model="endDate"
+                      type="date"
+                      class="form-control"
+                      id="date"
+                      name="date"
+                      style="text-align: center"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="flex-cell">
+                <div class="flex-table-item">
+                  <div class="item-text">
+                    <label for="category">카테고리</label>
+                  </div>
+                  <div class="item-input">
+                    <select
+                      class="form-select"
+                      id="category"
+                      v-model="formData.category"
+                    >
+                      <option
+                        v-for="option in categoryOptions"
+                        :key="option"
+                        :value="option"
+                      >
+                        {{ option }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="center-section">
+              <button type="button" class="search_btn">조회</button>
+            </div>
+          </div>
         </div>
-        <br /><br />
-        <div class="row tab">
-            <ul class="list-group">
-                <li class="list-group-item list_size">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th class="th_width">날짜</th>
-                                <th class="th_width">분류</th>
-                                <th class="th_const">금액</th>
-                                <th class="th_width"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="transaction in transactions" :key="transaction.id">
-                                <td>{{ transaction.date }}</td>
-                                <td>{{ transaction.inout ? '수입' : '지출' }}</td>
-                                <td>{{ transaction.money }}원</td>
-                                <td>
-                                    <button
-                                        @click="viewDetails(transaction.id)"
-                                        type="button"
-                                        class="btn btn-outline"
-                                    >
-                                        상세보기
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </li>
-            </ul>
-        </div>
+      </div>
     </div>
+    <br /><br />
+    <div class="row tab">
+      <ul class="list-group">
+        <li class="list-group-item list_size">
+          <table>
+            <thead>
+              <tr>
+                <th class="th_width">날짜</th>
+                <th class="th_width">분류</th>
+                <th class="th_const">금액</th>
+                <th class="th_width"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="transaction in transactions" :key="transaction.id">
+                <td>{{ transaction.date }}</td>
+                <td>{{ transaction.inout ? "수입" : "지출" }}</td>
+                <td>{{ transaction.money }}원</td>
+                <td>
+                  <button
+                    @click="viewDetails(transaction.id)"
+                    type="button"
+                    class="btn btn-outline"
+                  >
+                    상세보기
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </li>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <script>
-import { useAccountListStore } from '@/stores/store';
-import { reactive, onMounted, computed } from 'vue';
-import { useRouter } from 'vue-router';
+import { useAccountListStore } from "@/stores/store";
+import { reactive, onMounted, computed, ref } from "vue";
+import { useRouter } from "vue-router";
 
 export default {
   setup() {
     const store = useAccountListStore();
     const router = useRouter();
     const { state, fetchLists } = store;
+    const startDate = ref("");
+    const endDate = ref("");
 
     const formData = reactive({
       startDate: "",
       endDate: "",
       type: "spend",
-      category: ""
+      category: "",
     });
 
     const transactions = computed(() => state.lists);
@@ -158,7 +162,7 @@ export default {
     };
 
     const viewDetails = (id) => {
-      router.push({ name: 'UpdateItem', params: { id } });
+      router.push({ name: "UpdateItem", params: { id } });
     };
 
     onMounted(() => {
@@ -168,112 +172,116 @@ export default {
 
     return {
       formData,
-      categoryOptions: computed(() => formData.type === "income" ? store.state.incomeCategories : store.state.spendCategories),
+      categoryOptions: computed(() =>
+        formData.type === "income"
+          ? store.state.incomeCategories
+          : store.state.spendCategories
+      ),
       transactions,
       updateCategories,
       fetchTransactions,
-      viewDetails
+      viewDetails,
     };
-  }
+  },
 };
 </script>
 <style scoped>
-    .list_size {
-        height: 40px;
-        margin : 0px;
-        background-color: #F0ECCA;
-        padding: 0px;
-    }
-    
-    select, input {
-        width: 184px;
-    }
-    li {
-        margin-left: 10%;
-        margin-right: 10%;
-        list-style-type: none;
-    }
-    th {
-        width: 500px;
-        text-align: center; 
-        padding: 20px;
-    }
-    .main {
-        width: 100%;
-        margin-left: 10%;
-        margin-right: 10%;
-    }
-    .search_div {
-        padding-top: 20px;
-        text-align : center;
-        background-color: #F0ECCA;
-        width: auto;
-        height: 250px;
-    }
-    .th_width {
-        border: 1px solid black;
-        width: 300px;
-        height: 40px;
-        padding: 0px;
-    }
+.list_size {
+  height: 40px;
+  margin: 0px;
+  background-color: #f0ecca;
+  padding: 0px;
+}
 
-    .th_const {
-        border: 1px solid black;
-        width: 420px;
-        height: 40px;
-        padding: 0px;
-    }
+select,
+input {
+  width: 184px;
+}
+li {
+  margin-left: 10%;
+  margin-right: 10%;
+  list-style-type: none;
+}
+th {
+  width: 500px;
+  text-align: center;
+  padding: 20px;
+}
+.main {
+  width: 100%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.search_div {
+  padding-top: 20px;
+  text-align: center;
+  background-color: #f0ecca;
+  width: auto;
+  height: 250px;
+}
+.th_width {
+  border: 1px solid black;
+  width: 300px;
+  height: 40px;
+  padding: 0px;
+}
 
-    td {
-        text-align: center;
-        border: 1px solid black;
-        padding: 0px;
-        height: 40px;
-    }
+.th_const {
+  border: 1px solid black;
+  width: 420px;
+  height: 40px;
+  padding: 0px;
+}
 
-    .btn {
-        padding: 1px;
-        color: black;
-        border-radius: 30px;
-        cursor: pointer;
-        text-align: center;
-        width: 80px;
-        background-color: #FAFAF5;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    }
+td {
+  text-align: center;
+  border: 1px solid black;
+  padding: 0px;
+  height: 40px;
+}
 
-    .tab {
-        height: 200px;
-        overflow-y : auto;
-    }
+.btn {
+  padding: 1px;
+  color: black;
+  border-radius: 30px;
+  cursor: pointer;
+  text-align: center;
+  width: 80px;
+  background-color: #fafaf5;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-    .search_btn {
-        width: 200px;
-        padding: 0.5rem 1rem;
-        background-color: white;
-        color: black;
-        border-radius: 0.25rem;
-        cursor: pointer;
-        text-align: center;
-        margin-top: 1rem;
-        background-color: #fafaf5;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        border-color: rgba(255, 255, 255, 0);
-    }
+.tab {
+  height: 200px;
+  overflow-y: auto;
+}
 
-    .item-text {
-        display: flex;
-        padding: 10px 39px;
-        font-size: 20px;
-        line-height: 20px;
-        color: #333;
-        box-sizing: border-box;
-        word-break: keep-all;
-        width: 200px;
-    }
+.search_btn {
+  width: 200px;
+  padding: 0.5rem 1rem;
+  background-color: white;
+  color: black;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 1rem;
+  background-color: #fafaf5;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-color: rgba(255, 255, 255, 0);
+}
 
+.item-text {
+  display: flex;
+  padding: 10px 39px;
+  font-size: 20px;
+  line-height: 20px;
+  color: #333;
+  box-sizing: border-box;
+  word-break: keep-all;
+  width: 200px;
+}
 
-    .basic-group-1 {
+.basic-group-1 {
   background-color: #f0ecca;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -292,11 +300,11 @@ export default {
   background-color: #fff;
 }
 
-    .card-item.basic {
-        padding: 30px;
-        background: #fff;
-        border-radius: 20px;
-    }
+.card-item.basic {
+  padding: 30px;
+  background: #fff;
+  border-radius: 20px;
+}
 
 .flex-table {
   position: relative;
@@ -315,8 +323,8 @@ export default {
 }
 
 .center-section {
-    width: 100%;
-    margin-right : 80px
+  width: 100%;
+  margin-right: 80px;
 }
 
 .flex-cell {

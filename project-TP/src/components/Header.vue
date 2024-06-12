@@ -78,11 +78,14 @@ a {
 .navbar_menu li {
   padding: 8px 30px;
   color: black;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .navbar_menu li a:hover {
-  color: red;
+  color: rgb(179, 137, 79);
 }
+
 .navbar_icons {
   list-style: none;
   color: black;

@@ -301,10 +301,6 @@ export default {
 </script>
 
 <style scoped>
-    .search_th {
-        text-align: center;
-        width: 1000px;
-    }
     .list_size {
         height: 40px;
         margin : 0px;

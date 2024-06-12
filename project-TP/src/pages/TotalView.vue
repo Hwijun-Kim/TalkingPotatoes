@@ -148,7 +148,6 @@ export default {
     });
 
     const fliterHandler = () => {
-      store.state.formData = formData;
       filterLists(formData);
     };
 

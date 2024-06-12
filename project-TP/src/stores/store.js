@@ -5,7 +5,7 @@ import axios from 'axios';
 export const useAccountListStore = defineStore('userAccount', () => {
     const state = reactive({
         lists: [],
-        //filteredLists: [],
+        filteredLists: [],
         currentItem: {
             id: null,
             date: '',
@@ -90,7 +90,8 @@ export const useAccountListStore = defineStore('userAccount', () => {
         }
     };
 
-    const filterLists = () => {
+    const filterLists = (formData) => {
+        //fetchLists();
         const startDate = new Date(formData.startDate);
         const endDate = new Date(formData.endDate);
   
@@ -104,7 +105,7 @@ export const useAccountListStore = defineStore('userAccount', () => {
             item.category.includes(formData.category)
           );
         });
-        console.log(state.filteredLists);
+        console.log(state.lists);
       };
 
     return {

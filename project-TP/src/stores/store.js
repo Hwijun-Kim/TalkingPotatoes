@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { reactive, computed } from 'vue';
+import { ref, reactive, computed } from 'vue';
 import axios from 'axios';
 
 export const useAccountListStore = defineStore('userAccount', () => {

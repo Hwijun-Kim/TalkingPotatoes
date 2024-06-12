@@ -36,6 +36,7 @@
                     maxlength="20"
                     size="15"
                     style="text-align: center"
+                    value="말하는 감자"
                   />
                 </div>
               </div>
@@ -54,6 +55,7 @@
                     maxlength="20"
                     size="15"
                     style="text-align: center"
+                    value="TalkingPotato"
                   />
                 </div>
               </div>
@@ -72,6 +74,7 @@
                     maxlength="20"
                     size="15"
                     style="text-align: center"
+                    value="1234"
                   />
                 </div>
               </div>
@@ -90,6 +93,7 @@
                     maxlength="20"
                     size="15"
                     style="text-align: center"
+                    value="https://github.com/TalkingPotato"
                   />
                 </div>
               </div>

@@ -27,7 +27,7 @@
         <br />
         <br />
         <div class="month">
-          <h2>{{ currentMonth }}월</h2>
+          <h2>{{ selectedYear }} {{ currentMonth }}</h2>
           <button
             @click="hiddenChart(currentMonth)"
             type="button"
@@ -63,8 +63,8 @@ import { ref } from "vue";
 export default {
   name: "MonthlySummary",
   setup() {
-    const selectedYear = ref(2024);
-    const years = [2023, 2024];
+    const selectedYear = ref();
+    const years = ["2023년", "2024년"];
     const months = [
       "1월",
       "2월",
@@ -92,6 +92,7 @@ export default {
 
     const hiddenChart = (month) => {
       currentMonth.value = null;
+      selectedYear.value = null;
       // Logic to hide chart data by month
     };
 

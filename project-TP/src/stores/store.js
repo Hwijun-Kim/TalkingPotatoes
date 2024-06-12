@@ -1,10 +1,11 @@
 import { defineStore } from 'pinia';
-import { ref, reactive, computed } from 'vue';
+import { reactive, computed } from 'vue';
 import axios from 'axios';
 
 export const useAccountListStore = defineStore('userAccount', () => {
     const state = reactive({
         lists: [],
+        //filteredLists: [],
         currentItem: {
             id: null,
             date: '',
@@ -89,6 +90,23 @@ export const useAccountListStore = defineStore('userAccount', () => {
         }
     };
 
+    const filterLists = () => {
+        const startDate = new Date(formData.startDate);
+        const endDate = new Date(formData.endDate);
+  
+        state.lists = state.lists.filter(item => {
+          const itemDate = new Date(item.date);
+
+          return (
+            itemDate >= startDate &&
+            itemDate <= endDate &&
+            item.type === formData.type &&
+            item.category.includes(formData.category)
+          );
+        });
+        console.log(state.filteredLists);
+      };
+
     return {
         state,
         fetchLists,
@@ -96,6 +114,7 @@ export const useAccountListStore = defineStore('userAccount', () => {
         addItem,
         deleteItem,
         updateItem,
-        updateCategories
+        updateCategories,
+        filterLists
     };
 });

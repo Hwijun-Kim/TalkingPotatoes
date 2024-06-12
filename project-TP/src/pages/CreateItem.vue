@@ -11,8 +11,12 @@
           class="btn-right-group"
           style="flex-wrap: wrap; justify-content: flex-end; gap: 3px"
         >
-          <button type="button" class="btn btn-outline">취소</button>
-          <button type="button" class="btn btn-outline">등록</button>
+          <button type="button" class="btn btn-outline" @click="canncleHandler">
+            취소
+          </button>
+          <button type="button" class="btn btn-outline" @click="addHandler">
+            등록
+          </button>
         </div>
       </div>
     </div>
@@ -32,6 +36,7 @@
                       class="form-control"
                       id="date"
                       name="date"
+                      v-model="date"
                       style="text-align: center"
                     />
                   </div>
@@ -50,6 +55,7 @@
                       name="amount"
                       maxlength="20"
                       size="15"
+                      v-model="amount"
                       style="text-align: center"
                     />
                   </div>
@@ -120,15 +126,15 @@
 </template>
 
 <script>
+import { useAccountListStore } from "@/stores/store";
+import { reactive } from "vue";
+
 export default {
   data() {
     return {
       formData: {
-        date: "",
-        amount: "",
         type: "spend",
         category: "",
-        memo: "",
       },
       incomeCategories: ["급여", "용돈", "기타"],
       spendCategories: ["쇼핑", "식비", "교통비", "생활비", "문화생활", "기타"],
@@ -222,14 +228,6 @@ button:hover {
   flex-wrap: wrap;
 }
 
-.grid-2 {
-  width: 50%;
-}
-
-.grid-1 {
-  width: 100%;
-}
-
 .flex-table-item {
   display: flex;
   min-height: 100%;
@@ -287,22 +285,6 @@ button:hover {
   color: #888;
   background-color: #fff;
   box-sizing: border-box;
-}
-
-.width-per-20 {
-  width: 20%;
-}
-
-.width-per-80 {
-  width: 80%;
-}
-
-.width-per-40 {
-  width: 40%;
-}
-
-.width-per-60 {
-  width: 60%;
 }
 
 .flex-table {

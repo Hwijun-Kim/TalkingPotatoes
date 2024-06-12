@@ -140,6 +140,7 @@ button:hover {
   align-items: center;
   margin-left: auto;
 }
+
 .btn-right-group {
   padding-bottom: 7px;
 }

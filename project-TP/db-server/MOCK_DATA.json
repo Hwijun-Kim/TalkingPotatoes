@@ -1,20 +1,156 @@
-{"user":[{"id":1,"date":"2024-06-04","money":"14958","inout":false,"category":0,"memo":""},
-{"id":2,"date":"2023-07-16","money":"41233","inout":true,"category":6,"memo":""},
-{"id":3,"date":"2023-10-18","money":"8610","inout":false,"category":4,"memo":""},
-{"id":4,"date":"2024-02-20","money":"67225","inout":false,"category":1,"memo":""},
-{"id":5,"date":"2023-11-20","money":"27815","inout":false,"category":4,"memo":""},
-{"id":6,"date":"2023-12-21","money":"49460","inout":true,"category":6,"memo":""},
-{"id":7,"date":"2024-03-18","money":"103","inout":true,"category":6,"memo":""},
-{"id":8,"date":"2023-07-05","money":"59046","inout":false,"category":0,"memo":""},
-{"id":9,"date":"2024-01-16","money":"4359","inout":false,"category":4,"memo":""},
-{"id":10,"date":"2024-03-13","money":"6556","inout":false,"category":2,"memo":""},
-{"id":11,"date":"2024-03-10","money":"20919","inout":true,"category":7,"memo":""},
-{"id":12,"date":"2024-04-14","money":"95580","inout":false,"category":0,"memo":""},
-{"id":13,"date":"2024-01-19","money":"29999","inout":false,"category":1,"memo":""},
-{"id":14,"date":"2023-07-18","money":"3941","inout":false,"category":3,"memo":""},
-{"id":15,"date":"2024-06-03","money":"13573","inout":true,"category":7,"memo":""},
-{"id":16,"date":"2023-09-29","money":"41666","inout":true,"category":8,"memo":""},
-{"id":17,"date":"2024-04-11","money":"55100","inout":true,"category":8,"memo":""},
-{"id":18,"date":"2024-04-30","money":"4695","inout":true,"category":8,"memo":""},
-{"id":19,"date":"2023-09-04","money":"24525","inout":false,"category":4,"memo":""},
-{"id":20,"date":"2024-02-11","money":"61422","inout":false,"category":1,"memo":""}]}
+{
+  "user": [
+    {
+      "id": "3",
+      "date": "2023-10-18",
+      "money": "8610",
+      "inout": false,
+      "category": 4,
+      "memo": ""
+    },
+    {
+      "id": "4",
+      "date": "2024-02-20",
+      "money": "67225",
+      "inout": false,
+      "category": 1,
+      "memo": ""
+    },
+    {
+      "id": "5",
+      "date": "2023-11-20",
+      "money": "27815",
+      "inout": false,
+      "category": 4,
+      "memo": ""
+    },
+    {
+      "id": "6",
+      "date": "2023-12-21",
+      "money": "49460",
+      "inout": true,
+      "category": 6,
+      "memo": ""
+    },
+    {
+      "id": "7",
+      "date": "2024-03-18",
+      "money": "103",
+      "inout": true,
+      "category": 6,
+      "memo": ""
+    },
+    {
+      "id": "8",
+      "date": "2023-07-05",
+      "money": "59046",
+      "inout": false,
+      "category": 0,
+      "memo": ""
+    },
+    {
+      "id": "9",
+      "date": "2024-01-16",
+      "money": "4359",
+      "inout": false,
+      "category": 4,
+      "memo": ""
+    },
+    {
+      "id": "10",
+      "date": "2024-03-13",
+      "money": "6556",
+      "inout": false,
+      "category": 2,
+      "memo": ""
+    },
+    {
+      "id": "11",
+      "date": "2024-03-10",
+      "money": "20919",
+      "inout": true,
+      "category": 7,
+      "memo": ""
+    },
+    {
+      "id": "12",
+      "date": "2024-04-14",
+      "money": "95580",
+      "inout": false,
+      "category": 0,
+      "memo": ""
+    },
+    {
+      "id": "13",
+      "date": "2024-01-19",
+      "money": "29999",
+      "inout": false,
+      "category": 1,
+      "memo": ""
+    },
+    {
+      "id": "14",
+      "date": "2023-07-18",
+      "money": "3941",
+      "inout": false,
+      "category": 3,
+      "memo": ""
+    },
+    {
+      "id": "15",
+      "date": "2024-06-03",
+      "money": "13573",
+      "inout": true,
+      "category": 7,
+      "memo": ""
+    },
+    {
+      "id": "16",
+      "date": "2023-09-29",
+      "money": "41666",
+      "inout": true,
+      "category": 8,
+      "memo": ""
+    },
+    {
+      "id": "17",
+      "date": "2024-04-11",
+      "money": "55100",
+      "inout": true,
+      "category": 8,
+      "memo": ""
+    },
+    {
+      "id": "18",
+      "date": "2024-04-30",
+      "money": "4695",
+      "inout": true,
+      "category": 8,
+      "memo": ""
+    },
+    {
+      "id": "19",
+      "date": "2023-09-04",
+      "money": "24525",
+      "inout": false,
+      "category": 4,
+      "memo": ""
+    },
+    {
+      "id": "20",
+      "date": "2024-02-11",
+      "money": "61422",
+      "inout": false,
+      "category": 1,
+      "memo": ""
+    },
+    {
+      "id": "5709",
+      "date": "2024-06-21",
+      "money": "20000",
+      "inout": "income",
+      "category": "용돈",
+      "memo": "용돈"
+    }
+  ]
+}

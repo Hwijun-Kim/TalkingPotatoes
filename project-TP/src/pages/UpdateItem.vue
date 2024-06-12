@@ -223,14 +223,6 @@ button:hover {
   flex-wrap: wrap;
 }
 
-.grid-2 {
-  width: 50%;
-}
-
-.grid-1 {
-  width: 100%;
-}
-
 .flex-table-item {
   display: flex;
   min-height: 100%;
@@ -288,22 +280,6 @@ button:hover {
   color: #888;
   background-color: #fff;
   box-sizing: border-box;
-}
-
-.width-per-20 {
-  width: 20%;
-}
-
-.width-per-80 {
-  width: 80%;
-}
-
-.width-per-40 {
-  width: 40%;
-}
-
-.width-per-60 {
-  width: 60%;
 }
 
 .flex-table {

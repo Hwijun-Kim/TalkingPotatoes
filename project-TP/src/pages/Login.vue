@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import logo from "../assets/TalkingPotatoes_logo.jpg"; // 이미지 경로 수정
+import logo from "../assets/TalkingPotatoes_logo.jpg";
 
 export default {
   name: "Login",
@@ -47,8 +47,14 @@ export default {
   },
   methods: {
     login() {
-      // 로그인 로직
-      console.log("로그인 시도:", this.id, this.password);
+      if (this.id === "test" && this.password === "1234") {
+        // 올바른 ID와 비밀번호인 경우 홈 페이지로 이동
+        this.$router.push({ name: "Home" });
+        console.log("로그인 성공");
+      } else {
+        // 잘못된 ID 또는 비밀번호인 경우 경고 메시지 출력
+        console.log("로그인 실패");
+      }
     },
   },
 };
@@ -110,7 +116,7 @@ button {
   width: 430px;
   background-color: #fafaf5;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  margin-right: 90px;
+  margin-right: 143px;
 }
 
 button:hover {
@@ -119,7 +125,7 @@ button:hover {
 
 /* 추가된 CSS: 작은 화면에서 로고가 위로 올라가도록 설정 */
 @media screen and (max-width: 600px) {
-  .container {
+  .containerlogin {
     flex-direction: column;
     justify-content: flex-start;
   }

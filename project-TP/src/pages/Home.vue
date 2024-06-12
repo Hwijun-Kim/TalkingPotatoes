@@ -1,55 +1,77 @@
 <template>
-  <div class="containerhome">
-    <div class="speech-bubble">
-      <h2>Hello! 말하는 감자,</h2>
-    </div>
-    <div class="month">
-      <h2>{{ currentMonth }}월</h2>
-    </div>
-    <div class="charts">
-      <div class="chart">
-        <div class="chartimage"></div>
-        <p>총 수입 : 0000원</p>
+  <section class="content-wrap">
+    <div class="containerhome">
+      <div class="speech-bubble">
+        <h2>Hello! 말하는 감자,</h2>
       </div>
-      <div class="chart">
-        <div class="chartimage" style=""></div>
-        <p>총 지출 : 0000원</p>
+      <div class="month">
+        <h2>{{ currentMonth }}월</h2>
+        <button
+          @click="viewDetails(transaction)"
+          type="button"
+          class="btn btn-outline"
+          id="btn1"
+          style="display: inline-block"
+        >
+          더보기
+        </button>
       </div>
-      <div class="chart">
-        <div class="chartimage"></div>
-        <p>순수익 : 0000원</p>
+      <div class="charts">
+        <div class="chart">
+          <div class="chartimage"></div>
+          <p>총 수입 : 0000원</p>
+        </div>
+        <div class="chart">
+          <div class="chartimage"></div>
+          <p>총 지출 : 0000원</p>
+        </div>
+        <div class="chart">
+          <div class="chartimage"></div>
+          <p>순수익 : 0000원</p>
+        </div>
+      </div>
+      <div class="recent-transactions">
+        <div class="header-container">
+          <h3 class="title">최근 내역</h3>
+          <button
+            @click="viewDetails(transaction)"
+            type="button"
+            class="btn btn-outline"
+            id="btn1"
+          >
+            더보기
+          </button>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>날짜</th>
+              <th>구분</th>
+              <th>금액</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="transaction in transactions" :key="transaction.id">
+              <td>{{ transaction.date }}</td>
+              <td>{{ transaction.type }}</td>
+              <td>{{ transaction.amount }}</td>
+              <td>
+                <button
+                  @click="viewDetails(transaction)"
+                  type="button"
+                  class="btn btn-outline"
+                  id="btn2"
+                >
+                  상세보기
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="recent-transactions">
-      <h3>최근 내역</h3>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>날짜</th>
-            <th>구분</th>
-            <th>금액</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="transaction in transactions" :key="transaction.id">
-            <td>{{ transaction.date }}</td>
-            <td>{{ transaction.type }}</td>
-            <td>{{ transaction.amount }}</td>
-            <td>
-              <button
-                @click="viewDetails(transaction)"
-                type="button"
-                class="btn btn-outline"
-              >
-                상세보기
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -76,12 +98,41 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.containerhome {
+<style>
+.content-wrap {
+  flex: 1;
   width: 100vw;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+/* 기본 box-sizing 설정 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+/* 전체 컨테이너 조정 */
+.containerhome {
+  width: 100%;
+  max-width: 100%; /* 최대 너비를 100%로 설정 */
+  margin: 0 auto; /* 가운데 정렬 */
+  padding: 0 20px; /* 좌우 패딩 */
+}
+
+/* 말풍선 스타일 */
 .speech-bubble {
   position: relative;
   background: #f0ecca; /* 말풍선의 배경색 */
@@ -115,18 +166,37 @@ export default {
   border-right-color: #f0ecca; /* 삼각형 색상 */
 }
 
+/* 월 표시 섹션 */
+.month {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.recent {
+  display: flex;
+}
+
 .month h2 {
+  margin: 0;
   margin-left: 30px;
   font-weight: bolder;
 }
 
+/* 차트 섹션 */
 .charts {
   display: flex;
   justify-content: space-around;
-  margin: auto; /* 수평 가운데 정렬을 위해 margin 수정 */
+  flex-wrap: wrap; /* 화면에 맞게 자동 줄바꿈 */
+  padding: 20px;
+  margin: 0 auto;
   background-color: #f0ecca;
-  width: 1400px;
-  height: 300px;
+  width: 100%;
+  max-width: 100%; /* 최대 너비를 100%로 설정 */
 }
 
 .chartimage {
@@ -156,10 +226,12 @@ export default {
   margin-left: 30px;
 }
 
+/* 테이블 */
 .table {
-  width: 95%;
+  width: 100%; /* 가로 너비를 화면 크기에 맞춤 */
+  max-width: 100%; /* 최대 너비를 100%로 설정 */
   border-collapse: collapse;
-  margin-left: 30px;
+  margin: 0 auto; /* 가운데 정렬 */
 }
 
 .table th,
@@ -168,13 +240,36 @@ export default {
   text-align: center;
 }
 
-.btn {
+/* 버튼 스타일 */
+#btn1:hover {
+  background-color: #f0f0f0;
+}
+
+#btn2:hover {
+  background-color: #f0f0f0;
+}
+
+#btn2 {
   padding: 1px;
   color: black;
   border-radius: 30px;
   cursor: pointer;
   text-align: center;
   width: 80px;
+  background-color: #fafaf5;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#btn1 {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: white;
+  color: black;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 1rem;
+  width: 100px;
   background-color: #fafaf5;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }

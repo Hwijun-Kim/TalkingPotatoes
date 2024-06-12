@@ -5,10 +5,10 @@ import Login from "@/pages/Login.vue";
 import Home from "@/pages/Home.vue";
 import Profile from "@/pages/Profile.vue";
 import UpdateItem from "@/pages/UpdateItem.vue";
-import TotalView from "@/pages/TotalView.vue"
+import TotalView from "@/pages/TotalView.vue";
 
 // const viewsIdGuard = (to, from) => {
-//   // totalView/:id 경로는 반드시 이전 경로가 
+//   // totalView/:id 경로는 반드시 이전 경로가
 //   // /totalView, /totalView:id 인 경우만 내비게이션 허용함
 //   if (from.name !== "totalView" && from.name !== "totalView/id") {
 //       return false;
@@ -18,16 +18,18 @@ import TotalView from "@/pages/TotalView.vue"
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: "/", component: Login, meta: { hideHeader: true } },
-    { path: "/profile", component: Profile },
-    { path: "/updateitem", component: UpdateItem },
-    { path: "/home", component: Home },
-    { path: "/createItem", component: CreateItem },
-    { path: "/totalView", component: TotalView },
-    { 
-      path: '/totalView/:id(//d+)', component: TotalView,
-      //beforeEnter:viewsIdGuard 
-  },
+    { path: "/", component: Login, name: "Login", meta: { hideHeader: true } },
+    { path: "/profile", component: Profile, name: "Profile" },
+    { path: "/updateitem", component: UpdateItem, name: "UpdateItem" },
+    { path: "/home", component: Home, name: "Home" },
+    { path: "/createItem", component: CreateItem, name: "CreateItem" },
+    { path: "/totalView", component: TotalView, name: "TotalView" },
+    {
+      path: "/totalView/:id(//d+)",
+      component: TotalView,
+      name: "TotalViewId",
+      //beforeEnter:viewsIdGuard
+    },
   ],
 });
 

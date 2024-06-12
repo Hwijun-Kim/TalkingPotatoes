@@ -11,7 +11,9 @@
           class="btn-right-group"
           style="flex-wrap: wrap; justify-content: flex-end; gap: 3px"
         >
-          <button type="button" class="btn btn-outline">취소</button>
+          <button type="button" @click="cancelEdit" class="btn btn-outline">
+            취소
+          </button>
           <button type="button" class="btn btn-outline">수정</button>
         </div>
       </div>
@@ -100,7 +102,19 @@
 </template>
 
 <script>
-export default {};
+import { useRouter } from "vue-router";
+
+export default {
+  setup() {
+    const router = useRouter();
+
+    const cancelEdit = () => {
+      router.push({ name: "Home" });
+    };
+
+    return { cancelEdit };
+  },
+};
 </script>
 
 <style scoped>

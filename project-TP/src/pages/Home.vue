@@ -6,15 +6,17 @@
       </div>
       <div class="month">
         <h2>{{ currentMonth }}월</h2>
-        <button
-          @click="viewDetails(transaction)"
-          type="button"
-          class="btn btn-outline"
-          id="btn1"
-          style="display: inline-block"
-        >
-          더보기
-        </button>
+        <router-link to="/summary">
+          <button
+            @click="viewDetails(id)"
+            type="button"
+            class="btn btn-outline"
+            id="btn1"
+            style="display: inline-block"
+          >
+            더보기
+          </button>
+        </router-link>
       </div>
       <div class="charts">
         <div class="chart">
@@ -33,14 +35,11 @@
       <div class="recent-transactions">
         <div class="header-container">
           <h3 class="title">최근 내역</h3>
-          <button
-            @click="viewDetails(transaction)"
-            type="button"
-            class="btn btn-outline"
-            id="btn1"
-          >
-            더보기
-          </button>
+          <router-link to="/totalView">
+            <button @click="" type="button" class="btn btn-outline" id="btn1">
+              더보기
+            </button>
+          </router-link>
         </div>
         <table class="table">
           <thead>

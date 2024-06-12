@@ -20,14 +20,13 @@ const router = createRouter({
   routes: [
     { path: "/", component: Login, name: "Login", meta: { hideHeader: true } },
     { path: "/profile", component: Profile, name: "Profile" },
-    { path: "/updateitem", component: UpdateItem, name: "UpdateItem" },
     { path: "/home", component: Home, name: "Home" },
     { path: "/createItem", component: CreateItem, name: "CreateItem" },
     { path: "/totalView", component: TotalView, name: "TotalView" },
     {
       path: "/totalView/:id(//d+)",
-      component: TotalView,
-      name: "TotalViewId",
+      component: UpdateItem,
+      name: "UpdateItem",
       //beforeEnter:viewsIdGuard
     },
   ],

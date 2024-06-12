@@ -11,12 +11,8 @@
           class="btn-right-group"
           style="flex-wrap: wrap; justify-content: flex-end; gap: 3px"
         >
-          <button type="button" class="btn btn-outline" @click="canncleHandler">
-            취소
-          </button>
-          <button type="button" class="btn btn-outline" @click="addHandler">
-            등록
-          </button>
+          <button type="button" @click="cancelEdit" class="btn btn-outline">취소</button>
+          <button type="button" @click="saveItem" class="btn btn-outline">등록</button>
         </div>
       </div>
     </div>
@@ -35,8 +31,7 @@
                       type="date"
                       class="form-control"
                       id="date"
-                      name="date"
-                      v-model="date"
+                      v-model="formData.date"
                       style="text-align: center"
                     />
                   </div>
@@ -45,17 +40,16 @@
               <div class="flex-cell">
                 <div class="flex-table-item">
                   <div class="item-text">
-                    <label for="amount">금액</label>
+                    <label for="money">금액</label>
                   </div>
                   <div class="item-input">
                     <input
                       type="text"
                       class="form-control"
-                      id="amount"
-                      name="amount"
+                      id="money"
+                      v-model="formData.money"
                       maxlength="20"
                       size="15"
-                      v-model="amount"
                       style="text-align: center"
                     />
                   </div>
@@ -64,14 +58,14 @@
               <div class="flex-cell">
                 <div class="flex-table-item">
                   <div class="item-text">
-                    <label for="type">수입/지출</label>
+                    <label for="inout">수입/지출</label>
                   </div>
                   <div class="item-input">
                     <select
-                      id="type"
+                      id="inout"
                       class="form-select"
-                      v-model="formData.type"
-                      @change="updateCategories"
+                      v-model="formData.inout"
+                      @change="handleTypeChange"
                     >
                       <option value="spend">지출</option>
                       <option value="income">수입</option>
@@ -112,6 +106,7 @@
                     class="form-control"
                     name="memo"
                     id="memo"
+                    v-model="formData.memo"
                     placeholder="점심값 10,000원 지출"
                     style="width: 100%; height: 200px"
                   ></textarea>
@@ -126,32 +121,45 @@
 </template>
 
 <script>
-import { useAccountListStore } from "@/stores/store";
-import { reactive } from "vue";
+import { useAccountListStore } from '@/stores/store';
+import { computed, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 
 export default {
-  data() {
-    return {
-      formData: {
-        type: "spend",
-        category: "",
-      },
-      incomeCategories: ["급여", "용돈", "기타"],
-      spendCategories: ["쇼핑", "식비", "교통비", "생활비", "문화생활", "기타"],
-      categoryOptions: [],
+  setup() {
+    const store = useAccountListStore();
+    const router = useRouter();
+    const { addItem, updateCategories } = store;
+
+    const formData = computed(() => store.state.formData);
+    const categoryOptions = computed(() => store.state.categoryOptions);
+
+    const saveItem = async () => {
+      console.log('Form data before addItem:', formData.value); // 로그 추가
+      await addItem(formData.value);
+      router.push({ name: 'Home' });
     };
-  },
-  methods: {
-    updateCategories() {
-      if (this.formData.type === "income") {
-        this.categoryOptions = this.incomeCategories;
-      } else {
-        this.categoryOptions = this.spendCategories;
-      }
-    },
-  },
-  mounted() {
-    this.updateCategories();
+
+    const cancelEdit = () => {
+      router.push({ name: 'Home' });
+    };
+
+    const handleTypeChange = () => {
+      updateCategories();
+    };
+
+    // 초기 카테고리 옵션 설정
+    onMounted(() => {
+      updateCategories();
+    });
+
+    return {
+      formData,
+      categoryOptions,
+      saveItem,
+      cancelEdit,
+      handleTypeChange,
+    };
   },
 };
 </script>
@@ -228,6 +236,14 @@ button:hover {
   flex-wrap: wrap;
 }
 
+.grid-2 {
+  width: 50%;
+}
+
+.grid-1 {
+  width: 100%;
+}
+
 .flex-table-item {
   display: flex;
   min-height: 100%;
@@ -285,6 +301,22 @@ button:hover {
   color: #888;
   background-color: #fff;
   box-sizing: border-box;
+}
+
+.width-per-20 {
+  width: 20%;
+}
+
+.width-per-80 {
+  width: 80%;
+}
+
+.width-per-40 {
+  width: 40%;
+}
+
+.width-per-60 {
+  width: 60%;
 }
 
 .flex-table {

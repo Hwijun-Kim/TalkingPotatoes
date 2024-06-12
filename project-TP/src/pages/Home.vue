@@ -52,9 +52,9 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="item in state.lists" :key="item.id">
+            <tr v-for="item in state.lists.slice(0, 3)" :key="item.id">
               <td>{{ item.date }}</td>
-              <td>{{ item.inout ? '수입' : '지출' }}</td>
+              <td>{{ item.inout ? "수입" : "지출" }}</td>
               <td>{{ item.money }}</td>
               <td>
                 <button
@@ -75,32 +75,49 @@
 </template>
 
 <script>
-import { useAccountListStore } from '@/stores/store';
- import { ref, reactive, onMounted } from 'vue';
- import { useRouter } from 'vue-router';
+import { useAccountListStore } from "@/stores/store";
+import { ref, reactive, onMounted } from "vue";
+import { useRouter } from "vue-router";
 
-  export default {
-    setup() {
-      const store = useAccountListStore();
-      const router = useRouter();
-      const {state, fetchLists} = store;
-  
+export default {
+  setup() {
+    const store = useAccountListStore();
+    const router = useRouter();
+    const { state, fetchLists } = store;
+    const currentMonth = ref("");
 
-      onMounted(() => {
-        fetchLists();
-      });
+    onMounted(() => {
+      const monthNames = [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+      ];
+      const now = new Date();
+      currentMonth.value = monthNames[now.getMonth()];
+      fetchLists();
+    });
 
-      const viewDeatils = async (id) => {
-        await store.fetchItemById(id);
-        router.push({name: 'UpdateItem', params: {id : id}});
-      }
+    const viewDeatils = async (id) => {
+      await store.fetchItemById(id);
+      router.push({ name: "UpdateItem", params: { id: id } });
+    };
 
-      return {
-        state,
-        viewDeatils
-      };
-    }
-  };
+    return {
+      state,
+      viewDeatils,
+      currentMonth,
+    };
+  },
+};
 </script>
 
 <style>

@@ -6,6 +6,7 @@ import Home from "@/pages/Home.vue";
 import Profile from "@/pages/Profile.vue";
 import UpdateItem from "@/pages/UpdateItem.vue";
 import TotalView from "@/pages/TotalView.vue";
+import Summary from "@/pages/Summary.vue";
 
 // const viewsIdGuard = (to, from) => {
 //   // totalView/:id 경로는 반드시 이전 경로가
@@ -29,6 +30,7 @@ const router = createRouter({
       name: "UpdateItem",
       //beforeEnter:viewsIdGuard
     },
+    { path: "/summary", component: Summary, name: "Summary" },
   ],
 });
 

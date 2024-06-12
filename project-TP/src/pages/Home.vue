@@ -52,13 +52,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="transaction in transactions" :key="transaction.id">
-              <td>{{ transaction.date }}</td>
-              <td>{{ transaction.type }}</td>
-              <td>{{ transaction.amount }}</td>
+            <tr v-for="item in state.lists" :key="item.id">
+              <td>{{ item.date }}</td>
+              <td>{{ item.inout ? '수입' : '지출' }}</td>
+              <td>{{ item.money }}</td>
               <td>
                 <button
-                  @click="viewDetails(transaction)"
+                  @click="viewDeatils(item.id)"
                   type="button"
                   class="btn btn-outline"
                   id="btn2"
@@ -75,29 +75,34 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      currentMonth: this.getCurrentMonth(),
-      transactions: [
-        { id: 1, date: "2024.06.10", type: "수입", amount: "1,835원" },
-        { id: 2, date: "2024.06.10", type: "지출", amount: "11,835원" },
-        { id: 3, date: "2024.06.10", type: "수입", amount: "30,835원" },
-      ],
-    };
-  },
-  methods: {
-    viewDetails(transaction) {
-      alert(`Viewing details for transaction ID: ${transaction.id}`);
-    },
-    getCurrentMonth() {
-      const date = new Date();
-      const month = date.getMonth() + 1;
-      return month;
-    },
-  },
-};
+import { useAccountListStore } from '@/stores/store';
+ import { ref, reactive, onMounted } from 'vue';
+ import { useRouter } from 'vue-router';
+
+  export default {
+    setup() {
+      const store = useAccountListStore();
+      const router = useRouter();
+      const {state, fetchLists} = store;
+  
+
+      onMounted(() => {
+        fetchLists();
+      });
+
+      const viewDeatils = async (id) => {
+        await store.fetchItemById(id);
+        router.push({name: 'UpdateItem', params: {id : id}});
+      }
+
+      return {
+        state,
+        viewDeatils
+      };
+    }
+  };
 </script>
+
 <style>
 .content-wrap {
   flex: 1;

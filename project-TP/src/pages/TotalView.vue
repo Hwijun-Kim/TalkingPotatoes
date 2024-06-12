@@ -1,8 +1,8 @@
 <template>
-    <div class="big">
+    <div class="main">
         <br /><br />
-        <h2>수입 / 지출 전체 조회</h2>
-        <div class="div1">
+        <h3>수입 / 지출 전체 조회</h3>
+        <div class="search_div">
             <li>
                 <table>
                     <tr>
@@ -36,8 +36,8 @@
             <li>
                 <table>
                     <tr>
-                        <th class="aaa" colspan="2">
-                            <button>조회</button>
+                        <th class="search_th" colspan="2">
+                            <button type="button" class="search_btn">조회</button>
                         </th>
                     </tr>
                 </table>
@@ -45,180 +45,178 @@
         </div>
         <br /><br />
         <div class="row tab">
-            <div>
-                <ul class="list-group">
-                    <li class="list-group-item bbbb">
-                        <table>
-                            <tr>
-                                <th class="th_width">날짜</th>
-                                <th class="th_width">분류</th>
-                                <th class="th_const">금액</th>
-                                <th class="th_width"></th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    24.06.10
-                                </td>
-                                <td>
-                                    수입
-                                </td>
-                                <td>
-                                    1,835원
-                                </td>
-                                <td>
-                                    <button
-                                        @click="viewDetails(transaction)"
-                                        type="button"
-                                        class="btn btn-outline"
-                                    >
-                                        상세보기
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    24.06.10
-                                </td>
-                                <td>
-                                    지출
-                                </td>
-                                <td>
-                                    11,835원
-                                </td>
-                                <td>
-                                    <button
-                                        @click="viewDetails(transaction)"
-                                        type="button"
-                                        class="btn btn-outline"
-                                    >
-                                        상세보기
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    24.06.10
-                                </td>
-                                <td>
-                                    수입
-                                </td>
-                                <td>
-                                    30,835원
-                                </td>
-                                <td>
-                                    <button
-                                        @click="viewDetails(transaction)"
-                                        type="button"
-                                        class="btn btn-outline"
-                                    >
-                                        상세보기
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    24.06.10
-                                </td>
-                                <td>
-                                    수입
-                                </td>
-                                <td>
-                                    30,835원
-                                </td>
-                                <td>
-                                    <button
-                                        @click="viewDetails(transaction)"
-                                        type="button"
-                                        class="btn btn-outline"
-                                    >
-                                        상세보기
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    24.06.10
-                                </td>
-                                <td>
-                                    수입
-                                </td>
-                                <td>
-                                    30,835원
-                                </td>
-                                <td>
-                                    <button
-                                        @click="viewDetails(transaction)"
-                                        type="button"
-                                        class="btn btn-outline"
-                                    >
-                                        상세보기
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    24.06.10
-                                </td>
-                                <td>
-                                    수입
-                                </td>
-                                <td>
-                                    30,835원
-                                </td>
-                                <td>
-                                    <button
-                                        @click="viewDetails(transaction)"
-                                        type="button"
-                                        class="btn btn-outline"
-                                    >
-                                        상세보기
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    24.06.10
-                                </td>
-                                <td>
-                                    수입
-                                </td>
-                                <td>
-                                    30,835원
-                                </td>
-                                <td>
-                                    <button
-                                        @click="viewDetails(transaction)"
-                                        type="button"
-                                        class="btn btn-outline"
-                                    >
-                                        상세보기
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    24.06.10
-                                </td>
-                                <td>
-                                    수입
-                                </td>
-                                <td>
-                                    30,835원
-                                </td>
-                                <td>
-                                    <button
-                                        @click="viewDetails(transaction)"
-                                        type="button"
-                                        class="btn btn-outline"
-                                    >
-                                        상세보기
-                                    </button>
-                                </td>
-                            </tr>
-                        </table>           
-                    </li>
-                </ul>
-            </div>
+            <ul class="list-group">
+                <li class="list-group-item list_size">
+                    <table>
+                        <tr>
+                            <th class="th_width">날짜</th>
+                            <th class="th_width">분류</th>
+                            <th class="th_const">금액</th>
+                            <th class="th_width"></th>
+                        </tr>
+                        <tr>
+                            <td>
+                                24.06.10
+                            </td>
+                            <td>
+                                수입
+                            </td>
+                            <td>
+                                1,835원
+                            </td>
+                            <td>
+                                <button
+                                    @click="viewDetails(transaction)"
+                                    type="button"
+                                    class="btn btn-outline"
+                                >
+                                    상세보기
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                24.06.10
+                            </td>
+                            <td>
+                                지출
+                            </td>
+                            <td>
+                                11,835원
+                            </td>
+                            <td>
+                                <button
+                                    @click="viewDetails(transaction)"
+                                    type="button"
+                                    class="btn btn-outline"
+                                >
+                                    상세보기
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                24.06.10
+                            </td>
+                            <td>
+                                수입
+                            </td>
+                            <td>
+                                30,835원
+                            </td>
+                            <td>
+                                <button
+                                    @click="viewDetails(transaction)"
+                                    type="button"
+                                    class="btn btn-outline"
+                                >
+                                    상세보기
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                24.06.10
+                            </td>
+                            <td>
+                                수입
+                            </td>
+                            <td>
+                                30,835원
+                            </td>
+                            <td>
+                                <button
+                                    @click="viewDetails(transaction)"
+                                    type="button"
+                                    class="btn btn-outline"
+                                >
+                                    상세보기
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                24.06.10
+                            </td>
+                            <td>
+                                수입
+                            </td>
+                            <td>
+                                30,835원
+                            </td>
+                            <td>
+                                <button
+                                    @click="viewDetails(transaction)"
+                                    type="button"
+                                    class="btn btn-outline"
+                                >
+                                    상세보기
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                24.06.10
+                            </td>
+                            <td>
+                                수입
+                            </td>
+                            <td>
+                                30,835원
+                            </td>
+                            <td>
+                                <button
+                                    @click="viewDetails(transaction)"
+                                    type="button"
+                                    class="btn btn-outline"
+                                >
+                                    상세보기
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                24.06.10
+                            </td>
+                            <td>
+                                수입
+                            </td>
+                            <td>
+                                30,835원
+                            </td>
+                            <td>
+                                <button
+                                    @click="viewDetails(transaction)"
+                                    type="button"
+                                    class="btn btn-outline"
+                                >
+                                    상세보기
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                24.06.10
+                            </td>
+                            <td>
+                                수입
+                            </td>
+                            <td>
+                                30,835원
+                            </td>
+                            <td>
+                                <button
+                                    @click="viewDetails(transaction)"
+                                    type="button"
+                                    class="btn btn-outline"
+                                >
+                                    상세보기
+                                </button>
+                            </td>
+                        </tr>
+                    </table>           
+                </li>
+            </ul>
         </div>
     </div>
 </template>
@@ -244,12 +242,12 @@ function categoryChange(e) {
 }
 </script>
 
-<style>
-    .aaa {
+<style scoped>
+    .search_th {
         text-align: center;
-        width: 800px;
+        width: 1000px;
     }
-    .bbbb {
+    .list_size {
         height: 40px;
         margin : 0px;
         background-color: #F0ECCA;
@@ -265,15 +263,16 @@ function categoryChange(e) {
         list-style-type: none;
     }
     th {
-        width: 400px;
+        width: 500px;
         text-align: center; 
         padding: 20px;
     }
-    .big {
+    .main {
+        width: 100%;
         margin-left: 10%;
         margin-right: 10%;
     }
-    .div1 {
+    .search_div {
         padding-top: 20px;
         text-align : center;
         background-color: #F0ECCA;
@@ -282,14 +281,14 @@ function categoryChange(e) {
     }
     .th_width {
         border: 1px solid black;
-        width: 230px;
+        width: 300px;
         height: 40px;
         padding: 0px;
     }
 
     .th_const {
         border: 1px solid black;
-        width: 400px;
+        width: 420px;
         height: 40px;
         padding: 0px;
     }
@@ -299,17 +298,6 @@ function categoryChange(e) {
         border: 1px solid black;
         padding: 0px;
         height: 40px;
-    }
-
-    button {
-        padding: 0.5rem 1rem;
-        background-color: white;
-        color: black;
-        border-radius: 0.25rem;
-        cursor: pointer;
-        text-align: center;
-        width: 100px;
-        background-color: #FAFAF5;
     }
 
     .btn {
@@ -322,8 +310,22 @@ function categoryChange(e) {
         background-color: #FAFAF5;
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     }
+
     .tab {
         height: 200px;
         overflow-y : auto;
+    }
+
+    .search_btn {
+        padding: 0.5rem 1rem;
+        background-color: white;
+        color: black;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        text-align: center;
+        margin-top: 1rem;
+        background-color: #fafaf5;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        border-color: rgba(255, 255, 255, 0);
     }
 </style>

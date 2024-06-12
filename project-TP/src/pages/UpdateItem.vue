@@ -5,149 +5,193 @@
         <h3>상세 정보</h3>
       </div>
     </div>
-    <div class="basic-group">
-      <div class="btn-group">
-        <div
-          class="btn-right-group"
-          style="flex-wrap: wrap; justify-content: flex-end; gap: 3px"
-        >
-          <button type="button" class="btn btn-outline">취소</button>
-          <button type="button" class="btn btn-outline">삭제</button>
-          <button type="button" class="btn btn-outline">수정</button>
+    <form @submit.prevent="saveItem">
+      <div class="basic-group">
+        <div class="btn-group">
+          <div
+            class="btn-right-group"
+            style="flex-wrap: wrap; justify-content: flex-end; gap: 3px"
+          >
+            <button type="button" @click="cancelEdit" class="btn btn-outline">취소</button>
+            <button type="button" @click="deleteItem(editItemData.id)" class="btn btn-outline">삭제</button>
+            <button type="submit" class="btn btn-outline">수정</button>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="basic-group-1">
-      <div class="card-item basic">
-        <div>
-          <div class="flex-table">
-            <div class="left-section">
-              <div class="flex-cell">
-                <div class="flex-table-item">
-                  <div class="item-text">
-                    <label for="date">날짜</label>
-                  </div>
-                  <div class="item-input">
-                    <input
-                      type="date"
-                      class="form-control"
-                      id="date"
-                      name="date"
-                      style="text-align: center"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="flex-cell">
-                <div class="flex-table-item">
-                  <div class="item-text">
-                    <label for="amount">금액</label>
-                  </div>
-                  <div class="item-input">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="amount"
-                      name="amount"
-                      maxlength="20"
-                      size="15"
-                      style="text-align: center"
-                    />
+      <div class="basic-group-1">
+        <div class="card-item basic">
+          <div>
+            <div class="flex-table">
+              <div class="left-section">
+                <div class="flex-cell">
+                  <div class="flex-table-item">
+                    <div class="item-text">
+                      <label for="date">날짜</label>
+                    </div>
+                    <div class="item-input">
+                      <input
+                        type="date"
+                        v-model="editItemData.date"
+                        class="form-control"
+                        id="date"
+                        name="date"
+                        style="text-align: center"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="flex-cell">
-                <div class="flex-table-item">
-                  <div class="item-text">
-                    <label for="type">수입/지출</label>
-                  </div>
-                  <div class="item-input">
-                    <select
-                      id="type"
-                      class="form-select"
-                      v-model="formData.type"
-                      @change="updateCategories"
-                    >
-                      <option value="spend">지출</option>
-                      <option value="income">수입</option>
-                    </select>
+                <div class="flex-cell">
+                  <div class="flex-table-item">
+                    <div class="item-text">
+                      <label for="money">금액</label>
+                    </div>
+                    <div class="item-input">
+                      <input
+                        type="text"
+                        v-model="editItemData.money"
+                        class="form-control"
+                        id="money"
+                        name="money"
+                        maxlength="20"
+                        size="15"
+                        style="text-align: center"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="flex-cell">
-                <div class="flex-table-item">
-                  <div class="item-text">
-                    <label for="category">카테고리</label>
-                  </div>
-                  <div class="item-input">
-                    <select
-                      class="form-select"
-                      id="category"
-                      v-model="formData.category"
-                    >
-                      <option
-                        v-for="option in categoryOptions"
-                        :key="option"
-                        :value="option"
+                <div class="flex-cell">
+                  <div class="flex-table-item">
+                    <div class="item-text">
+                      <label for="inout">수입/지출</label>
+                    </div>
+                    <div class="item-input">
+                      <select
+                        id="inout"
+                        class="form-select"
+                        v-model="editItemData.inout"
+                        @change="handleTypeChange"
                       >
-                        {{ option }}
-                      </option>
-                    </select>
+                        <option :value="true">수입</option>
+                        <option :value="false">지출</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex-cell">
+                  <div class="flex-table-item">
+                    <div class="item-text">
+                      <label for="category">카테고리</label>
+                    </div>
+                    <div class="item-input">
+                      <select
+                        class="form-select"
+                        id="category"
+                        v-model="editItemData.category"
+                      >
+                        <option
+                          v-for="option in categoryOptions"
+                          :key="option"
+                          :value="option"
+                        >
+                          {{ option }}
+                        </option>
+                      </select>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="right-section">
-              <div class="flex-table-item">
-                <div class="item-text">
-                  <label for="memo">메모</label>
-                </div>
-                <div class="item-input">
-                  <textarea
-                    class="form-control"
-                    name="memo"
-                    id="memo"
-                    placeholder="점심값 10,000원 지출"
-                    style="width: 100%; height: 200px"
-                  ></textarea>
+              <div class="right-section">
+                <div class="flex-table-item">
+                  <div class="item-text">
+                    <label for="memo">메모</label>
+                  </div>
+                  <div class="item-input">
+                    <textarea
+                      class="form-control"
+                      v-model="editItemData.memo"
+                      name="memo"
+                      id="memo"
+                      placeholder="점심값 10,000원 지출"
+                      style="width: 100%; height: 200px"
+                    ></textarea>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </form>
   </section>
 </template>
 
 <script>
+import { useAccountListStore } from '@/stores/store';
+import { reactive, onMounted, computed } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+
 export default {
-  data() {
-    return {
-      formData: {
-        date: "",
-        amount: "",
-        type: "spend",
-        category: "",
-        memo: "",
-      },
-      incomeCategories: ["급여", "용돈", "기타"],
-      spendCategories: ["쇼핑", "식비", "교통비", "생활비", "문화생활", "기타"],
-      categoryOptions: [],
-    };
-  },
-  methods: {
-    updateCategories() {
-      if (this.formData.type === "income") {
-        this.categoryOptions = this.incomeCategories;
-      } else {
-        this.categoryOptions = this.spendCategories;
+  setup() {
+    const store = useAccountListStore();
+    const route = useRoute();
+    const router = useRouter();
+    const { state, fetchItemById, deleteItem: deleteItemFromStore, updateItem: updateItemInStore } = store;
+
+    const editItemData = reactive({
+      id: null,
+      date: '',
+      money: '',
+      inout: true,
+      category: '',
+      memo: ''
+    });
+
+    const categoryOptions = computed(() => {
+      return editItemData.inout ? state.incomeCategories : state.spendCategories;
+    });
+
+    const loadItemData = async (id) => {
+      await fetchItemById(id);
+      Object.assign(editItemData, state.currentItem);
+      if (!categoryOptions.value.includes(editItemData.category)) {
+        editItemData.category = categoryOptions.value[0];
       }
-    },
-  },
-  mounted() {
-    this.updateCategories();
-  },
+    };
+
+    onMounted(async () => {
+      const id = route.params.id;
+      await loadItemData(id);
+    });
+
+    const saveItem = async () => {
+      await updateItemInStore(editItemData);
+      router.push({ name: 'Home' });
+    };
+
+    const cancelEdit = () => {
+      router.push({ name: 'Home' });
+    };
+
+    const deleteItem = async () => {
+      await deleteItemFromStore(editItemData.id);
+      router.push({ name: 'Home' });
+    };
+
+    const handleTypeChange = () => {
+      if (!categoryOptions.value.includes(editItemData.category)) {
+        editItemData.category = categoryOptions.value[0];
+      }
+    };
+
+    return {
+      editItemData,
+      saveItem,
+      cancelEdit,
+      deleteItem,
+      categoryOptions,
+      handleTypeChange
+    };
+  }
 };
 </script>
 

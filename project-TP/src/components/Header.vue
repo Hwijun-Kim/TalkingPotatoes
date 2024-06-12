@@ -2,7 +2,7 @@
   <header id="header_pj">
     <nav class="navbar">
       <div class="navbar_logo">
-        <img src="/images/potato.png" height="70px" width="50px" />
+        <img src="/images/potato.png" height="50px" width="40px" />
       </div>
       <ul class="navbar_menu">
         <li class="nav-item">
@@ -41,9 +41,8 @@
           ></router-link>
         </li>
         <li>
-          <router-link class="nav-link" :to="{ name: 'Login' }"
-            ><i
-              class="fa-solid fa-right-from-bracket"
+          <router-link class="nav-link" :to="{ name: 'Login' }">
+            <i class="fa-solid fa-right-from-bracket"
               id="logout"
               style="font-size: 30px"
             ></i
@@ -60,8 +59,12 @@
   justify-content: space-between;
   align-items: center;
   background-color: #f0ecca;
-  padding: 10px 20px;
+  padding: 6px 40px;
   width: 100vw;
+}
+
+.navbar_logo {
+  padding-right: 30px;
 }
 
 a {
@@ -73,10 +76,11 @@ a {
   display: flex;
   list-style: none;
   padding-left: 0;
+  margin-right: auto;
 }
 
 .navbar_menu li {
-  padding: 8px 30px;
+  padding: 8px 50px;
   color: black;
   font-weight: bold;
   font-size: 20px;
@@ -93,8 +97,8 @@ a {
 }
 
 .navbar_icons li {
-  padding: 8px 20px;
-  size: 40px;
+  padding: 5px 30px;
+  size: 20px;
 }
 
 .fa-solid fa-eye {

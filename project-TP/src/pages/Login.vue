@@ -24,11 +24,15 @@
           v-model="password"
           style="margin-left: 60px; background-color: #fafaf5"
         />
+        <br />
+        <button @click="login" type="button" class="btn btn-outline">
+          Login
+        </button>
       </div>
-      <br />
+      <!-- <br />
       <button @click="login" type="button" class="btn btn-outline">
         Login
-      </button>
+      </button> -->
     </div>
   </div>
 </template>
@@ -112,11 +116,11 @@ button {
   border-radius: 0.25rem;
   cursor: pointer;
   text-align: center;
-  margin-top: 1rem;
-  width: 430px;
+  margin-top: 3rem;
+  width: 530px;
   background-color: #fafaf5;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  margin-right: 143px;
+  /* margin-left: 43px; */
 }
 
 button:hover {

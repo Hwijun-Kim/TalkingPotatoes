@@ -1,75 +1,63 @@
-import { defineStore } from "pinia";
-import { reactive, computed } from "vue";
-import { axios } from 'axios';
+import { defineStore } from 'pinia';
+import { reactive } from 'vue';
+import axios from 'axios';
 
-export const useAccountListStore = defineStore("userAccount", () => {
+
+export const useAccountListStore = defineStore('userAccount', () => {
     const state = reactive({
         lists: []
     });
 
     const fetchLists = async () => {
         try {
-            const response = await axios.get("/db-server/MOCK_DATA.json");
-            state.lists = response.data.user;
+            const response = await axios.get('http://localhost:3000/user');
+            console.log('API Response:', response.data);  // Log the response for debugging
+            state.lists = response.data;  // Update the reactive state
+            console.log('Lists Value:', state.lists);  // Log the updated lists value
         } catch (error) {
-            console.error("Failed Fectch", error);
+            console.error('Failed to fetch data:', error);
         }
     };
 
+    const addItem = async (item) => {
+        try {
+            // Calculate new ID
+            const newId = state.lists.length > 0 ? state.lists[state.lists.length - 1].id + 1 : 1;
+            const newItem = { ...item, id: newId };
 
-    const totalMoney = computed(() => {
-        return state.lists.reduce((total, item) => total + item.money, 0);
-    })
-
-    const getItemById = (id) => {
-        return state.lists.find(item => item.id === id);
+            const response = await axios.post('http://localhost:3000/user', newItem);
+            state.lists.push(response.data);  // Add the new item to the local state
+            console.log('Item Added:', response.data);  // Log the added item for debugging
+        } catch (error) {
+            console.error('Failed to add item:', error);
+        }
     };
 
-    const getListByCategory = (category) => {
-        return state.lists.filter(item => item.category === category);
-    }
-
-    const addItem = (id, date, money, inout, category) => {
-        const newItem = { id, date, money, inout, category, memo: ""};
-        state.lists.push(newItem);
-    }
-
-    const deleteItem = (id) => {
-        state.lists = state.lists.filter(item => item.id !== id);
-    }
-
-    const updateItem = (id, date, money, inout, category, memo) => {
-        const itemIndex = state.lists.findIndex(item => item.id === id);
-        if (itemIndex !== -1) {
-            state.lists[itemIndex] = {...state.lists[itemIndex], date, money, inout, category, memo };
+    const deleteItem = async (id) => {
+        try {
+            await axios.delete(`http://localhost:3000/user/${id}`);
+            state.lists = state.lists.filter(item => item.id !== id);
+        } catch (error) {
+            console.error('Fail delete', error);
         }
     }
-
-    const getListByDateRange = (startDate, endDate) => {
-        return state.lists.filter(item => {
-            const itemDate = new Date(item.date);
-            return itemDate >= new Date(startDate) && itemDate <= new Date(endDate);
-        })
-    }
-
-    const getListByMonth = (month) => {
-        return state.lists.filter(item => {
-            const itemDate = new Date(item.date);
-            return itemDate.getMonth() === month;
-        }) 
-    }
-    
-    const sortListByHighAmount = () => {
-        state.lists.sort((a,b) => b.money - a.money);
-    }
-
-    const sortListByLowAmount = () => {
-        state.lists.sort((a,b) => a.money - b.money);
+    const updateItem = async (item) => {
+        try {
+            const response = await axios.put(`api/user/${item.id}`, item);
+            const index = state.lists.findIndex(i => i.id === item.id);
+            if (index !== -1) {
+                state.lists[index] = response.data;
+            }
+        } catch (error) {
+            console.error('Fail update item', error.response ? error.response.data : error);
+        }
     }
 
     return {
-        state, fetchLists, totalMoney, getItemById, getListByCategory, addItem,
-        deleteItem, updateItem, getListByDateRange, getListByMonth,
-        sortListByHighAmount, sortListByLowAmount
+        state,
+        fetchLists,
+        addItem,
+        deleteItem,
+        updateItem,
     };
 });

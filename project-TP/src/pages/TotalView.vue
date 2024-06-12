@@ -19,7 +19,7 @@
                       id="date"
                       name="date"
                       style="text-align: center"
-                      v-model="startDate"
+                      v-model="formData.startDate"
                     />
                   </div>
                 </div>
@@ -51,7 +51,7 @@
                   </div>
                   <div class="item-input">
                     <input
-                      v-model="endDate"
+                      v-model="formData.endDate"
                       type="date"
                       class="form-control"
                       id="date"
@@ -85,7 +85,9 @@
               </div>
             </div>
             <div class="center-section">
-              <button type="button" class="search_btn">조회</button>
+              <button type="button" class="search_btn" @click="fliterHandler">
+                조회
+              </button>
             </div>
           </div>
         </div>
@@ -136,9 +138,7 @@ export default {
   setup() {
     const store = useAccountListStore();
     const router = useRouter();
-    const { state, fetchLists } = store;
-    const startDate = ref("");
-    const endDate = ref("");
+    const { state, fetchLists, filterLists } = store;
 
     const formData = reactive({
       startDate: "",
@@ -146,6 +146,11 @@ export default {
       type: "spend",
       category: "",
     });
+
+    const fliterHandler = () => {
+      store.state.formData = formData;
+      filterLists(formData);
+    };
 
     const transactions = computed(() => state.lists);
 
@@ -181,6 +186,7 @@ export default {
       updateCategories,
       fetchTransactions,
       viewDetails,
+      fliterHandler,
     };
   },
 };

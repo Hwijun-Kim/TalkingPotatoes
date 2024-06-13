@@ -169,7 +169,7 @@ export default {
     };
 
     const cancelEdit = () => {
-      router.push({ name: 'Home' });
+      router.push({ name: 'TotalView' });
     };
 
     const deleteItem = async () => {

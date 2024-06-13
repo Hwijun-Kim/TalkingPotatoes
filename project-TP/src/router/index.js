@@ -32,7 +32,7 @@ const router = createRouter({
       path: "/totalView/:id(//d+)",
       component: UpdateItem,
       name: "UpdateItem",
-      //beforeEnter:viewsIdGuard
+      beforeEnter:viewsIdGuard
     },
     { path: "/summary", component: Summary, name: "Summary" },
   ],

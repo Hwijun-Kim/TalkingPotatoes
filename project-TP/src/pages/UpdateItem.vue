@@ -196,6 +196,8 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
 .basic-group-1 {
   background-color: #f0ecca;
   border-radius: 10px;
@@ -206,7 +208,9 @@ export default {
   padding-right: 100px;
   padding-top: 50px;
   padding-bottom: 50px;
+  font-family: 'Jua', sans-serif;
 }
+
 .btn-group {
   display: flex;
 }
@@ -221,6 +225,7 @@ button {
   margin-top: 1rem;
   background-color: #fafaf5;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Jua', sans-serif;
 }
 
 button:hover {
@@ -232,6 +237,7 @@ button:hover {
   align-items: center;
   margin-left: auto;
 }
+
 .btn-right-group {
   padding-bottom: 7px;
 }
@@ -366,5 +372,9 @@ textarea {
   width: 100%;
   height: 100px;
   resize: none;
+}
+
+h3 {
+  font-family: 'Jua', sans-serif;
 }
 </style>

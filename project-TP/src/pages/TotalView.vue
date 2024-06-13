@@ -212,13 +212,15 @@ export default {
 </script>
 <style scoped>
 
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 
 .containerhome {
-      width: 100vw;
-      max-width: 100vw; /* 최대 너비를 100%로 설정 */
-      margin: 0 auto; /* 가운데 정렬 */
-      padding: 0 260px; /* 좌우 패딩 */
-  }
+  width: 100vw;
+  max-width: 100vw; /* 최대 너비를 100%로 설정 */
+  margin: 0 auto; /* 가운데 정렬 */
+  padding: 0 260px; /* 좌우 패딩 */
+  font-family: 'Jua', sans-serif;
+}
 
 .basic-group-1 {
   background-color: #f0ecca;
@@ -231,6 +233,7 @@ export default {
   padding-top: 50px;
   padding-bottom: 50px;
 }
+
 .btn-group {
   display: flex;
 }
@@ -247,18 +250,18 @@ button {
 }
 
 .filter_btn {
-      width: 200px;
-      padding: 0.5rem 1rem;
-      background-color: white;
-      color: black;
-      border-radius: 0.25rem;
-      cursor: pointer;
-      text-align: center;
-      margin-top: 1rem;
-      background-color: #fafaf5;
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-      border-color: rgba(255, 255, 255, 0);
-  }
+  width: 200px;
+  padding: 0.5rem 1rem;
+  background-color: white;
+  color: black;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 1rem;
+  background-color: #fafaf5;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-color: rgba(255, 255, 255, 0);
+}
 
 button:hover {
   background-color: #f0f0f0;
@@ -269,6 +272,7 @@ button:hover {
   align-items: center;
   margin-left: auto;
 }
+
 .btn-right-group {
   padding-bottom: 7px;
 }
@@ -404,8 +408,8 @@ button:hover {
 }
 
 .center-section {
-      width: 100%;
-  }
+  width: 100%;
+}
 
 .flex-cell {
   display: flex;
@@ -438,46 +442,45 @@ textarea {
 }
 
 th {
-      width: 500px;
-      height: 40px;
-      text-align: center; 
-      padding: 0px;
-  }
+  width: 500px;
+  height: 40px;
+  text-align: center; 
+  padding: 0px;
+}
 
-  .th_width {
-      width: 300px;
-      height: 40px;
-      padding: 0px;
-  }
-  .th_const {
-      width: 500px;
-      height: 40px;
-      padding: 0px;
-  }
-  td {
-      border: 1px solid #dddddd;
-      border-left: none;
-      border-right: none;
-      text-align: center;
-      padding: 0px;
-      height: 40px;
-  }
+.th_width {
+  width: 300px;
+  height: 40px;
+  padding: 0px;
+}
+.th_const {
+  width: 500px;
+  height: 40px;
+  padding: 0px;
+}
+td {
+  border: 1px solid #dddddd;
+  border-left: none;
+  border-right: none;
+  text-align: center;
+  padding: 0px;
+  height: 40px;
+}
 
-  .btn {
-    padding: 1px;
-    color: black;
-    border-radius: 30px;
-    cursor: pointer;
-    text-align: center;
-    width: 80px;
-    background-color: #fafaf5;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  li {
-    border: none;
-    list-style-type: none;
-  }
+.btn {
+  padding: 1px;
+  color: black;
+  border-radius: 30px;
+  cursor: pointer;
+  text-align: center;
+  width: 80px;
+  background-color: #fafaf5;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
 
+li {
+  border: none;
+  list-style-type: none;
+}
 
 </style>

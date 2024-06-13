@@ -1,7 +1,8 @@
 <template>
   <div class="containerhome">
     <br /><br />
-    <h3>수입 / 지출 전체 조회</h3>
+    <h3>수입 / 지출 전체 조회 <i @click="refreshPage" class="fa-solid fa-rotate-right"></i></h3>
+    
     <div class="basic-group-1">
       <div class="card-item basic">
         <div>
@@ -102,7 +103,7 @@
               <tr class="headt">
                 <th class="th_width">날짜</th>
                 <th class="th_width">분류</th>
-                <th class="th_const">금액</th>
+                <th class="th_const">금액 <i v-if="isArrowVisible" @click="toggleArrow" class="fa-solid fa-caret-down"></i> <i v-else @click="toggleArrow" class="fa-solid fa-caret-up"></i></th>
                 <th class="th_width"></th>
               </tr>
             </thead>
@@ -140,6 +141,18 @@ export default {
     const router = useRouter();
     const { state, fetchLists, filterLists } = store;
 
+    const isArrowVisible = ref(true);
+
+    const toggleArrow = () => {
+      if(isArrowVisible.value) {
+        state.lists.sort((a,b) => (b.money) - (a.money));
+        isArrowVisible.value = !isArrowVisible.value;
+      } else {
+        state.lists.sort((a,b) => (a.money) - (b.money));
+        isArrowVisible.value = !isArrowVisible.value;
+      }
+    };
+
     const formData = reactive({
       startDate: "",
       endDate: "",
@@ -169,6 +182,10 @@ export default {
       router.push({ name: "UpdateItem", params: { id } });
     };
 
+    const refreshPage = () => {
+      window.location.reload();
+    };
+
     onMounted(() => {
       fetchTransactions();
       updateCategories();
@@ -186,6 +203,9 @@ export default {
       fetchTransactions,
       viewDetails,
       fliterHandler,
+      refreshPage,
+      toggleArrow,
+      isArrowVisible,
     };
   },
 };

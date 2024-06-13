@@ -33,6 +33,7 @@
                       id="date"
                       v-model="formData.date"
                       style="text-align: center"
+                      required
                     />
                   </div>
                 </div>
@@ -51,6 +52,7 @@
                       maxlength="20"
                       size="15"
                       style="text-align: center"
+                      required
                     />
                   </div>
                 </div>
@@ -83,6 +85,7 @@
                       class="form-select"
                       id="category"
                       v-model="formData.category"
+                      required
                     >
                       <option
                         v-for="option in categoryOptions"

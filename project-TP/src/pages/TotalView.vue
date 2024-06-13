@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="containerhome">
     <br /><br />
     <h3>수입 / 지출 전체 조회</h3>
     <div class="basic-group-1">
@@ -192,159 +192,154 @@ export default {
 };
 </script>
 <style scoped>
-.list_size {
-  height: 40px;
-  margin: 0px;
-  background-color: #f0ecca;
-  padding: 0px;
-}
 
-select,
-input {
-  width: 184px;
-}
-li {
-  margin-left: 10%;
-  margin-right: 10%;
-  list-style-type: none;
-}
-th {
-  width: 500px;
-  text-align: center;
-  padding: 20px;
-}
-.main {
-  width: 100%;
-  margin-left: 10%;
-  margin-right: 10%;
-}
-.search_div {
-  padding-top: 20px;
-  text-align: center;
-  background-color: #f0ecca;
-  width: auto;
-  height: 250px;
-}
-.th_width {
-  border: 1px solid black;
-  width: 300px;
-  height: 40px;
-  padding: 0px;
-}
+.content-wrap {
+    flex: 1;
+    width: 100vw;
+    box-sizing: border-box;
+    overflow: hidden; 
+  }
 
-.th_const {
-  border: 1px solid black;
-  width: 420px;
-  height: 40px;
-  padding: 0px;
-}
-
-td {
-  text-align: center;
-  border: 1px solid black;
-  padding: 0px;
-  height: 40px;
-}
-
-.btn {
-  padding: 1px;
-  color: black;
-  border-radius: 30px;
-  cursor: pointer;
-  text-align: center;
-  width: 80px;
-  background-color: #fafaf5;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.tab {
+  .containerhome {
+      width: 100%;
+      max-width: 100%; /* 최대 너비를 100%로 설정 */
+      margin: 0 auto; /* 가운데 정렬 */
+      padding: 0 20px; /* 좌우 패딩 */
+  }
+  .list_size {
+      width: 99%;
+      height: 40px;
+      margin : 0px;
+      background-color: #F0ECCA;
+      padding: 0px;
+      margin-left: 13px;
+  }
+  select, input {     
+      width: 184px;
+  }
+  li {
+      margin-left: 10%;
+      margin-right: 10%;
+      list-style-type: none;
+  }
+  th {
+      width: 500px;
+      height: 40px;
+      text-align: center; 
+      padding: 0px;
+  }
+  .search_div {
+      padding-top: 20px;
+      text-align : center;
+      background-color: #F0ECCA;
+      width: auto;
+      height: 250px;
+  }
+  .th_width {
+      width: 300px;
+      height: 40px;
+      padding: 0px;
+  }
+  .th_const {
+      width: 500px;
+      height: 40px;
+      padding: 0px;
+  }
+  td {
+      border: 1px solid #dddddd;
+      border-left: none;
+      border-right: none;
+      text-align: center;
+      padding: 0px;
+      height: 40px;
+  }
+  .tab {
   height: 200px;
-  overflow-y: auto;
-}
-
-.search_btn {
-  width: 200px;
-  padding: 0.5rem 1rem;
-  background-color: white;
-  color: black;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  text-align: center;
-  margin-top: 1rem;
-  background-color: #fafaf5;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  border-color: rgba(255, 255, 255, 0);
-}
-
-.item-text {
-  display: flex;
-  padding: 10px 39px;
-  font-size: 20px;
-  line-height: 20px;
-  color: #333;
-  box-sizing: border-box;
-  word-break: keep-all;
-  width: 200px;
-}
-
-.basic-group-1 {
-  background-color: #f0ecca;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 100vx;
-  text-align: center;
-  padding-left: 100px;
-  padding-right: 100px;
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
-
-.card-item {
-  position: relative;
-  box-sizing: border-box;
-  border-radius: 20px;
-  background-color: #fff;
-}
-
-.card-item.basic {
-  padding: 30px;
-  background: #fff;
-  border-radius: 20px;
-}
-
-.flex-table {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.left-section {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-}
-
-.right-section {
-  width: 50%;
-}
-
-.center-section {
-  width: 100%;
-  margin-right: 80px;
-}
-
-.flex-cell {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.flex-table-item {
-  display: flex;
-  min-height: 100%;
-}
-
-.item-input {
-  width: 60%;
-}
+  }
+  .search_btn {
+      width: 200px;
+      padding: 0.5rem 1rem;
+      background-color: white;
+      color: black;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      text-align: center;
+      margin-top: 1rem;
+      background-color: #fafaf5;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      border-color: rgba(255, 255, 255, 0);
+  }
+  .item-text {
+      display: flex;
+      padding: 10px 39px;
+      font-size: 20px;
+      line-height: 20px;
+      color: #333;
+      box-sizing: border-box;
+      word-break: keep-all;
+      width: 200px;
+  }
+  .basic-group-1 {
+      background-color: #f0ecca;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 100vx;
+      text-align: center;
+      padding-left: 100px;
+      padding-right: 100px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+  }
+  .card-item {
+      position: relative;
+      box-sizing: border-box;
+      border-radius: 20px;
+      background-color: #fff;
+  }
+  .card-item.basic {
+      padding: 30px;
+      background: #fff;
+      border-radius: 20px;
+  }
+  .flex-table {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+  }
+  .left-section {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+  }
+  .right-section {
+      width: 50%;
+  }
+  .center-section {
+      width: 100%;
+      margin-right: 80px;
+  }
+  .flex-cell {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      margin-left : 80px
+  }
+  .flex-table-item {
+      display: flex;
+      min-height: 100%;
+  }
+  .item-input {
+      width: 60%;
+  }
+  .btn {
+    padding: 1px;
+    color: black;
+    border-radius: 30px;
+    cursor: pointer;
+    text-align: center;
+    width: 80px;
+    background-color: #fafaf5;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
 </style>

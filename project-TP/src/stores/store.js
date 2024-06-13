@@ -106,7 +106,7 @@ export const useAccountListStore = defineStore('userAccount', () => {
         // 종료일을 하루의 끝까지 포함하도록 설정합니다.
         if (end) end.setHours(23, 59, 59, 999);
 
-        state.filteredLists = state.lists.filter(item => {
+        state.lists = state.lists.filter(item => {
             const itemDate = new Date(item.date);
 
             // 날짜 범위에 따라 아이템을 필터링합니다.
@@ -131,7 +131,7 @@ export const useAccountListStore = defineStore('userAccount', () => {
             //spend
             else {
                 categoryMatches = state.spendCategories ? state.spendCategories.includes(item.category) : true;
-                console.log("spend category");
+                console.log(`${item.category}`);
             }
 
             // 모든 조건을 만족하는 경우에만 필터링합니다.
@@ -139,8 +139,6 @@ export const useAccountListStore = defineStore('userAccount', () => {
             && typeMatches 
             && categoryMatches;
         });
-
-        console.log(state.filteredLists);
     };
 
     return {

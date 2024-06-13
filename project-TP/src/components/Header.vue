@@ -46,7 +46,7 @@
               id="logout"
               style="font-size: 30px"
             ></i>
-          ></router-link>
+          </router-link>
         </li>
       </ul>
     </nav>

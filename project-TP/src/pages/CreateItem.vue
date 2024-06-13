@@ -135,15 +135,26 @@ export default {
     const categoryOptions = computed(() => store.state.categoryOptions);
 
     const saveItem = async () => {
-      console.log('Form data before addItem:', formData.value); // 로그 추가
-  
-      //inout 변환
+      console.log('Form data before addItem:', formData.value);
+
+      // Transform inout field to boolean
       const newItem = {
-          ...formData.value,
-          inout: formData.value.inout === 'spend' ? false : true
-      }
+        ...formData.value,
+        inout: formData.value.inout === 'spend' ? false : true,
+      };
 
       await addItem(newItem);
+
+      // Clear form fields
+      store.state.formData = {
+        date: '',
+        money: '',
+        inout: 'spend',
+        category: categoryOptions.value[0] || '',
+        memo: '',
+      };
+
+      // Redirect to Home
       router.push({ name: 'Home' });
     };
 
@@ -155,7 +166,7 @@ export default {
       updateCategories();
     };
 
-    // 초기 카테고리 옵션 설정
+    // Set initial category options
     onMounted(() => {
       updateCategories();
     });
@@ -176,7 +187,7 @@ export default {
   background-color: #f0ecca;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 100%;
+  width: 100vx;
   text-align: center;
   padding-left: 100px;
   padding-right: 100px;
@@ -243,14 +254,6 @@ button:hover {
   flex-wrap: wrap;
 }
 
-.grid-2 {
-  width: 50%;
-}
-
-.grid-1 {
-  width: 100%;
-}
-
 .flex-table-item {
   display: flex;
   min-height: 100%;
@@ -308,22 +311,6 @@ button:hover {
   color: #888;
   background-color: #fff;
   box-sizing: border-box;
-}
-
-.width-per-20 {
-  width: 20%;
-}
-
-.width-per-80 {
-  width: 80%;
-}
-
-.width-per-40 {
-  width: 40%;
-}
-
-.width-per-60 {
-  width: 60%;
 }
 
 .flex-table {

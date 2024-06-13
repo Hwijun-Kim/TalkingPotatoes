@@ -9,7 +9,7 @@
       <div class="months-container">
         <div class="year-select">
           <label>선택 년도 : </label>
-          <select v-model="selectedYear" @change="updateChart">
+          <select class="form-select" v-model="selectedYear" @change="updateChart">
             <option v-for="year in years" :key="year" :value="year">
               {{ year }}
             </option>
@@ -223,14 +223,14 @@ export default {
 
       // 카테고리별 수입 계산
       const categoryData = {
-        6: 0,
-        7: 0,
-        8: 0,
+        "급여": 0,
+        "용돈": 0,
+        "기타": 0,
       };
 
       filteredMonthData.forEach((item) => {
-        const category = parseInt(item.category);
-        if (item.inout && [6, 7, 8].includes(category)) {
+        const category = item.category;
+        if (item.inout && ["급여", "용돈", "기타"].includes(category)) {
           categoryData[category] += parseFloat(item.money);
         }
       });
@@ -277,17 +277,19 @@ export default {
 
       // 카테고리별 지출 계산
       const categoryData = {
-        0: 0, // 쇼핑
-        1: 0, // 식비
-        2: 0, // 교통비
-        3: 0, // 생활비
-        4: 0, // 문화생활
-        5: 0, // 기타
+        "쇼핑": 0,
+        "식비": 0,
+        "교통비": 0,
+        "생활비": 0,
+        "문화생활": 0,
+        "기타": 0,
       };
 
       filteredMonthData.forEach((item) => {
-        const category = parseInt(item.category);
-        categoryData[category] += parseFloat(item.money);
+        const category = item.category;
+        if (["쇼핑", "식비", "교통비", "생활비", "문화생활", "기타"].includes(category)) {
+          categoryData[category] += parseFloat(item.money);
+        }
       });
 
       // 차트 그리기

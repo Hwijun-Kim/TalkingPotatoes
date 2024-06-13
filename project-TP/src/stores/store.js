@@ -51,7 +51,11 @@ export const useAccountListStore = defineStore('userAccount', () => {
     const addItem = async (item) => {
         try {
             console.log('Adding item:', item);
-            const response = await axios.post('/api/user', item);
+    
+            // Create a new object excluding startDate and endDate
+            const { startDate, endDate, ...itemToSave } = item;
+    
+            const response = await axios.post('/api/user', itemToSave);
             state.lists.push(response.data);
             console.log('Item added successfully:', response.data);
         } catch (error) {

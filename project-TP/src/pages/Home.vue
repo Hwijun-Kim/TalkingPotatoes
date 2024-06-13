@@ -27,9 +27,9 @@
         </div>
         <div class="chart">
           <div class="chartimage">
-            <img v-if="currentIncome - currentExpense > 0" src="@/assets/ExcellentPotato.jpg" alt="ExcellentPotato" width="200px" height="200px">
-            <img v-else-if="currentIncome - currentExpense <= 0 && currentExpense > 0" src="@/assets/SadPotato.jpg" alt="SadPotato" width="200px" height="200px">
-            <img v-else src="@/assets/SearchPotato.webp" alt="SearchPotato" width="200px" height="200px">
+            <img v-if="currentIncome - currentExpense > 0" src="@/assets/ExcellentPotato.jpg" alt="ExcellentPotato" width="280px" height="220px">
+            <img v-else-if="currentIncome - currentExpense <= 0 && currentExpense > 0" src="@/assets/SadPotato.jpg" alt="SadPotato" width="280px" height="220px">
+            <img v-else src="@/assets/SearchPotato.webp" alt="SearchPotato" width="280px" height="220px">
           </div>
           <p>순수익 : {{ currentIncome - currentExpense }}원</p>
         </div>

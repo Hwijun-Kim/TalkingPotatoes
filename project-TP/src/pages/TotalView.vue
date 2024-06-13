@@ -201,10 +201,10 @@ export default {
   }
 
   .containerhome {
-      width: 100%;
-      max-width: 100%; /* 최대 너비를 100%로 설정 */
+      width: 100vw;
+      max-width: 100vw; /* 최대 너비를 100%로 설정 */
       margin: 0 auto; /* 가운데 정렬 */
-      padding: 0 20px; /* 좌우 패딩 */
+      padding: 0 260px; /* 좌우 패딩 */
   }
   .list_size {
       width: 99%;

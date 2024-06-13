@@ -9,7 +9,11 @@
       <div class="months-container">
         <div class="year-select">
           <label>선택 년도 : </label>
-          <select class="form-select" v-model="selectedYear" @change="updateChart">
+          <select
+            class="form-select"
+            v-model="selectedYear"
+            @change="updateChart"
+          >
             <option v-for="year in years" :key="year" :value="year">
               {{ year }}
             </option>
@@ -28,18 +32,8 @@
         </div>
         <br />
         <br />
-        <!-- 선택된 년도와 달 표시 및 뒤로가기 버튼 -->
         <div class="month">
           <h2>{{ selectedYear }} {{ currentMonth }}</h2>
-          <button
-            @click="hiddenChart"
-            type="button"
-            class="btn btn-outline"
-            style="display: inline-block"
-            id="bt2"
-          >
-            뒤로가기
-          </button>
         </div>
         <!-- 수입, 지출, 순수익 차트 영역 -->
         <div class="charts">
@@ -226,9 +220,9 @@ export default {
 
       // 카테고리별 수입 계산
       const categoryData = {
-        "급여": 0,
-        "용돈": 0,
-        "기타": 0,
+        급여: 0,
+        용돈: 0,
+        기타: 0,
       };
 
       filteredMonthData.forEach((item) => {
@@ -280,17 +274,21 @@ export default {
 
       // 카테고리별 지출 계산
       const categoryData = {
-        "쇼핑": 0,
-        "식비": 0,
-        "교통비": 0,
-        "생활비": 0,
-        "문화생활": 0,
-        "기타": 0,
+        쇼핑: 0,
+        식비: 0,
+        교통비: 0,
+        생활비: 0,
+        문화생활: 0,
+        기타: 0,
       };
 
       filteredMonthData.forEach((item) => {
         const category = item.category;
-        if (["쇼핑", "식비", "교통비", "생활비", "문화생활", "기타"].includes(category)) {
+        if (
+          ["쇼핑", "식비", "교통비", "생활비", "문화생활", "기타"].includes(
+            category
+          )
+        ) {
           categoryData[category] += parseFloat(item.money);
         }
       });

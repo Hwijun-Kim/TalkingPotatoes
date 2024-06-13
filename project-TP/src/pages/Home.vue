@@ -20,12 +20,16 @@
       </div>
       <div class="charts">
         <div class="chart">
-          <div class="chartimage"></div>
-          <p>총 수입 : 0000원</p>
+          <div class="chartimage">
+            <canvas ref="incomeChart"></canvas>
+          </div>
+          <p>총 수입 : {{ currentIncome }}원</p>
         </div>
         <div class="chart">
-          <div class="chartimage"></div>
-          <p>총 지출 : 0000원</p>
+          <div class="chartimage">
+            <canvas ref="expenseChart"></canvas>
+          </div>
+          <p>총 지출 : {{ currentExpense }}원</p>
         </div>
         <div class="chart">
           <div class="chartimage"></div>
@@ -74,9 +78,10 @@
 </template>
 
 <script>
+import { ref, onMounted, nextTick } from "vue";
 import { useAccountListStore } from "@/stores/store";
-import { ref, reactive, onMounted } from "vue";
 import { useRouter } from "vue-router";
+import Chart from "chart.js/auto";
 
 export default {
   setup() {
@@ -84,8 +89,14 @@ export default {
     const router = useRouter();
     const { state, fetchLists } = store;
     const currentMonth = ref("");
+    const currentIncome = ref(0);
+    const currentExpense = ref(0);
 
-    onMounted(() => {
+    // Chart.js 차트 초기화
+    let incomeChart;
+    let expenseChart;
+
+    onMounted(async () => {
       const monthNames = [
         "1",
         "2",
@@ -102,18 +113,84 @@ export default {
       ];
       const now = new Date();
       currentMonth.value = monthNames[now.getMonth()];
-      fetchLists();
+      await fetchLists();
+
+      // DOM 업데이트가 완료된 후에 차트 초기화
+      nextTick(() => {
+        initializeCharts();
+      });
     });
 
-    const viewDeatils = async (id) => {
+    const initializeCharts = () => {
+      const incomeCtx = document.getElementById("incomeChart");
+      const expenseCtx = document.getElementById("expenseChart");
+
+      if (incomeCtx && expenseCtx) {
+        incomeChart = new Chart(incomeCtx, {
+          type: "doughnut",
+          data: {
+            labels: ["급여", "용돈", "기타"],
+            datasets: [
+              {
+                label: "수입",
+                data: [currentIncome.value],
+                backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+                hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+          },
+        });
+
+        expenseChart = new Chart(expenseCtx, {
+          type: "doughnut",
+          data: {
+            labels: ["쇼핑", "식비", "교통비", "생활비", "문화생활", "기타"],
+            datasets: [
+              {
+                label: "지출",
+                data: [currentExpense.value],
+                backgroundColor: [
+                  "#FF6384",
+                  "#36A2EB",
+                  "#FFCE56",
+                  "#63FF84",
+                  "#EB36A2",
+                  "#56FFCE",
+                ],
+                hoverBackgroundColor: [
+                  "#FF6384",
+                  "#36A2EB",
+                  "#FFCE56",
+                  "#63FF84",
+                  "#EB36A2",
+                  "#56FFCE",
+                ],
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+          },
+        });
+      }
+    };
+
+    const viewDetails = async (id) => {
       await store.fetchItemById(id);
       router.push({ name: "UpdateItem", params: { id: id } });
     };
 
     return {
       state,
-      viewDeatils,
+      viewDetails,
       currentMonth,
+      currentIncome,
+      currentExpense,
     };
   },
 };

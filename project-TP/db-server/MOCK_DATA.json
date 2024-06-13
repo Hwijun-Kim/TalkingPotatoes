@@ -5,7 +5,7 @@
       "date": "2024-06-22",
       "money": "15000",
       "inout": false,
-      "category": 0,
+      "category": "쇼핑",
       "memo": "변경"
     },
     {
@@ -13,7 +13,7 @@
       "date": "2023-07-16",
       "money": "41233",
       "inout": true,
-      "category": 6,
+      "category": "급여",
       "memo": ""
     },
     {
@@ -21,7 +21,7 @@
       "date": "2023-10-18",
       "money": "8610",
       "inout": false,
-      "category": 4,
+      "category": "문화생활",
       "memo": ""
     },
     {
@@ -29,7 +29,7 @@
       "date": "2024-02-20",
       "money": "67225",
       "inout": false,
-      "category": 1,
+      "category": "식비",
       "memo": ""
     },
     {
@@ -37,7 +37,7 @@
       "date": "2023-11-20",
       "money": "27815",
       "inout": false,
-      "category": 4,
+      "category": "문화생활",
       "memo": ""
     },
     {
@@ -45,7 +45,7 @@
       "date": "2023-12-21",
       "money": "49460",
       "inout": true,
-      "category": 6,
+      "category": "급여",
       "memo": ""
     },
     {
@@ -53,7 +53,7 @@
       "date": "2024-03-18",
       "money": "103",
       "inout": true,
-      "category": 6,
+      "category": "급여",
       "memo": ""
     },
     {
@@ -61,7 +61,7 @@
       "date": "2023-07-05",
       "money": "59046",
       "inout": false,
-      "category": 0,
+      "category": "쇼핑",
       "memo": ""
     },
     {
@@ -69,7 +69,7 @@
       "date": "2024-01-16",
       "money": "4359",
       "inout": false,
-      "category": 4,
+      "category": "문화생활",
       "memo": ""
     },
     {
@@ -77,7 +77,7 @@
       "date": "2024-03-13",
       "money": "6556",
       "inout": false,
-      "category": 2,
+      "category": "교통비",
       "memo": ""
     },
     {
@@ -85,7 +85,7 @@
       "date": "2024-03-10",
       "money": "20919",
       "inout": true,
-      "category": 7,
+      "category": "용돈",
       "memo": ""
     },
     {
@@ -93,7 +93,7 @@
       "date": "2024-04-14",
       "money": "95580",
       "inout": false,
-      "category": 0,
+      "category": "쇼핑",
       "memo": ""
     },
     {
@@ -101,7 +101,7 @@
       "date": "2024-01-19",
       "money": "29999",
       "inout": false,
-      "category": 1,
+      "category": "식비",
       "memo": ""
     },
     {
@@ -109,7 +109,7 @@
       "date": "2023-07-18",
       "money": "3941",
       "inout": false,
-      "category": 3,
+      "category": "생활비",
       "memo": ""
     },
     {
@@ -117,7 +117,7 @@
       "date": "2024-06-03",
       "money": "13573",
       "inout": true,
-      "category": 7,
+      "category": "용돈",
       "memo": ""
     },
     {
@@ -125,7 +125,7 @@
       "date": "2023-09-29",
       "money": "41666",
       "inout": true,
-      "category": 8,
+      "category": "기타",
       "memo": ""
     },
     {
@@ -133,7 +133,7 @@
       "date": "2024-04-11",
       "money": "55100",
       "inout": true,
-      "category": 8,
+      "category": "기타",
       "memo": ""
     },
     {
@@ -141,7 +141,7 @@
       "date": "2024-04-30",
       "money": "4695",
       "inout": true,
-      "category": 8,
+      "category": "기타",
       "memo": ""
     },
     {
@@ -149,7 +149,7 @@
       "date": "2023-09-04",
       "money": "24525",
       "inout": false,
-      "category": 4,
+      "category": "문화생활",
       "memo": ""
     },
     {
@@ -157,7 +157,7 @@
       "date": "2024-02-11",
       "money": "61422",
       "inout": false,
-      "category": 1,
+      "category": "식비",
       "memo": ""
     }
   ]

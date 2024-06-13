@@ -99,7 +99,7 @@
         <li class="list-group-item list_size">
           <table>
             <thead>
-              <tr>
+              <tr class="headt">
                 <th class="th_width">날짜</th>
                 <th class="th_width">분류</th>
                 <th class="th_const">금액</th>
@@ -197,7 +197,7 @@ export default {
       width: 100vw;
       max-width: 100vw; /* 최대 너비를 100%로 설정 */
       margin: 0 auto; /* 가운데 정렬 */
-      padding: 0 80px; /* 좌우 패딩 */
+      padding: 0 260px; /* 좌우 패딩 */
   }
 
 .basic-group-1 {
@@ -411,6 +411,10 @@ textarea {
   width: 100%;
   height: 100px;
   resize: none;
+}
+
+.headt {
+  background-color: #f0ecca;
 }
 
 th {

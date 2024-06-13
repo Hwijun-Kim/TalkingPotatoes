@@ -165,7 +165,7 @@ export default {
 
     const saveItem = async () => {
       await updateItemInStore(editItemData);
-      router.push({ name: 'Home' });
+      router.push({ name: 'TotalView' });
     };
 
     const cancelEdit = () => {
@@ -174,7 +174,7 @@ export default {
 
     const deleteItem = async () => {
       await deleteItemFromStore(editItemData.id);
-      router.push({ name: 'Home' });
+      router.push({ name: 'TotalView' });
     };
 
     const handleTypeChange = () => {

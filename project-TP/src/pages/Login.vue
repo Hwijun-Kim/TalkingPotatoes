@@ -65,7 +65,10 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
 .containerlogin {
+  font-family: 'Jua', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;

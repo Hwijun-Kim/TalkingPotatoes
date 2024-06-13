@@ -122,7 +122,10 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
 .basic-group-1 {
+  font-family: 'Jua', sans-serif;
   background-color: #f0ecca;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -177,6 +180,7 @@ button:hover {
 }
 
 .contents-wrap {
+  font-family: 'Jua', sans-serif;
   flex: 1;
   width: 100vw;
   box-sizing: border-box;

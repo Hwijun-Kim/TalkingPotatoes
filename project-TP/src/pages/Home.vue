@@ -202,7 +202,10 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
 .content-wrap {
+  font-family: 'Jua', sans-serif;
   flex: 1;
   width: 100vw;
   box-sizing: border-box;

@@ -7,13 +7,7 @@
       <div class="month">
         <h2>{{ currentMonth }}월</h2>
         <router-link to="/summary">
-          <button
-            @click="viewDetails(id)"
-            type="button"
-            class="btn btn-outline"
-            id="btn1"
-            style="display: inline-block"
-          >
+          <button type="button" class="btn btn-outline" id="btn1" style="display: inline-block">
             더보기
           </button>
         </router-link>
@@ -21,26 +15,30 @@
       <div class="charts">
         <div class="chart">
           <div class="chartimage">
-            <canvas ref="incomeChart"></canvas>
+            <canvas id="incomeChart"></canvas>
           </div>
           <p>총 수입 : {{ currentIncome }}원</p>
         </div>
         <div class="chart">
           <div class="chartimage">
-            <canvas ref="expenseChart"></canvas>
+            <canvas id="expenseChart"></canvas>
           </div>
           <p>총 지출 : {{ currentExpense }}원</p>
         </div>
         <div class="chart">
-          <div class="chartimage"></div>
-          <p>순수익 : 0000원</p>
+          <div class="chartimage">
+            <img v-if="currentIncome - currentExpense > 0" src="@/assets/ExcellentPotato.jpg" alt="ExcellentPotato" width="200px" height="200px">
+            <img v-else-if="currentIncome - currentExpense <= 0 && currentExpense > 0" src="@/assets/SadPotato.jpg" alt="SadPotato" width="200px" height="200px">
+            <img v-else src="@/assets/SearchPotato.webp" alt="SearchPotato" width="200px" height="200px">
+          </div>
+          <p>순수익 : {{ currentIncome - currentExpense }}원</p>
         </div>
       </div>
       <div class="recent-transactions">
         <div class="header-container">
           <h3 class="title">최근 내역</h3>
           <router-link to="/totalView">
-            <button @click="" type="button" class="btn btn-outline" id="btn1">
+            <button type="button" class="btn btn-outline" id="btn1">
               더보기
             </button>
           </router-link>
@@ -60,12 +58,7 @@
               <td>{{ item.inout ? "수입" : "지출" }}</td>
               <td>{{ item.money }}</td>
               <td>
-                <button
-                  @click="viewDeatils(item.id)"
-                  type="button"
-                  class="btn btn-outline"
-                  id="btn2"
-                >
+                <button @click="viewDetails(item.id)" type="button" class="btn btn-outline" id="btn2">
                   상세보기
                 </button>
               </td>
@@ -98,43 +91,65 @@ export default {
 
     onMounted(async () => {
       const monthNames = [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
-        "10",
-        "11",
-        "12",
+        "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"
       ];
       const now = new Date();
       currentMonth.value = monthNames[now.getMonth()];
       await fetchLists();
 
-      // DOM 업데이트가 완료된 후에 차트 초기화
+      // DOM 업데이트가 완료된 후에 데이터 처리 및 차트 초기화
       nextTick(() => {
-        initializeCharts();
+        processMonthlyData();
       });
     });
 
-    const initializeCharts = () => {
-      const incomeCtx = document.getElementById("incomeChart");
-      const expenseCtx = document.getElementById("expenseChart");
+    const processMonthlyData = () => {
+      const filteredData = state.lists.filter((item) => {
+        const year = new Date(item.date).getFullYear();
+        const month = new Date(item.date).getMonth();
+        const now = new Date();
+        return year === now.getFullYear() && month === now.getMonth();
+      });
+
+      const incomeCategories = { "급여": 0, "용돈": 0, "기타": 0 };
+      const expenseCategories = { "쇼핑": 0, "식비": 0, "교통비": 0, "생활비": 0, "문화생활": 0, "기타": 0 };
+
+      filteredData.forEach((item) => {
+        const money = parseFloat(item.money);
+        if (item.inout) {
+          incomeCategories[item.category] += money;
+        } else {
+          expenseCategories[item.category] += money;
+        }
+      });
+
+      currentIncome.value = Object.values(incomeCategories).reduce((acc, cur) => acc + cur, 0);
+      currentExpense.value = Object.values(expenseCategories).reduce((acc, cur) => acc + cur, 0);
+
+      drawChart(incomeCategories, expenseCategories);
+    };
+
+    const drawChart = (incomeCategories, expenseCategories) => {
+      const incomeCtx = document.getElementById("incomeChart").getContext("2d");
+      const expenseCtx = document.getElementById("expenseChart").getContext("2d");
 
       if (incomeCtx && expenseCtx) {
+        if (incomeChart) {
+          incomeChart.destroy();
+        }
+        if (expenseChart) {
+          expenseChart.destroy();
+        }
+
         incomeChart = new Chart(incomeCtx, {
           type: "doughnut",
           data: {
-            labels: ["급여", "용돈", "기타"],
+            labels: Object.keys(incomeCategories),
             datasets: [
               {
                 label: "수입",
-                data: [currentIncome.value],
-                backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+                data: Object.values(incomeCategories),
+                backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"], // 카테고리별 색상
                 hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
               },
             ],
@@ -148,26 +163,16 @@ export default {
         expenseChart = new Chart(expenseCtx, {
           type: "doughnut",
           data: {
-            labels: ["쇼핑", "식비", "교통비", "생활비", "문화생활", "기타"],
+            labels: Object.keys(expenseCategories),
             datasets: [
               {
                 label: "지출",
-                data: [currentExpense.value],
+                data: Object.values(expenseCategories),
                 backgroundColor: [
-                  "#FF6384",
-                  "#36A2EB",
-                  "#FFCE56",
-                  "#63FF84",
-                  "#EB36A2",
-                  "#56FFCE",
-                ],
+                  "#FF6384", "#36A2EB", "#FFCE56", "#63FF84", "#EB36A2", "#56FFCE"
+                ], // 카테고리별 색상
                 hoverBackgroundColor: [
-                  "#FF6384",
-                  "#36A2EB",
-                  "#FFCE56",
-                  "#63FF84",
-                  "#EB36A2",
-                  "#56FFCE",
+                  "#FF6384", "#36A2EB", "#FFCE56", "#63FF84", "#EB36A2", "#56FFCE"
                 ],
               },
             ],
@@ -259,9 +264,8 @@ export default {
   transform: rotate(); /* 45도 회전 */
   width: 0;
   height: 0;
-  border: 10px solid transparent; /* 삼각형 크기 */
-  border-bottom-color: #f0ecca; /* 삼각형 색상 */
-  border-right-color: #f0ecca; /* 삼각형 색상 */
+  border: 10px solid transparent;
+  border-bottom-color: #f0ecca;
 }
 
 /* 월 표시 섹션 */

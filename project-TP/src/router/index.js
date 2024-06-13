@@ -29,9 +29,15 @@ const router = createRouter({
     { path: "/createItem", component: CreateItem, name: "CreateItem" },
     { path: "/totalView", component: TotalView, name: "TotalView" },
     {
-      path: "/totalView/:id",
+      path: "/totalView/updateitem/:id",
       component: UpdateItem,
-      name: "UpdateItem",
+      name: "UpdateItemTotalView",
+      //beforeEnter:viewsIdGuard
+    },
+    {
+      path: "/home/updateitem/:id",
+      component: UpdateItem,
+      name: "UpdateItemHome",
       //beforeEnter:viewsIdGuard
     },
     { path: "/summary", component: Summary, name: "Summary" },

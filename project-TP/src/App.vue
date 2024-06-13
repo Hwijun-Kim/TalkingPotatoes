@@ -2,14 +2,17 @@
   <div class="container">
     <Header v-if="!hideHeader" />
     <router-view />
+    <Footer v-if="!hideHeader " />
   </div>
 </template>
 
 <script>
 import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
+
 export default {
   components: {
-    Header,
+    Header, Footer
   },
   computed: {
     hideHeader() {
@@ -22,7 +25,14 @@ export default {
 
 <style scoped>
 .container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
+}
+
+.content {
+  flex: 1;
 }
 </style>

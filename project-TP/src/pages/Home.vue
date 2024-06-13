@@ -187,7 +187,7 @@ export default {
 
     const viewDetails = async (id) => {
       await store.fetchItemById(id);
-      router.push({ name: "UpdateItem", params: { id: id } });
+      router.push({ name: "UpdateItemHome", params: { id: id } });
     };
 
     return {

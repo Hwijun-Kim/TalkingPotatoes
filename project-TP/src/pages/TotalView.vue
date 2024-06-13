@@ -179,7 +179,7 @@ export default {
     };
 
     const viewDetails = (id) => {
-      router.push({ name: "UpdateItem", params: { id } });
+      router.push({ name: "UpdateItemTotalView", params: { id } });
     };
 
     const refreshPage = () => {

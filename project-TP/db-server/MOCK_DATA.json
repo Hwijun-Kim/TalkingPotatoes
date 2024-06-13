@@ -5,7 +5,7 @@
       "date": "2024-06-22",
       "money": "15000",
       "inout": false,
-      "category": "쇼핑",
+      "category": 0,
       "memo": "변경"
     },
     {

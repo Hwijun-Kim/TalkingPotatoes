@@ -1,9 +1,11 @@
 <template>
   <section class="contentss-wrap">
     <div class="container">
+      <!-- 메인 차트 영역 -->
       <div class="chart-container">
-        <div class="chart-placeholder"></div>
+        <canvas id="myChart"></canvas>
       </div>
+      <!-- 월별 버튼 및 년도 선택 -->
       <div class="months-container">
         <div class="year-select">
           <label>선택 년도 : </label>
@@ -26,10 +28,11 @@
         </div>
         <br />
         <br />
+        <!-- 선택된 년도와 달 표시 및 뒤로가기 버튼 -->
         <div class="month">
           <h2>{{ selectedYear }} {{ currentMonth }}</h2>
           <button
-            @click="hiddenChart(currentMonth)"
+            @click="hiddenChart"
             type="button"
             class="btn btn-outline"
             style="display: inline-block"
@@ -38,18 +41,19 @@
             뒤로가기
           </button>
         </div>
+        <!-- 수입, 지출, 순수익 차트 영역 -->
         <div class="charts">
           <div class="chart">
-            <div class="chartimage"></div>
-            <p>총 수입 : 0000원</p>
+            <div class="chartimage"><canvas id="incomeChart"></canvas></div>
+            <p>총 수입 : {{ currentIncome }}원</p>
+          </div>
+          <div class="chart">
+            <div class="chartimage"><canvas id="expenseChart"></canvas></div>
+            <p>총 지출 : {{ currentExpense }}원</p>
           </div>
           <div class="chart">
             <div class="chartimage"></div>
-            <p>총 지출 : 0000원</p>
-          </div>
-          <div class="chart">
-            <div class="chartimage"></div>
-            <p>순수익 : 0000원</p>
+            <p>순수익 : {{ currentIncome - currentExpense }}원</p>
           </div>
         </div>
       </div>
@@ -58,12 +62,16 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import axios from "axios";
+import { Chart, registerables } from "chart.js/auto";
+
+Chart.register(...registerables);
 
 export default {
   name: "MonthlySummary",
   setup() {
-    const selectedYear = ref();
+    const selectedYear = ref(null);
     const years = ["2023년", "2024년"];
     const months = [
       "1월",
@@ -80,30 +88,258 @@ export default {
       "12월",
     ];
     const currentMonth = ref(null);
+    const currentIncome = ref(0);
+    const currentExpense = ref(0);
+    const monthlyData = ref([]);
+    let chartInstance = null;
+    let incomeChartInstance = null;
+    let expenseChartInstance = null;
+
+    const fetchMonthlyData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/user");
+        monthlyData.value = response.data;
+        processMonthlyData();
+      } catch (error) {
+        console.error("Failed to fetch data:", error);
+      }
+    };
+
+    const processMonthlyData = () => {
+      const filteredData = monthlyData.value.filter((item) => {
+        const year = new Date(item.date).getFullYear();
+        return year === parseInt(selectedYear.value);
+      });
+
+      const incomeData = Array(12).fill(0);
+      const expenseData = Array(12).fill(0);
+
+      filteredData.forEach((item) => {
+        const month = new Date(item.date).getMonth();
+        const money = parseFloat(item.money);
+
+        if (item.inout) {
+          incomeData[month] += money;
+        } else {
+          expenseData[month] += money;
+        }
+      });
+
+      drawChart(incomeData, expenseData);
+      if (currentMonth.value !== null) {
+        drawIncomeChart(filteredData);
+        drawExpenseChart(filteredData);
+      }
+    };
 
     const updateChart = () => {
-      // Logic to update chart based on selected year
+      if (selectedYear.value) {
+        processMonthlyData();
+      }
     };
 
     const filterByMonth = (month) => {
       currentMonth.value = month;
-      // Logic to filter chart data by month
+      const monthIndex = months.indexOf(month);
+      const filteredData = monthlyData.value.filter((item) => {
+        const itemMonth = new Date(item.date).getMonth();
+        const itemYear = new Date(item.date).getFullYear();
+        return (
+          itemMonth === monthIndex && itemYear === parseInt(selectedYear.value)
+        );
+      });
+
+      currentIncome.value = filteredData
+        .filter((item) => item.inout)
+        .reduce((acc, item) => acc + parseFloat(item.money), 0);
+      currentExpense.value = filteredData
+        .filter((item) => !item.inout)
+        .reduce((acc, item) => acc + parseFloat(item.money), 0);
+
+      drawIncomeChart(filteredData);
+      drawExpenseChart(filteredData);
     };
 
-    const hiddenChart = (month) => {
+    const hiddenChart = () => {
       currentMonth.value = null;
-      selectedYear.value = null;
-      // Logic to hide chart data by month
     };
+
+    const drawChart = (incomeData, expenseData) => {
+      const ctx = document.getElementById("myChart").getContext("2d");
+
+      // 기존 차트 인스턴스가 있는 경우 삭제
+      if (chartInstance) {
+        chartInstance.destroy();
+      }
+
+      chartInstance = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: months,
+          datasets: [
+            {
+              label: "수입",
+              data: incomeData,
+              backgroundColor: "rgba(75, 192, 192, 0.2)",
+              borderColor: "rgba(75, 192, 192, 1)",
+              borderWidth: 1,
+            },
+            {
+              label: "지출",
+              data: expenseData,
+              backgroundColor: "rgba(255, 99, 132, 0.2)",
+              borderColor: "rgba(255, 99, 132, 1)",
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    };
+
+    const drawIncomeChart = (filteredData) => {
+      const ctx = document.getElementById("incomeChart").getContext("2d");
+
+      // 기존 차트 인스턴스가 있는 경우 삭제
+      if (incomeChartInstance) {
+        incomeChartInstance.destroy();
+      }
+
+      // 선택된 년도와 달에 해당하는 데이터 필터링
+      const filteredMonthData = filteredData.filter((item) => {
+        const itemMonth = new Date(item.date).getMonth();
+        const itemYear = new Date(item.date).getFullYear();
+        return (
+          itemMonth === months.indexOf(currentMonth.value) &&
+          itemYear === parseInt(selectedYear.value)
+        );
+      });
+
+      // 카테고리별 수입 계산
+      const categoryData = {
+        6: 0,
+        7: 0,
+        8: 0,
+      };
+
+      filteredMonthData.forEach((item) => {
+        const category = parseInt(item.category);
+        if (item.inout && [6, 7, 8].includes(category)) {
+          categoryData[category] += parseFloat(item.money);
+        }
+      });
+
+      // 차트 그리기
+      incomeChartInstance = new Chart(ctx, {
+        type: "doughnut",
+        data: {
+          labels: ["급여", "용돈", "기타"],
+          datasets: [
+            {
+              label: "수입",
+              data: Object.values(categoryData),
+              backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+              hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+        },
+      });
+    };
+
+    const drawExpenseChart = (filteredData) => {
+      const ctx = document.getElementById("expenseChart").getContext("2d");
+
+      // 기존 차트 인스턴스가 있는 경우 삭제
+      if (expenseChartInstance) {
+        expenseChartInstance.destroy();
+      }
+
+      // 선택된 년도와 달에 해당하는 데이터 필터링
+      const filteredMonthData = filteredData.filter((item) => {
+        const itemMonth = new Date(item.date).getMonth();
+        const itemYear = new Date(item.date).getFullYear();
+        return (
+          itemMonth === months.indexOf(currentMonth.value) &&
+          itemYear === parseInt(selectedYear.value) &&
+          !item.inout // 지출만 필터링
+        );
+      });
+
+      // 카테고리별 지출 계산
+      const categoryData = {
+        0: 0, // 쇼핑
+        1: 0, // 식비
+        2: 0, // 교통비
+        3: 0, // 생활비
+        4: 0, // 문화생활
+        5: 0, // 기타
+      };
+
+      filteredMonthData.forEach((item) => {
+        const category = parseInt(item.category);
+        categoryData[category] += parseFloat(item.money);
+      });
+
+      // 차트 그리기
+      expenseChartInstance = new Chart(ctx, {
+        type: "doughnut",
+        data: {
+          labels: ["쇼핑", "식비", "교통비", "생활비", "문화생활", "기타"],
+          datasets: [
+            {
+              label: "지출",
+              data: Object.values(categoryData),
+              backgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56",
+                "#63FF84",
+                "#EB36A2",
+                "#56FFCE",
+              ],
+              hoverBackgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56",
+                "#63FF84",
+                "#EB36A2",
+                "#56FFCE",
+              ],
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+        },
+      });
+    };
+
+    // 페이지 로드 시 데이터 불러오기
+    onMounted(() => {
+      fetchMonthlyData();
+    });
 
     return {
       selectedYear,
       years,
       months,
       currentMonth,
-      updateChart,
+      currentIncome,
+      currentExpense,
       filterByMonth,
       hiddenChart,
+      updateChart,
     };
   },
 };
@@ -124,13 +360,6 @@ export default {
 
 .chart-container {
   margin: 20px;
-}
-
-.chart-placeholder {
-  width: 100%;
-  height: 400px;
-  border: 1px solid #ccc;
-  background-color: #f9f9f9;
 }
 
 .months-container {
@@ -179,5 +408,25 @@ button:hover {
 select {
   padding: 5px;
   width: 150px;
+}
+
+.charts {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.chart {
+  text-align: center;
+}
+
+.chartimage {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+}
+
+.chart p {
+  margin-top: 10px;
 }
 </style>

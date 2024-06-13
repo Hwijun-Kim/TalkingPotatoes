@@ -186,6 +186,21 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+.contents-wrap {
+  font-family: 'Jua', sans-serif;
+  flex: 1;
+  width: 100vw;
+  box-sizing: border-box;
+  padding: 80px;
+  overflow: hidden;
+}
+
+.con_title-group {
+  font-family: 'Jua', sans-serif;
+}
+
 .basic-group-1 {
   background-color: #f0ecca;
   border-radius: 10px;
@@ -237,14 +252,6 @@ button:hover {
   padding: 30px;
   background: #fff;
   border-radius: 20px;
-}
-
-.contents-wrap {
-  flex: 1;
-  width: 100vw;
-  box-sizing: border-box;
-  padding: 80px;
-  overflow: hidden;
 }
 
 .contents-wrap .card-item.basic {

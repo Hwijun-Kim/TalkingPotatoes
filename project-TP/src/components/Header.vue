@@ -45,7 +45,7 @@
             <i class="fa-solid fa-right-from-bracket"
               id="logout"
               style="font-size: 30px"
-            ></i
+            ></i>
           ></router-link>
         </li>
       </ul>
@@ -54,7 +54,10 @@
 </template>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
 .navbar {
+  font-family: 'Jua', sans-serif;
   display: flex;
   justify-content: space-between;
   align-items: center;

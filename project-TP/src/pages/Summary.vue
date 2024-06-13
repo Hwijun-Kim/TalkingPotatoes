@@ -350,7 +350,10 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
 .contentss-wrap {
+  font-family: 'Jua', sans-serif;
   flex: 1;
   width: 100vw;
   box-sizing: border-box;
@@ -359,7 +362,6 @@ export default {
 
 .container {
   text-align: center;
-  font-family: Arial, sans-serif;
 }
 
 .chart-container {

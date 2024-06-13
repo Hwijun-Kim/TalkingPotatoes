@@ -31,6 +31,7 @@ export const useAccountListStore = defineStore('userAccount', () => {
         try {
             const response = await axios.get('/api/user');
             state.lists = response.data;
+            state.lists.sort((a,b) => new Date(b.date) - new Date(a.date));
         } catch (error) {
             console.error('Failed to fetch data:', error);
         }

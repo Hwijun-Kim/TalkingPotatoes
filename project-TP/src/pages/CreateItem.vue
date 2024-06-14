@@ -11,8 +11,12 @@
           class="btn-right-group"
           style="flex-wrap: wrap; justify-content: flex-end; gap: 3px"
         >
-          <button type="button" @click="cancelEdit" class="btn btn-outline">취소</button>
-          <button type="button" @click="saveItem" class="btn btn-outline">등록</button>
+          <button type="button" @click="cancelEdit" class="btn btn-outline">
+            취소
+          </button>
+          <button type="button" @click="saveItem" class="btn btn-outline">
+            등록
+          </button>
         </div>
       </div>
     </div>
@@ -110,7 +114,7 @@
                     name="memo"
                     id="memo"
                     v-model="formData.memo"
-                    placeholder="점심값 10,000원 지출"
+                    placeholder="ex) 점심값 10,000원 지출"
                     style="width: 100%; height: 200px"
                   ></textarea>
                 </div>
@@ -124,9 +128,9 @@
 </template>
 
 <script>
-import { useAccountListStore } from '@/stores/store';
-import { computed, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
+import { useAccountListStore } from "@/stores/store";
+import { computed, onMounted } from "vue";
+import { useRouter } from "vue-router";
 
 export default {
   setup() {
@@ -138,31 +142,31 @@ export default {
     const categoryOptions = computed(() => store.state.categoryOptions);
 
     const saveItem = async () => {
-      console.log('Form data before addItem:', formData.value);
+      console.log("Form data before addItem:", formData.value);
 
       // Transform inout field to boolean
       const newItem = {
         ...formData.value,
-        inout: formData.value.inout === 'spend' ? false : true,
+        inout: formData.value.inout === "spend" ? false : true,
       };
 
       await addItem(newItem);
 
       // Clear form fields
       store.state.formData = {
-        date: '',
-        money: '',
-        inout: 'spend',
-        category: categoryOptions.value[0] || '',
-        memo: '',
+        date: "",
+        money: "",
+        inout: "spend",
+        category: categoryOptions.value[0] || "",
+        memo: "",
       };
 
       // Redirect to Home
-      router.push({ name: 'Home' });
+      router.push({ name: "Home" });
     };
 
     const cancelEdit = () => {
-      router.push({ name: 'Home' });
+      router.push({ name: "Home" });
     };
 
     const handleTypeChange = () => {
@@ -186,10 +190,10 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 
 .contents-wrap {
-  font-family: 'Jua', sans-serif;
+  font-family: "Jua", sans-serif;
   flex: 1;
   width: 100vw;
   box-sizing: border-box;
@@ -198,7 +202,7 @@ export default {
 }
 
 .con_title-group {
-  font-family: 'Jua', sans-serif;
+  font-family: "Jua", sans-serif;
 }
 
 .basic-group-1 {

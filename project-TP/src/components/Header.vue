@@ -1,9 +1,12 @@
 <template>
+  <!-- Header -->
   <header id="header_pj">
     <nav class="navbar">
+      <!-- Talking Potatoes의 로고 -->
       <div class="navbar_logo">
         <img src="/images/potato.png" height="50px" width="40px" />
       </div>
+      <!-- navbar menu 구성 -->
       <ul class="navbar_menu">
         <li class="nav-item">
           <router-link class="nav-link" :to="{ name: 'Home' }"
@@ -21,6 +24,7 @@
           >
         </li>
       </ul>
+      <!-- navbar icons -->
       <ul class="navbar_icons">
         <li>
           <router-link class="nav-link" :to="{ name: 'CreateItem' }"
@@ -41,17 +45,31 @@
           ></router-link>
         </li>
         <li>
-          <router-link class="nav-link" :to="{ name: 'Login' }">
+          <a @click="logout">
             <i class="fa-solid fa-right-from-bracket"
               id="logout"
               style="font-size: 30px"
             ></i>
-          </router-link>
+          </a>
         </li>
       </ul>
     </nav>
   </header>
 </template>
+
+<script>
+export default {
+  name: 'Header',
+  methods: {
+    logout() {
+      // 로그아웃 시 localStorage에서 로그인 상태 제거
+      localStorage.removeItem('isLoggedIn');
+      // 로그인 페이지로 리디렉션
+      this.$router.push({ name: 'Login' });
+    }
+  }
+};
+</script>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');

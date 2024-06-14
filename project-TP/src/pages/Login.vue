@@ -53,6 +53,7 @@ export default {
     login() {
       if (this.id === "TalkingPotato" && this.password === "1234") {
         // 올바른 ID와 비밀번호인 경우 홈 페이지로 이동
+        localStorage.setItem('isLoggedIn', 'true');
         this.$router.push({ name: "Home" });
         console.log("로그인 성공");
       } else {

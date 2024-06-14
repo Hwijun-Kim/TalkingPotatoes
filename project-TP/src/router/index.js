@@ -32,10 +32,26 @@ const router = createRouter({
   ],
 });
 
-router.beforeEach((to) => {
-  //to.query에 속성이 존재할 경우 제거된 경로로 재이동
+const isLoggedIn = () => {
+  return localStorage.getItem('isLoggedIn') === 'true';
+};
+
+// 로그인 라우터 가드
+const loginRouterGuard = (to, from, next) => {
+  if (!isLoggedIn() && to.name !== 'Login') {
+    alert("로그인이 필요합니다!")
+    next({ name: 'Login' });
+  } else {
+    next();
+  }
+};
+
+router.beforeEach((to, from, next) => {
+  // to.query에 속성이 존재할 경우 제거된 경로로 재이동
   if (to.query && Object.keys(to.query).length > 0) {
-    return { path: to.path, query: {}, params: to.params };
+    next({ path: to.path, query: {}, params: to.params });
+  } else {
+    loginRouterGuard(to, from, next);
   }
 });
 

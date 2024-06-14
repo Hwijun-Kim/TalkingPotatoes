@@ -56,7 +56,7 @@
             <tr v-for="item in state.lists.slice(0, 3)" :key="item.id">
               <td>{{ item.date }}</td>
               <td>{{ item.inout ? "수입" : "지출" }}</td>
-              <td>{{ item.money }}</td>
+              <td>{{ item.money }}원</td>
               <td>
                 <button @click="viewDetails(item.id)" type="button" class="btn btn-outline" id="btn2">
                   상세보기

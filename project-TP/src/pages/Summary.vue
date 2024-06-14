@@ -1,25 +1,32 @@
 <template>
+  <!-- 메인 컨텐츠 섹션 -->
   <section class="contentss-wrap">
     <div class="container">
       <!-- 메인 차트 영역 -->
       <div class="chart-container">
+        <!-- 수입과 지출을 보여주는 메인 바 차트 캔버스 -->
         <canvas id="myChart"></canvas>
       </div>
-      <!-- 월별 버튼 및 년도 선택 -->
+
+      <!-- 월별 버튼 및 년도 선택 영역 -->
       <div class="months-container">
         <div class="year-select">
           <label>선택 년도 : </label>
+          <!-- 연도 선택 드롭다운 메뉴 -->
           <select
             class="form-select"
             v-model="selectedYear"
             @change="updateChart"
           >
+            <!-- years 배열을 순회하여 각 연도 옵션을 생성 -->
             <option v-for="year in years" :key="year" :value="year">
               {{ year }}
             </option>
           </select>
         </div>
+        <!-- 월별 버튼 영역 -->
         <div class="months-buttons">
+          <!-- months 배열을 순회하여 각 월 버튼을 생성 -->
           <button
             v-for="month in months"
             :key="month"
@@ -32,27 +39,39 @@
         </div>
         <br />
         <br />
+        <!-- 선택된 년도와 달을 표시하는 영역 -->
         <div class="month">
           <h2>{{ selectedYear }} {{ currentMonth }}</h2>
         </div>
+
         <!-- 수입, 지출, 순수익 차트 영역 -->
         <div class="charts">
+          <!-- 수입 차트 영역 -->
           <div class="chart">
-            <div class="chartimage"><canvas id="incomeChart"></canvas></div>
+            <div class="chartimage">
+              <!-- 수입 도넛 차트를 그리는 캔버스 -->
+              <canvas id="incomeChart"></canvas>
+            </div>
             <p>총 수입 : {{ currentIncome }}원</p>
           </div>
+          <!-- 지출 차트 영역 -->
           <div class="chart">
-            <div class="chartimage"><canvas id="expenseChart"></canvas></div>
+            <div class="chartimage">
+              <!-- 지출 도넛 차트를 그리는 캔버스 -->
+              <canvas id="expenseChart"></canvas>
+            </div>
             <p>총 지출 : {{ currentExpense }}원</p>
           </div>
+          <!-- 순수익 이미지 및 텍스트 영역 -->
           <div class="chart">
-          <div class="chartimage">
-            <img v-if="currentIncome - currentExpense > 0" src="@/assets/ExcellentPotato.jpg" alt="ExcellentPotato" width="200px" height="200px">
-            <img v-else-if="currentIncome - currentExpense <= 0 && currentExpense > 0" src="@/assets/SadPotato.jpg" alt="SadPotato" width="200px" height="200px">
-            <img v-else src="@/assets/SearchPotato.webp" alt="SearchPotato" width="200px" height="200px">
+            <div class="chartimage">
+              <!-- 순수익에 따른 이미지를 보여줌 -->
+              <img v-if="currentIncome - currentExpense > 0" src="@/assets/ExcellentPotato.jpg" alt="ExcellentPotato" width="200px" height="200px">
+              <img v-else-if="currentIncome - currentExpense <= 0 && currentExpense > 0" src="@/assets/SadPotato.jpg" alt="SadPotato" width="200px" height="200px">
+              <img v-else src="@/assets/SearchPotato.webp" alt="SearchPotato" width="200px" height="200px">
+            </div>
+            <p>순수익 : {{ currentIncome - currentExpense }}원</p>
           </div>
-          <p>순수익 : {{ currentIncome - currentExpense }}원</p>
-        </div>
         </div>
       </div>
     </div>
@@ -64,11 +83,13 @@ import { ref, onMounted } from "vue";
 import axios from "axios";
 import { Chart, registerables } from "chart.js/auto";
 
+// Chart.js의 모든 레지스터 사능한 항목 등록
 Chart.register(...registerables);
 
 export default {
   name: "MonthlySummary",
   setup() {
+    // 선택된 연도와 월, 수입 및 지출 데이터를 저장하는 변수
     const selectedYear = ref(null);
     const years = ["2023년", "2024년"];
     const months = [
@@ -93,9 +114,10 @@ export default {
     let incomeChartInstance = null;
     let expenseChartInstance = null;
 
+    // 서버에서 월별 데이터를 가져오는 함수
     const fetchMonthlyData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/user");
+        const response = await axios.get("/api/user");
         monthlyData.value = response.data;
         processMonthlyData();
       } catch (error) {
@@ -103,6 +125,7 @@ export default {
       }
     };
 
+    // 선택된 연도의 데이터를 필터링하여 수입 및 지출 데이터를 계산하는 함수
     const processMonthlyData = () => {
       const filteredData = monthlyData.value.filter((item) => {
         const year = new Date(item.date).getFullYear();
@@ -130,12 +153,14 @@ export default {
       }
     };
 
+    // 연도가 변경될 때 차트를 업데이트하는 함수
     const updateChart = () => {
       if (selectedYear.value) {
         processMonthlyData();
       }
     };
 
+    // 월별 데이터를 필터링하여 차트를 업데이트하는 함수
     const filterByMonth = (month) => {
       currentMonth.value = month;
       const monthIndex = months.indexOf(month);
@@ -158,10 +183,12 @@ export default {
       drawExpenseChart(filteredData);
     };
 
+    // 차트를 숨기는 함수
     const hiddenChart = () => {
       currentMonth.value = null;
     };
 
+    // 전체 수입 및 지출 차트를 그리는 함수
     const drawChart = (incomeData, expenseData) => {
       const ctx = document.getElementById("myChart").getContext("2d");
 
@@ -170,6 +197,7 @@ export default {
         chartInstance.destroy();
       }
 
+      // 새 차트 인스턴스 생성
       chartInstance = new Chart(ctx, {
         type: "bar",
         data: {
@@ -201,6 +229,7 @@ export default {
       });
     };
 
+    // 수입 차트를 그리는 함수
     const drawIncomeChart = (filteredData) => {
       const ctx = document.getElementById("incomeChart").getContext("2d");
 
@@ -254,6 +283,7 @@ export default {
       });
     };
 
+    // 지출 차트를 그리는 함수
     const drawExpenseChart = (filteredData) => {
       const ctx = document.getElementById("expenseChart").getContext("2d");
 

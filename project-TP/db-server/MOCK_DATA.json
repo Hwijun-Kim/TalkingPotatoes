@@ -139,9 +139,9 @@
     {
       "id": "18",
       "date": "2024-12-26",
-      "money": "8000",
-      "inout": false,
-      "category": "교통비",
+      "money": "12000",
+      "inout": true,
+      "category": "용돈",
       "memo": "테스트"
     },
     {
@@ -1599,6 +1599,14 @@
       "inout": true,
       "category": "급여",
       "memo": "참고"
+    },
+    {
+      "id": "4804",
+      "inout": false,
+      "category": "문화생활",
+      "memo": "티켓",
+      "date": "2024-12-15",
+      "money": "1000"
     }
   ]
 }

@@ -192,8 +192,17 @@ export default {
 
     // 조회 버튼 이벤트 핸들러
     const fliterHandler = () => {
+      // 날짜 유효성 검사
+      if (formData.startDate && formData.endDate && new Date(formData.startDate) > new Date(formData.endDate)) {
+        alert("종료 날짜가 시작 날짜보다 이전입니다. 날짜를 다시 입력해주세요.");
+        formData.startDate = '';
+        formData.endDate = '';
+        return;
+      }
       filterLists(formData);
     };
+
+    
 
     const transactions = computed(() => state.lists); // 리스트 계산 속성
 

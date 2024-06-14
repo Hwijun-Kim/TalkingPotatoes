@@ -1,9 +1,11 @@
 <template>
   <section class="content-wrap">
     <div class="containerhome">
+      <!-- 말하는 감자 섹션 -->
       <div class="speech-bubble">
         <h2>Hello! 말하는 감자,</h2>
       </div>
+      <!-- 현재 월 표시 및 더보기 버튼 -->
       <div class="month">
         <h2>{{ currentMonth }}월</h2>
         <router-link to="/summary">
@@ -12,19 +14,23 @@
           </button>
         </router-link>
       </div>
+      <!-- 수입, 지출, 순수익 차트 섹션 -->
       <div class="charts">
+        <!-- 수입 차트 -->
         <div class="chart">
           <div class="chartimage">
             <canvas id="incomeChart"></canvas>
           </div>
           <p>총 수입 : {{ currentIncome }}원</p>
         </div>
+        <!-- 지출 차트 -->
         <div class="chart">
           <div class="chartimage">
             <canvas id="expenseChart"></canvas>
           </div>
           <p>총 지출 : {{ currentExpense }}원</p>
         </div>
+        <!-- 순수익 표시 및 이미지 -->
         <div class="chart">
           <div class="chartimage">
             <img v-if="currentIncome - currentExpense > 0" src="@/assets/ExcellentPotato.jpg" alt="ExcellentPotato" width="280px" height="220px">
@@ -34,6 +40,7 @@
           <p>순수익 : {{ currentIncome - currentExpense }}원</p>
         </div>
       </div>
+      <!-- 최근 거래 내역 섹션 -->
       <div class="recent-transactions">
         <div class="header-container">
           <h3 class="title">최근 내역</h3>
@@ -53,11 +60,13 @@
             </tr>
           </thead>
           <tbody>
+            <!-- 최근 거래 내역을 보여주기 위해 v-for를 사용하여 state.lists의 첫 3개 항목을 렌더링 -->
             <tr v-for="item in state.lists.slice(0, 3)" :key="item.id">
               <td>{{ item.date }}</td>
               <td>{{ item.inout ? "수입" : "지출" }}</td>
               <td>{{ item.money }}원</td>
               <td>
+                <!-- 상세보기 버튼 클릭 시 viewDetails 함수 호출 -->
                 <button @click="viewDetails(item.id)" type="button" class="btn btn-outline" id="btn2">
                   상세보기
                 </button>
@@ -90,6 +99,7 @@ export default {
     let expenseChart;
 
     onMounted(async () => {
+      // 현재 월 설정
       const monthNames = [
         "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"
       ];
@@ -103,7 +113,9 @@ export default {
       });
     });
 
+    // 월별 데이터 처리
     const processMonthlyData = () => {
+      // 현재 월의 데이터를 필터링
       const filteredData = state.lists.filter((item) => {
         const year = new Date(item.date).getFullYear();
         const month = new Date(item.date).getMonth();
@@ -111,9 +123,11 @@ export default {
         return year === now.getFullYear() && month === now.getMonth();
       });
 
+      // 카테고리별 수입 및 지출 데이터 초기화
       const incomeCategories = { "급여": 0, "용돈": 0, "기타": 0 };
       const expenseCategories = { "쇼핑": 0, "식비": 0, "교통비": 0, "생활비": 0, "문화생활": 0, "기타": 0 };
 
+      // 데이터를 카테고리별로 합산
       filteredData.forEach((item) => {
         const money = parseFloat(item.money);
         if (item.inout) {
@@ -123,17 +137,21 @@ export default {
         }
       });
 
+      // 총 수입 및 지출 계산
       currentIncome.value = Object.values(incomeCategories).reduce((acc, cur) => acc + cur, 0);
       currentExpense.value = Object.values(expenseCategories).reduce((acc, cur) => acc + cur, 0);
 
+      // 차트 그리기
       drawChart(incomeCategories, expenseCategories);
     };
 
+    // 차트 그리기 함수
     const drawChart = (incomeCategories, expenseCategories) => {
       const incomeCtx = document.getElementById("incomeChart").getContext("2d");
       const expenseCtx = document.getElementById("expenseChart").getContext("2d");
 
       if (incomeCtx && expenseCtx) {
+        // 기존 차트가 있으면 제거
         if (incomeChart) {
           incomeChart.destroy();
         }
@@ -141,6 +159,7 @@ export default {
           expenseChart.destroy();
         }
 
+        // 수입 차트 생성
         incomeChart = new Chart(incomeCtx, {
           type: "doughnut",
           data: {
@@ -160,6 +179,7 @@ export default {
           },
         });
 
+        // 지출 차트 생성
         expenseChart = new Chart(expenseCtx, {
           type: "doughnut",
           data: {
@@ -185,6 +205,7 @@ export default {
       }
     };
 
+    // 상세보기 버튼 클릭 시 실행되는 함수
     const viewDetails = async (id) => {
       await store.fetchItemById(id);
       router.push({ name: "UpdateItemHome", params: { id: id } });

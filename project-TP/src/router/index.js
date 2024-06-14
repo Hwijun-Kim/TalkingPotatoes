@@ -1,8 +1,4 @@
-import {
-  createRouter,
-  createWebHistory,
-  isNavigationFailure,
-} from "vue-router";
+import {createRouter,createWebHistory,isNavigationFailure} from "vue-router";
 
 import CreateItem from "@/pages/CreateItem.vue";
 import Login from "@/pages/Login.vue";
@@ -12,18 +8,12 @@ import UpdateItem from "@/pages/UpdateItem.vue";
 import TotalView from "@/pages/TotalView.vue";
 import Summary from "@/pages/Summary.vue";
 
-const viewsIdGuard = (to, from) => {
-  // totalView/:id 경로는 반드시 이전 경로가
-  // /totalView, /totalView:id 인 경우만 내비게이션 허용함
-  if (from.name !== "totalView" && from.name !== "totalView/id") {
-    return false;
-  }
-};
 
+//라우터 설정
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: "/", component: Login, name: "Login", meta: { hideHeader: true } },
+    { path: "/", component: Login, name: "Login", meta: { hideHeader: true } }, //헤더 숨김
     { path: "/profile", component: Profile, name: "Profile" },
     { path: "/home", component: Home, name: "Home" },
     { path: "/createItem", component: CreateItem, name: "CreateItem" },
@@ -32,13 +22,11 @@ const router = createRouter({
       path: "/totalView/updateitem/:id",
       component: UpdateItem,
       name: "UpdateItemTotalView",
-      //beforeEnter:viewsIdGuard
     },
     {
       path: "/home/updateitem/:id",
       component: UpdateItem,
       name: "UpdateItemHome",
-      //beforeEnter:viewsIdGuard
     },
     { path: "/summary", component: Summary, name: "Summary" },
   ],

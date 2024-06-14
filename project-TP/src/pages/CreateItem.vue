@@ -182,7 +182,7 @@ export default {
       updateCategories();
     };
 
-    // 초기 설정
+    // 컴포넌트 마운트 시 카테고리 업데이트
     onMounted(() => {
       updateCategories();
     });

@@ -184,7 +184,7 @@ export default {
       }
     };
 
-    // 초기 설정
+    // 컴포넌트 마운트 시 아이템 로드
     onMounted(async () => {
       const id = route.params.id;
       await loadItemData(id);
@@ -209,7 +209,7 @@ export default {
     };
 
     // 수입/지출 유형 변경 시 호출되는 함수
-    const handleTypeChange = () => {
+    const handleCategoryChange = () => {
       // 현재 선택된 카테고리가 새로운 카테고리 옵션에 포함되지 않는 경우
       if (!categoryOptions.value.includes(editItemData.category)) {
         // 카테고리를 새로운 카테고리 옵션의 첫 번째 값으로 설정

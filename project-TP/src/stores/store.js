@@ -119,22 +119,26 @@ export const useAccountListStore = defineStore('userAccount', () => {
         if (end) end.setHours(23, 59, 59, 999);
         state.lists = state.lists.filter(item => {
             const itemDate = new Date(item.date);
+
             // 날짜 범위에 따라 아이템을 필터링
             const dateInRange = (!start || itemDate >= start) && (!end || itemDate <= end);
+
             // inout에 따라 아이템을 필터링
             const typeMatches = item.inout === inoutChange ? true : false;
-            // inout(수입/지출에서 선택한 값) : spend, income
+            // inout(수입/지출에서 선택한 값) : spend, income 
             // item.inout : false, true
             //console.log(`inoutChange : ${inoutChange}`);
             //console.log(`item.inout : ${item.inout}` );
+
             // 카테고리에 따라 아이템을 필터링
             let categoryMatches;
+
             // inout이 income 일 때
             if (inoutChange) {
                 categoryMatches = state.incomeCategories ? state.incomeCategories.includes(item.category) : true;
                 //console.log("income category");
             }
-            // inout이 spend 일 때
+            // inout이 spend 일 때 
             else {
                 categoryMatches = state.spendCategories ? state.spendCategories.includes(item.category) : true;
                 //console.log(`${item.category}`);

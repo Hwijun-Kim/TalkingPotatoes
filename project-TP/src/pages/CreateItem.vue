@@ -11,6 +11,7 @@
           class="btn-right-group"
           style="flex-wrap: wrap; justify-content: flex-end; gap: 3px"
         >
+          <!--취소, 등록 버튼에 이벤트 핸들러 등록-->
           <button type="button" @click="cancelEdit" class="btn btn-outline">
             취소
           </button>
@@ -67,11 +68,12 @@
                     <label for="inout">수입/지출</label>
                   </div>
                   <div class="item-input">
+                    <!--select 태그에 handleCategoryChange 이벤트 핸들러 등록-->
                     <select
                       id="inout"
                       class="form-select"
                       v-model="formData.inout"
-                      @change="handleTypeChange"
+                      @change="handleCategoryChange"
                     >
                       <option value="spend">지출</option>
                       <option value="income">수입</option>
@@ -91,6 +93,7 @@
                       v-model="formData.category"
                       required
                     >
+                      <!--inout 선택한 값에 따른 categoryOptions 배열 출력-->
                       <option
                         v-for="option in categoryOptions"
                         :key="option"
@@ -134,6 +137,7 @@ import { useRouter } from "vue-router";
 
 export default {
   setup() {
+    // composition API를 사용한 컴포넌트에서 스토어 사용
     const store = useAccountListStore();
     const router = useRouter();
     const { addItem, updateCategories } = store;
@@ -141,18 +145,21 @@ export default {
     const formData = computed(() => store.state.formData);
     const categoryOptions = computed(() => store.state.categoryOptions);
 
+    // 등록 버튼 핸들러
     const saveItem = async () => {
-      console.log("Form data before addItem:", formData.value);
+      // 저장하기 전의 formDate
+      //console.log("Form data before addItem:", formData.value);
 
-      // Transform inout field to boolean
+      // inout 타입 변환후 객체 생성
       const newItem = {
         ...formData.value,
         inout: formData.value.inout === "spend" ? false : true,
       };
 
+      // store.js의 addItem 함수 호출
       await addItem(newItem);
 
-      // Clear form fields
+      // 입력 완료 후 formDate 초기화
       store.state.formData = {
         date: "",
         money: "",
@@ -161,19 +168,21 @@ export default {
         memo: "",
       };
 
-      // Redirect to Home
+      // Home으로 이동
       router.push({ name: "Home" });
     };
 
+    // 취소 버튼 이벤트 핸들러
     const cancelEdit = () => {
       router.push({ name: "Home" });
     };
 
-    const handleTypeChange = () => {
+    // inout에 따른 category 변환
+    const handleCategoryChange = () => {
       updateCategories();
     };
 
-    // Set initial category options
+    // 초기 설정
     onMounted(() => {
       updateCategories();
     });
@@ -183,7 +192,7 @@ export default {
       categoryOptions,
       saveItem,
       cancelEdit,
-      handleTypeChange,
+      handleCategoryChange,
     };
   },
 };

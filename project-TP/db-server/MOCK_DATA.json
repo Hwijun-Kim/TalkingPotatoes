@@ -2,403 +2,1603 @@
   "user": [
     {
       "id": "1",
-      "date": "2024-01-17",
-      "money": "55496",
-      "inout": true,
-      "category": "기타",
-      "memo": "필요"
+      "date": "2024-01-08",
+      "money": 10175,
+      "inout": false,
+      "category": "쇼핑",
+      "memo": "변경"
     },
     {
       "id": "2",
-      "date": "2023-06-17",
-      "money": "49528",
+      "date": "2023-05-28",
+      "money": 7830,
       "inout": true,
-      "category": "용돈",
-      "memo": "완료"
+      "category": "급여",
+      "memo": "참고"
     },
     {
       "id": "3",
-      "date": "2024-08-16",
-      "money": "64993",
-      "inout": true,
-      "category": "급여",
-      "memo": "취소"
+      "date": "2023-03-05",
+      "money": 72349,
+      "inout": false,
+      "category": "생활비",
+      "memo": "수정"
     },
     {
       "id": "4",
-      "date": "2024-12-24",
-      "money": "46707",
-      "inout": true,
-      "category": "급여",
-      "memo": "월급"
+      "date": "2023-04-18",
+      "money": 17377,
+      "inout": false,
+      "category": "생활비",
+      "memo": "업데이트"
     },
     {
       "id": "5",
-      "date": "2024-08-07",
-      "money": "13509",
+      "date": "2024-03-03",
+      "money": 76464,
+      "inout": false,
+      "category": "교통비",
+      "memo": "참고"
+    },
+    {
+      "id": "6",
+      "date": "2023-01-18",
+      "money": 60145,
+      "inout": true,
+      "category": "기타",
+      "memo": "확인"
+    },
+    {
+      "id": "7",
+      "date": "2024-01-01",
+      "money": 85125,
+      "inout": false,
+      "category": "기타",
+      "memo": "변경"
+    },
+    {
+      "id": "8",
+      "date": "2023-06-24",
+      "money": 92516,
+      "inout": true,
+      "category": "기타",
+      "memo": "업데이트"
+    },
+    {
+      "id": "9",
+      "date": "2024-02-23",
+      "money": 21283,
+      "inout": false,
+      "category": "생활비",
+      "memo": "검토"
+    },
+    {
+      "id": "10",
+      "date": "2024-07-26",
+      "money": 46394,
+      "inout": true,
+      "category": "용돈",
+      "memo": "변경"
+    },
+    {
+      "id": "11",
+      "date": "2023-09-27",
+      "money": 45177,
+      "inout": true,
+      "category": "용돈",
+      "memo": "변경"
+    },
+    {
+      "id": "12",
+      "date": "2023-07-22",
+      "money": 2901,
+      "inout": false,
+      "category": "식비",
+      "memo": "참고"
+    },
+    {
+      "id": "13",
+      "date": "2023-07-14",
+      "money": 12886,
+      "inout": false,
+      "category": "기타",
+      "memo": "검토"
+    },
+    {
+      "id": "14",
+      "date": "2023-07-24",
+      "money": 17751,
+      "inout": true,
+      "category": "기타",
+      "memo": "업데이트"
+    },
+    {
+      "id": "15",
+      "date": "2023-03-10",
+      "money": 26914,
+      "inout": true,
+      "category": "기타",
+      "memo": "정리"
+    },
+    {
+      "id": "16",
+      "date": "2023-04-05",
+      "money": 39334,
+      "inout": true,
+      "category": "기타",
+      "memo": "테스트"
+    },
+    {
+      "id": "17",
+      "date": "2024-08-02",
+      "money": 89916,
+      "inout": false,
+      "category": "생활비",
+      "memo": "메모"
+    },
+    {
+      "id": "18",
+      "date": "2024-12-26",
+      "money": 8586,
+      "inout": false,
+      "category": "교통비",
+      "memo": "테스트"
+    },
+    {
+      "id": "19",
+      "date": "2023-12-24",
+      "money": 38638,
+      "inout": true,
+      "category": "용돈",
+      "memo": "수정"
+    },
+    {
+      "id": "20",
+      "date": "2023-07-18",
+      "money": 48529,
+      "inout": false,
+      "category": "기타",
+      "memo": "추가"
+    },
+    {
+      "id": "21",
+      "date": "2024-07-27",
+      "money": 8100,
+      "inout": true,
+      "category": "용돈",
+      "memo": "변경"
+    },
+    {
+      "id": "22",
+      "date": "2024-01-12",
+      "money": 42833,
+      "inout": true,
+      "category": "용돈",
+      "memo": "정리"
+    },
+    {
+      "id": "23",
+      "date": "2024-05-05",
+      "money": 65342,
+      "inout": true,
+      "category": "기타",
+      "memo": "수정"
+    },
+    {
+      "id": "24",
+      "date": "2024-03-04",
+      "money": 93190,
+      "inout": false,
+      "category": "문화생활",
+      "memo": "추가"
+    },
+    {
+      "id": "25",
+      "date": "2023-11-02",
+      "money": 12006,
+      "inout": false,
+      "category": "문화생활",
+      "memo": "추가"
+    },
+    {
+      "id": "26",
+      "date": "2023-02-06",
+      "money": 28113,
+      "inout": false,
+      "category": "식비",
+      "memo": "검토"
+    },
+    {
+      "id": "27",
+      "date": "2024-07-23",
+      "money": 12355,
+      "inout": true,
+      "category": "급여",
+      "memo": "정리"
+    },
+    {
+      "id": "28",
+      "date": "2024-05-27",
+      "money": 10540,
+      "inout": true,
+      "category": "기타",
+      "memo": "변경"
+    },
+    {
+      "id": "29",
+      "date": "2024-06-18",
+      "money": 53520,
+      "inout": false,
+      "category": "식비",
+      "memo": "검토"
+    },
+    {
+      "id": "30",
+      "date": "2023-03-15",
+      "money": 85094,
       "inout": false,
       "category": "쇼핑",
       "memo": "확인"
     },
     {
-      "id": "6",
-      "date": "2023-09-30",
-      "money": "63782",
-      "inout": false,
+      "id": "31",
+      "date": "2024-03-30",
+      "money": 5403,
+      "inout": true,
       "category": "기타",
-      "memo": "필요"
+      "memo": "확인"
     },
     {
-      "id": "7",
-      "date": "2023-09-04",
-      "money": "79530",
+      "id": "32",
+      "date": "2024-02-13",
+      "money": 55580,
       "inout": true,
       "category": "급여",
-      "memo": "결제"
+      "memo": "정리"
     },
     {
-      "id": "8",
-      "date": "2023-06-06",
-      "money": "2145",
-      "inout": true,
-      "category": "기타",
-      "memo": "취소"
+      "id": "33",
+      "date": "2024-08-31",
+      "money": 64909,
+      "inout": false,
+      "category": "생활비",
+      "memo": "메모"
     },
     {
-      "id": "9",
-      "date": "2024-09-11",
-      "money": "49191",
+      "id": "34",
+      "date": "2023-05-05",
+      "money": 83602,
       "inout": true,
       "category": "용돈",
-      "memo": "완료"
+      "memo": "확인"
     },
     {
-      "id": "10",
-      "date": "2023-05-22",
-      "money": "98925",
+      "id": "35",
+      "date": "2023-02-18",
+      "money": 76997,
+      "inout": true,
+      "category": "용돈",
+      "memo": "참고"
+    },
+    {
+      "id": "36",
+      "date": "2024-09-19",
+      "money": 25519,
+      "inout": false,
+      "category": "기타",
+      "memo": "검토"
+    },
+    {
+      "id": "37",
+      "date": "2023-01-25",
+      "money": 42394,
+      "inout": true,
+      "category": "급여",
+      "memo": "수정"
+    },
+    {
+      "id": "38",
+      "date": "2024-09-18",
+      "money": 35474,
+      "inout": false,
+      "category": "교통비",
+      "memo": "메모"
+    },
+    {
+      "id": "39",
+      "date": "2024-03-15",
+      "money": 64735,
+      "inout": true,
+      "category": "용돈",
+      "memo": "테스트"
+    },
+    {
+      "id": "40",
+      "date": "2023-04-03",
+      "money": 6581,
+      "inout": false,
+      "category": "생활비",
+      "memo": "추가"
+    },
+    {
+      "id": "41",
+      "date": "2023-06-08",
+      "money": 83825,
+      "inout": true,
+      "category": "기타",
+      "memo": "정리"
+    },
+    {
+      "id": "42",
+      "date": "2023-09-21",
+      "money": 21529,
+      "inout": true,
+      "category": "기타",
+      "memo": "수정"
+    },
+    {
+      "id": "43",
+      "date": "2024-04-23",
+      "money": 81858,
+      "inout": true,
+      "category": "급여",
+      "memo": "참고"
+    },
+    {
+      "id": "44",
+      "date": "2023-12-07",
+      "money": 44115,
+      "inout": true,
+      "category": "급여",
+      "memo": "정리"
+    },
+    {
+      "id": "45",
+      "date": "2023-04-18",
+      "money": 79198,
+      "inout": false,
+      "category": "쇼핑",
+      "memo": "변경"
+    },
+    {
+      "id": "46",
+      "date": "2024-10-23",
+      "money": 70231,
+      "inout": false,
+      "category": "생활비",
+      "memo": "테스트"
+    },
+    {
+      "id": "47",
+      "date": "2024-02-29",
+      "money": 8963,
+      "inout": false,
+      "category": "교통비",
+      "memo": "업데이트"
+    },
+    {
+      "id": "48",
+      "date": "2024-09-24",
+      "money": 85797,
+      "inout": false,
+      "category": "문화생활",
+      "memo": "업데이트"
+    },
+    {
+      "id": "49",
+      "date": "2023-10-08",
+      "money": 44917,
       "inout": false,
       "category": "식비",
       "memo": "확인"
     },
     {
-      "id": "11",
-      "date": "2024-01-11",
-      "money": "26552",
-      "inout": false,
-      "category": "교통비",
-      "memo": "변경"
+      "id": "50",
+      "date": "2024-06-15",
+      "money": 65299,
+      "inout": true,
+      "category": "급여",
+      "memo": "업데이트"
     },
     {
-      "id": "12",
-      "date": "2023-05-10",
-      "money": "87538",
+      "id": "51",
+      "date": "2023-06-04",
+      "money": 91161,
+      "inout": true,
+      "category": "급여",
+      "memo": "확인"
+    },
+    {
+      "id": "52",
+      "date": "2024-04-25",
+      "money": 6073,
       "inout": false,
       "category": "식비",
       "memo": "수정"
     },
     {
-      "id": "13",
-      "date": "2024-06-23",
-      "money": "48647",
-      "inout": false,
-      "category": "문화생활",
-      "memo": "저장"
-    },
-    {
-      "id": "14",
-      "date": "2024-10-17",
-      "money": "94020",
+      "id": "53",
+      "date": "2024-07-23",
+      "money": 83255,
       "inout": true,
-      "category": "기타",
-      "memo": "필요"
-    },
-    {
-      "id": "15",
-      "date": "2023-09-17",
-      "money": "32194",
-      "inout": false,
-      "category": "기타",
-      "memo": "완료"
-    },
-    {
-      "id": "16",
-      "date": "2023-12-01",
-      "money": "20358",
-      "inout": false,
-      "category": "생활비",
+      "category": "용돈",
       "memo": "변경"
     },
     {
-      "id": "17",
-      "date": "2024-04-11",
-      "money": "93934",
-      "inout": false,
-      "category": "식비",
-      "memo": "결제"
+      "id": "54",
+      "date": "2023-01-16",
+      "money": 25354,
+      "inout": true,
+      "category": "용돈",
+      "memo": "추가"
     },
     {
-      "id": "18",
-      "date": "2024-08-03",
-      "money": "49073",
-      "inout": false,
-      "category": "기타",
-      "memo": "확인"
-    },
-    {
-      "id": "19",
-      "date": "2023-07-21",
-      "money": "21649",
-      "inout": false,
-      "category": "생활비",
-      "memo": "완료"
-    },
-    {
-      "id": "20",
-      "date": "2023-08-12",
-      "money": "43185",
-      "inout": false,
-      "category": "식비",
-      "memo": "변경"
-    },
-    {
-      "id": "21",
-      "date": "2023-09-20",
-      "money": "15667",
+      "id": "55",
+      "date": "2024-10-20",
+      "money": 52715,
       "inout": true,
       "category": "급여",
-      "memo": "필요"
+      "memo": "메모"
     },
     {
-      "id": "22",
-      "date": "2023-07-13",
-      "money": "13478",
-      "inout": true,
-      "category": "기타",
-      "memo": "필요"
-    },
-    {
-      "id": "23",
-      "date": "2024-12-29",
-      "money": "70941",
-      "inout": false,
-      "category": "식비",
-      "memo": "결제"
-    },
-    {
-      "id": "24",
-      "date": "2023-09-01",
-      "money": "65831",
+      "id": "56",
+      "date": "2024-08-23",
+      "money": 40602,
       "inout": true,
       "category": "기타",
       "memo": "확인"
     },
     {
-      "id": "25",
+      "id": "57",
+      "date": "2024-08-13",
+      "money": 76110,
+      "inout": true,
+      "category": "급여",
+      "memo": "확인"
+    },
+    {
+      "id": "58",
+      "date": "2023-02-25",
+      "money": 71915,
+      "inout": true,
+      "category": "용돈",
+      "memo": "변경"
+    },
+    {
+      "id": "59",
+      "date": "2023-02-28",
+      "money": 88360,
+      "inout": false,
+      "category": "생활비",
+      "memo": "참고"
+    },
+    {
+      "id": "60",
+      "date": "2023-05-15",
+      "money": 84613,
+      "inout": false,
+      "category": "쇼핑",
+      "memo": "추가"
+    },
+    {
+      "id": "61",
+      "date": "2024-11-19",
+      "money": 38419,
+      "inout": false,
+      "category": "기타",
+      "memo": "변경"
+    },
+    {
+      "id": "62",
+      "date": "2023-03-01",
+      "money": 97715,
+      "inout": false,
+      "category": "생활비",
+      "memo": "수정"
+    },
+    {
+      "id": "63",
+      "date": "2024-04-07",
+      "money": 39287,
+      "inout": false,
+      "category": "식비",
+      "memo": "테스트"
+    },
+    {
+      "id": "64",
+      "date": "2024-02-13",
+      "money": 59627,
+      "inout": false,
+      "category": "식비",
+      "memo": "확인"
+    },
+    {
+      "id": "65",
+      "date": "2024-08-15",
+      "money": 59847,
+      "inout": false,
+      "category": "기타",
+      "memo": "업데이트"
+    },
+    {
+      "id": "66",
+      "date": "2024-07-23",
+      "money": 86698,
+      "inout": true,
+      "category": "기타",
+      "memo": "참고"
+    },
+    {
+      "id": "67",
+      "date": "2023-05-03",
+      "money": 87972,
+      "inout": false,
+      "category": "문화생활",
+      "memo": "수정"
+    },
+    {
+      "id": "68",
+      "date": "2023-02-26",
+      "money": 42652,
+      "inout": true,
+      "category": "기타",
+      "memo": "검토"
+    },
+    {
+      "id": "69",
+      "date": "2023-07-19",
+      "money": 29849,
+      "inout": false,
+      "category": "생활비",
+      "memo": "변경"
+    },
+    {
+      "id": "70",
+      "date": "2024-03-30",
+      "money": 23613,
+      "inout": false,
+      "category": "쇼핑",
+      "memo": "변경"
+    },
+    {
+      "id": "71",
+      "date": "2023-03-17",
+      "money": 99613,
+      "inout": true,
+      "category": "용돈",
+      "memo": "테스트"
+    },
+    {
+      "id": "72",
+      "date": "2023-06-06",
+      "money": 9345,
+      "inout": false,
+      "category": "교통비",
+      "memo": "추가"
+    },
+    {
+      "id": "73",
+      "date": "2023-10-23",
+      "money": 98464,
+      "inout": false,
+      "category": "문화생활",
+      "memo": "정리"
+    },
+    {
+      "id": "74",
+      "date": "2024-06-02",
+      "money": 41547,
+      "inout": true,
+      "category": "기타",
+      "memo": "추가"
+    },
+    {
+      "id": "75",
+      "date": "2023-02-21",
+      "money": 4260,
+      "inout": false,
+      "category": "기타",
+      "memo": "정리"
+    },
+    {
+      "id": "76",
+      "date": "2024-04-10",
+      "money": 10907,
+      "inout": true,
+      "category": "용돈",
+      "memo": "추가"
+    },
+    {
+      "id": "77",
+      "date": "2024-02-29",
+      "money": 27449,
+      "inout": true,
+      "category": "급여",
+      "memo": "메모"
+    },
+    {
+      "id": "78",
+      "date": "2023-12-18",
+      "money": 38719,
+      "inout": false,
+      "category": "생활비",
+      "memo": "수정"
+    },
+    {
+      "id": "79",
+      "date": "2023-09-11",
+      "money": 20791,
+      "inout": false,
+      "category": "기타",
+      "memo": "확인"
+    },
+    {
+      "id": "80",
+      "date": "2023-07-16",
+      "money": 72459,
+      "inout": true,
+      "category": "급여",
+      "memo": "변경"
+    },
+    {
+      "id": "81",
+      "date": "2023-01-21",
+      "money": 8275,
+      "inout": false,
+      "category": "쇼핑",
+      "memo": "테스트"
+    },
+    {
+      "id": "82",
+      "date": "2024-07-10",
+      "money": 3162,
+      "inout": false,
+      "category": "생활비",
+      "memo": "업데이트"
+    },
+    {
+      "id": "83",
+      "date": "2023-12-17",
+      "money": 88272,
+      "inout": true,
+      "category": "급여",
+      "memo": "변경"
+    },
+    {
+      "id": "84",
+      "date": "2024-10-01",
+      "money": 91073,
+      "inout": true,
+      "category": "기타",
+      "memo": "검토"
+    },
+    {
+      "id": "85",
+      "date": "2023-09-08",
+      "money": 97796,
+      "inout": true,
+      "category": "급여",
+      "memo": "검토"
+    },
+    {
+      "id": "86",
+      "date": "2023-01-21",
+      "money": 84357,
+      "inout": true,
+      "category": "용돈",
+      "memo": "수정"
+    },
+    {
+      "id": "87",
+      "date": "2023-10-29",
+      "money": 5070,
+      "inout": false,
+      "category": "기타",
+      "memo": "메모"
+    },
+    {
+      "id": "88",
+      "date": "2023-03-23",
+      "money": 73654,
+      "inout": false,
+      "category": "쇼핑",
+      "memo": "업데이트"
+    },
+    {
+      "id": "89",
+      "date": "2024-02-29",
+      "money": 1656,
+      "inout": false,
+      "category": "기타",
+      "memo": "확인"
+    },
+    {
+      "id": "90",
+      "date": "2023-10-06",
+      "money": 77816,
+      "inout": false,
+      "category": "문화생활",
+      "memo": "수정"
+    },
+    {
+      "id": "91",
       "date": "2024-02-21",
-      "money": "29294",
-      "inout": false,
-      "category": "쇼핑",
-      "memo": "변경"
-    },
-    {
-      "id": "26",
-      "date": "2023-07-11",
-      "money": "59516",
+      "money": 52076,
       "inout": false,
       "category": "기타",
-      "memo": "소비"
+      "memo": "업데이트"
     },
     {
-      "id": "27",
-      "date": "2024-10-30",
-      "money": "22156",
+      "id": "92",
+      "date": "2023-08-23",
+      "money": 74196,
       "inout": false,
-      "category": "생활비",
-      "memo": "필요"
+      "category": "쇼핑",
+      "memo": "업데이트"
     },
     {
-      "id": "28",
+      "id": "93",
+      "date": "2023-01-05",
+      "money": 30990,
+      "inout": true,
+      "category": "급여",
+      "memo": "테스트"
+    },
+    {
+      "id": "94",
       "date": "2023-05-26",
-      "money": "70178",
-      "inout": true,
-      "category": "용돈",
-      "memo": "필요"
-    },
-    {
-      "id": "29",
-      "date": "2024-04-13",
-      "money": "37538",
-      "inout": true,
-      "category": "급여",
-      "memo": "완료"
-    },
-    {
-      "id": "30",
-      "date": "2023-11-27",
-      "money": "23471",
+      "money": 13225,
       "inout": false,
       "category": "문화생활",
-      "memo": "필요"
-    },
-    {
-      "id": "31",
-      "date": "2023-12-19",
-      "money": "33198",
-      "inout": false,
-      "category": "식비",
-      "memo": "변경"
-    },
-    {
-      "id": "32",
-      "date": "2024-05-05",
-      "money": "80240",
-      "inout": false,
-      "category": "교통비",
-      "memo": "결제"
-    },
-    {
-      "id": "33",
-      "date": "2023-11-22",
-      "money": "52965",
-      "inout": true,
-      "category": "용돈",
-      "memo": "용돈 받는 날"
-    },
-    {
-      "id": "34",
-      "date": "2023-12-13",
-      "money": "87654",
-      "inout": true,
-      "category": "용돈",
-      "memo": "변경"
-    },
-    {
-      "id": "35",
-      "date": "2023-04-16",
-      "money": "83853",
-      "inout": false,
-      "category": "식비",
       "memo": "확인"
     },
     {
-      "id": "36",
-      "date": "2024-10-02",
-      "money": "38338",
-      "inout": true,
-      "category": "용돈",
-      "memo": "필요"
-    },
-    {
-      "id": "37",
-      "date": "2024-05-09",
-      "money": "55375",
-      "inout": true,
-      "category": "기타",
-      "memo": "확인"
-    },
-    {
-      "id": "38",
-      "date": "2024-09-15",
-      "money": "14677",
+      "id": "95",
+      "date": "2024-04-06",
+      "money": 55920,
       "inout": true,
       "category": "급여",
-      "memo": "변경"
+      "memo": "메모"
     },
     {
-      "id": "39",
-      "date": "2024-06-17",
-      "money": "22164",
+      "id": "96",
+      "date": "2024-01-24",
+      "money": 23815,
+      "inout": false,
+      "category": "식비",
+      "memo": "추가"
+    },
+    {
+      "id": "97",
+      "date": "2023-02-15",
+      "money": 18082,
+      "inout": false,
+      "category": "기타",
+      "memo": "정리"
+    },
+    {
+      "id": "98",
+      "date": "2023-11-05",
+      "money": 60142,
+      "inout": true,
+      "category": "기타",
+      "memo": "수정"
+    },
+    {
+      "id": "99",
+      "date": "2023-04-03",
+      "money": 313,
+      "inout": true,
+      "category": "급여",
+      "memo": "참고"
+    },
+    {
+      "id": "100",
+      "date": "2024-12-12",
+      "money": 37202,
+      "inout": false,
+      "category": "기타",
+      "memo": "수정"
+    },
+    {
+      "id": "101",
+      "date": "2024-07-12",
+      "money": 87135,
       "inout": false,
       "category": "기타",
       "memo": "메모"
     },
     {
-      "id": "40",
-      "date": "2024-10-24",
-      "money": "45463",
-      "inout": false,
-      "category": "기타",
-      "memo": "필요"
-    },
-    {
-      "id": "41",
-      "date": "2023-07-11",
-      "money": "15482",
+      "id": "102",
+      "date": "2024-11-10",
+      "money": 47084,
       "inout": false,
       "category": "교통비",
-      "memo": "필요"
+      "memo": "업데이트"
     },
     {
-      "id": "42",
-      "date": "2024-11-09",
-      "money": "11592",
+      "id": "103",
+      "date": "2023-04-25",
+      "money": 81467,
+      "inout": false,
+      "category": "기타",
+      "memo": "정리"
+    },
+    {
+      "id": "104",
+      "date": "2024-03-13",
+      "money": 42772,
+      "inout": false,
+      "category": "식비",
+      "memo": "수정"
+    },
+    {
+      "id": "105",
+      "date": "2024-04-12",
+      "money": 62029,
+      "inout": true,
+      "category": "급여",
+      "memo": "검토"
+    },
+    {
+      "id": "106",
+      "date": "2024-08-22",
+      "money": 37136,
+      "inout": false,
+      "category": "문화생활",
+      "memo": "확인"
+    },
+    {
+      "id": "107",
+      "date": "2023-03-20",
+      "money": 85112,
+      "inout": true,
+      "category": "기타",
+      "memo": "참고"
+    },
+    {
+      "id": "108",
+      "date": "2023-09-15",
+      "money": 69019,
       "inout": false,
       "category": "쇼핑",
       "memo": "확인"
     },
     {
-      "id": "43",
-      "date": "2024-06-20",
-      "money": "8329",
-      "inout": true,
-      "category": "기타",
-      "memo": "필요"
-    },
-    {
-      "id": "44",
-      "date": "2023-01-13",
-      "money": "49174",
-      "inout": false,
-      "category": "문화생활",
-      "memo": "메모"
-    },
-    {
-      "id": "45",
-      "date": "2024-07-31",
-      "money": "74683",
-      "inout": false,
-      "category": "생활비",
-      "memo": "메모"
-    },
-    {
-      "id": "46",
-      "date": "2023-09-29",
-      "money": "1589",
-      "inout": false,
-      "category": "문화생활",
-      "memo": "확인"
-    },
-    {
-      "id": "47",
-      "date": "2023-08-09",
-      "money": "71961",
-      "inout": false,
-      "category": "생활비",
-      "memo": "변경"
-    },
-    {
-      "id": "48",
-      "date": "2023-03-07",
-      "money": "20708",
-      "inout": false,
-      "category": "생활비",
-      "memo": "확인"
-    },
-    {
-      "id": "49",
-      "date": "2023-08-20",
-      "money": "93879",
-      "inout": false,
-      "category": "문화생활",
-      "memo": "변경"
-    },
-    {
-      "id": "50",
-      "date": "2023-03-19",
-      "money": "73625",
+      "id": "109",
+      "date": "2024-09-05",
+      "money": 66995,
       "inout": true,
       "category": "급여",
-      "memo": "필요"
+      "memo": "참고"
+    },
+    {
+      "id": "110",
+      "date": "2024-09-18",
+      "money": 52587,
+      "inout": false,
+      "category": "식비",
+      "memo": "메모"
+    },
+    {
+      "id": "111",
+      "date": "2023-01-16",
+      "money": 65644,
+      "inout": true,
+      "category": "용돈",
+      "memo": "추가"
+    },
+    {
+      "id": "112",
+      "date": "2024-06-11",
+      "money": 51270,
+      "inout": false,
+      "category": "문화생활",
+      "memo": "정리"
+    },
+    {
+      "id": "113",
+      "date": "2023-11-25",
+      "money": 86360,
+      "inout": true,
+      "category": "용돈",
+      "memo": "테스트"
+    },
+    {
+      "id": "114",
+      "date": "2024-06-13",
+      "money": 44318,
+      "inout": false,
+      "category": "문화생활",
+      "memo": "업데이트"
+    },
+    {
+      "id": "115",
+      "date": "2023-04-27",
+      "money": 63233,
+      "inout": true,
+      "category": "용돈",
+      "memo": "검토"
+    },
+    {
+      "id": "116",
+      "date": "2024-08-22",
+      "money": 16921,
+      "inout": false,
+      "category": "쇼핑",
+      "memo": "참고"
+    },
+    {
+      "id": "117",
+      "date": "2023-03-08",
+      "money": 43970,
+      "inout": false,
+      "category": "식비",
+      "memo": "변경"
+    },
+    {
+      "id": "118",
+      "date": "2024-09-18",
+      "money": 30265,
+      "inout": true,
+      "category": "기타",
+      "memo": "확인"
+    },
+    {
+      "id": "119",
+      "date": "2024-05-04",
+      "money": 74543,
+      "inout": true,
+      "category": "용돈",
+      "memo": "테스트"
+    },
+    {
+      "id": "120",
+      "date": "2023-04-29",
+      "money": 42764,
+      "inout": true,
+      "category": "급여",
+      "memo": "참고"
+    },
+    {
+      "id": "121",
+      "date": "2023-10-12",
+      "money": 48401,
+      "inout": true,
+      "category": "기타",
+      "memo": "메모"
+    },
+    {
+      "id": "122",
+      "date": "2024-01-08",
+      "money": 52176,
+      "inout": false,
+      "category": "생활비",
+      "memo": "수정"
+    },
+    {
+      "id": "123",
+      "date": "2024-09-30",
+      "money": 43159,
+      "inout": true,
+      "category": "용돈",
+      "memo": "업데이트"
+    },
+    {
+      "id": "124",
+      "date": "2024-04-18",
+      "money": 59733,
+      "inout": false,
+      "category": "기타",
+      "memo": "참고"
+    },
+    {
+      "id": "125",
+      "date": "2023-11-25",
+      "money": 937,
+      "inout": true,
+      "category": "기타",
+      "memo": "참고"
+    },
+    {
+      "id": "126",
+      "date": "2024-08-27",
+      "money": 41738,
+      "inout": true,
+      "category": "기타",
+      "memo": "검토"
+    },
+    {
+      "id": "127",
+      "date": "2023-11-23",
+      "money": 18957,
+      "inout": false,
+      "category": "교통비",
+      "memo": "정리"
+    },
+    {
+      "id": "128",
+      "date": "2023-08-14",
+      "money": 22576,
+      "inout": false,
+      "category": "문화생활",
+      "memo": "수정"
+    },
+    {
+      "id": "129",
+      "date": "2024-12-07",
+      "money": 12024,
+      "inout": true,
+      "category": "기타",
+      "memo": "메모"
+    },
+    {
+      "id": "130",
+      "date": "2024-07-30",
+      "money": 62511,
+      "inout": true,
+      "category": "용돈",
+      "memo": "검토"
+    },
+    {
+      "id": "131",
+      "date": "2023-03-09",
+      "money": 81211,
+      "inout": true,
+      "category": "기타",
+      "memo": "추가"
+    },
+    {
+      "id": "132",
+      "date": "2023-08-20",
+      "money": 81397,
+      "inout": false,
+      "category": "식비",
+      "memo": "변경"
+    },
+    {
+      "id": "133",
+      "date": "2023-07-06",
+      "money": 923,
+      "inout": true,
+      "category": "용돈",
+      "memo": "메모"
+    },
+    {
+      "id": "134",
+      "date": "2023-09-07",
+      "money": 61858,
+      "inout": false,
+      "category": "식비",
+      "memo": "테스트"
+    },
+    {
+      "id": "135",
+      "date": "2023-09-16",
+      "money": 13667,
+      "inout": false,
+      "category": "생활비",
+      "memo": "확인"
+    },
+    {
+      "id": "136",
+      "date": "2024-01-10",
+      "money": 31605,
+      "inout": true,
+      "category": "기타",
+      "memo": "테스트"
+    },
+    {
+      "id": "137",
+      "date": "2023-09-24",
+      "money": 67149,
+      "inout": false,
+      "category": "기타",
+      "memo": "변경"
+    },
+    {
+      "id": "138",
+      "date": "2023-11-09",
+      "money": 42994,
+      "inout": false,
+      "category": "문화생활",
+      "memo": "수정"
+    },
+    {
+      "id": "139",
+      "date": "2023-04-17",
+      "money": 2357,
+      "inout": false,
+      "category": "식비",
+      "memo": "업데이트"
+    },
+    {
+      "id": "140",
+      "date": "2023-09-25",
+      "money": 30327,
+      "inout": false,
+      "category": "기타",
+      "memo": "참고"
+    },
+    {
+      "id": "141",
+      "date": "2024-09-13",
+      "money": 11138,
+      "inout": false,
+      "category": "교통비",
+      "memo": "변경"
+    },
+    {
+      "id": "142",
+      "date": "2023-09-19",
+      "money": 58636,
+      "inout": false,
+      "category": "문화생활",
+      "memo": "추가"
+    },
+    {
+      "id": "143",
+      "date": "2023-10-31",
+      "money": 18045,
+      "inout": true,
+      "category": "용돈",
+      "memo": "업데이트"
+    },
+    {
+      "id": "144",
+      "date": "2023-02-13",
+      "money": 41476,
+      "inout": true,
+      "category": "급여",
+      "memo": "검토"
+    },
+    {
+      "id": "145",
+      "date": "2023-12-31",
+      "money": 60331,
+      "inout": true,
+      "category": "급여",
+      "memo": "메모"
+    },
+    {
+      "id": "146",
+      "date": "2023-08-08",
+      "money": 69332,
+      "inout": false,
+      "category": "쇼핑",
+      "memo": "검토"
+    },
+    {
+      "id": "147",
+      "date": "2023-01-18",
+      "money": 60535,
+      "inout": true,
+      "category": "용돈",
+      "memo": "추가"
+    },
+    {
+      "id": "148",
+      "date": "2023-05-05",
+      "money": 83470,
+      "inout": true,
+      "category": "용돈",
+      "memo": "확인"
+    },
+    {
+      "id": "149",
+      "date": "2023-04-15",
+      "money": 78858,
+      "inout": false,
+      "category": "식비",
+      "memo": "검토"
+    },
+    {
+      "id": "150",
+      "date": "2023-11-23",
+      "money": 82794,
+      "inout": false,
+      "category": "식비",
+      "memo": "수정"
+    },
+    {
+      "id": "151",
+      "date": "2024-05-20",
+      "money": 84780,
+      "inout": false,
+      "category": "쇼핑",
+      "memo": "메모"
+    },
+    {
+      "id": "152",
+      "date": "2023-05-08",
+      "money": 32182,
+      "inout": true,
+      "category": "기타",
+      "memo": "테스트"
+    },
+    {
+      "id": "153",
+      "date": "2023-04-07",
+      "money": 67896,
+      "inout": false,
+      "category": "문화생활",
+      "memo": "업데이트"
+    },
+    {
+      "id": "154",
+      "date": "2024-03-19",
+      "money": 83531,
+      "inout": false,
+      "category": "문화생활",
+      "memo": "검토"
+    },
+    {
+      "id": "155",
+      "date": "2023-08-21",
+      "money": 7772,
+      "inout": false,
+      "category": "생활비",
+      "memo": "변경"
+    },
+    {
+      "id": "156",
+      "date": "2023-07-06",
+      "money": 21350,
+      "inout": true,
+      "category": "기타",
+      "memo": "메모"
+    },
+    {
+      "id": "157",
+      "date": "2024-10-26",
+      "money": 50678,
+      "inout": false,
+      "category": "식비",
+      "memo": "추가"
+    },
+    {
+      "id": "158",
+      "date": "2023-11-04",
+      "money": 45972,
+      "inout": true,
+      "category": "기타",
+      "memo": "메모"
+    },
+    {
+      "id": "159",
+      "date": "2024-08-23",
+      "money": 71611,
+      "inout": true,
+      "category": "용돈",
+      "memo": "메모"
+    },
+    {
+      "id": "160",
+      "date": "2024-08-08",
+      "money": 23233,
+      "inout": true,
+      "category": "기타",
+      "memo": "확인"
+    },
+    {
+      "id": "161",
+      "date": "2024-05-19",
+      "money": 72431,
+      "inout": false,
+      "category": "기타",
+      "memo": "검토"
+    },
+    {
+      "id": "162",
+      "date": "2024-07-25",
+      "money": 93358,
+      "inout": true,
+      "category": "급여",
+      "memo": "업데이트"
+    },
+    {
+      "id": "163",
+      "date": "2023-12-19",
+      "money": 8601,
+      "inout": false,
+      "category": "문화생활",
+      "memo": "추가"
+    },
+    {
+      "id": "164",
+      "date": "2023-12-12",
+      "money": 34143,
+      "inout": false,
+      "category": "문화생활",
+      "memo": "정리"
+    },
+    {
+      "id": "165",
+      "date": "2024-04-05",
+      "money": 16588,
+      "inout": true,
+      "category": "기타",
+      "memo": "확인"
+    },
+    {
+      "id": "166",
+      "date": "2023-06-27",
+      "money": 30943,
+      "inout": true,
+      "category": "용돈",
+      "memo": "변경"
+    },
+    {
+      "id": "167",
+      "date": "2023-01-18",
+      "money": 92211,
+      "inout": false,
+      "category": "문화생활",
+      "memo": "참고"
+    },
+    {
+      "id": "168",
+      "date": "2024-01-29",
+      "money": 56404,
+      "inout": true,
+      "category": "용돈",
+      "memo": "참고"
+    },
+    {
+      "id": "169",
+      "date": "2023-05-21",
+      "money": 16581,
+      "inout": false,
+      "category": "문화생활",
+      "memo": "확인"
+    },
+    {
+      "id": "170",
+      "date": "2023-07-02",
+      "money": 29794,
+      "inout": true,
+      "category": "기타",
+      "memo": "검토"
+    },
+    {
+      "id": "171",
+      "date": "2024-09-09",
+      "money": 9326,
+      "inout": true,
+      "category": "용돈",
+      "memo": "정리"
+    },
+    {
+      "id": "172",
+      "date": "2023-09-03",
+      "money": 39423,
+      "inout": false,
+      "category": "교통비",
+      "memo": "확인"
+    },
+    {
+      "id": "173",
+      "date": "2024-02-20",
+      "money": 2458,
+      "inout": false,
+      "category": "문화생활",
+      "memo": "확인"
+    },
+    {
+      "id": "174",
+      "date": "2024-10-31",
+      "money": 75684,
+      "inout": true,
+      "category": "급여",
+      "memo": "참고"
+    },
+    {
+      "id": "175",
+      "date": "2024-02-17",
+      "money": 99946,
+      "inout": false,
+      "category": "생활비",
+      "memo": "변경"
+    },
+    {
+      "id": "176",
+      "date": "2024-06-08",
+      "money": 70774,
+      "inout": true,
+      "category": "기타",
+      "memo": "업데이트"
+    },
+    {
+      "id": "177",
+      "date": "2023-06-20",
+      "money": 78427,
+      "inout": true,
+      "category": "급여",
+      "memo": "수정"
+    },
+    {
+      "id": "178",
+      "date": "2024-06-02",
+      "money": 79724,
+      "inout": false,
+      "category": "쇼핑",
+      "memo": "업데이트"
+    },
+    {
+      "id": "179",
+      "date": "2024-01-08",
+      "money": 92921,
+      "inout": true,
+      "category": "용돈",
+      "memo": "업데이트"
+    },
+    {
+      "id": "180",
+      "date": "2023-07-25",
+      "money": 28041,
+      "inout": false,
+      "category": "문화생활",
+      "memo": "검토"
+    },
+    {
+      "id": "181",
+      "date": "2023-03-08",
+      "money": 31408,
+      "inout": true,
+      "category": "용돈",
+      "memo": "추가"
+    },
+    {
+      "id": "182",
+      "date": "2023-02-27",
+      "money": 17811,
+      "inout": true,
+      "category": "급여",
+      "memo": "정리"
+    },
+    {
+      "id": "183",
+      "date": "2023-05-28",
+      "money": 61060,
+      "inout": true,
+      "category": "용돈",
+      "memo": "확인"
+    },
+    {
+      "id": "184",
+      "date": "2023-07-04",
+      "money": 13096,
+      "inout": true,
+      "category": "급여",
+      "memo": "수정"
+    },
+    {
+      "id": "185",
+      "date": "2023-03-29",
+      "money": 36993,
+      "inout": false,
+      "category": "생활비",
+      "memo": "확인"
+    },
+    {
+      "id": "186",
+      "date": "2023-01-31",
+      "money": 89226,
+      "inout": false,
+      "category": "생활비",
+      "memo": "확인"
+    },
+    {
+      "id": "187",
+      "date": "2024-06-10",
+      "money": 33978,
+      "inout": true,
+      "category": "기타",
+      "memo": "참고"
+    },
+    {
+      "id": "188",
+      "date": "2023-06-11",
+      "money": 49584,
+      "inout": true,
+      "category": "기타",
+      "memo": "테스트"
+    },
+    {
+      "id": "189",
+      "date": "2023-12-05",
+      "money": 39799,
+      "inout": false,
+      "category": "식비",
+      "memo": "확인"
+    },
+    {
+      "id": "190",
+      "date": "2024-11-18",
+      "money": 6702,
+      "inout": false,
+      "category": "교통비",
+      "memo": "추가"
+    },
+    {
+      "id": "191",
+      "date": "2024-10-27",
+      "money": 5910,
+      "inout": false,
+      "category": "식비",
+      "memo": "검토"
+    },
+    {
+      "id": "192",
+      "date": "2023-10-22",
+      "money": 47036,
+      "inout": true,
+      "category": "급여",
+      "memo": "정리"
+    },
+    {
+      "id": "193",
+      "date": "2023-10-30",
+      "money": 61392,
+      "inout": true,
+      "category": "급여",
+      "memo": "참고"
+    },
+    {
+      "id": "194",
+      "date": "2024-07-28",
+      "money": 56165,
+      "inout": true,
+      "category": "용돈",
+      "memo": "변경"
+    },
+    {
+      "id": "195",
+      "date": "2024-05-06",
+      "money": 16723,
+      "inout": false,
+      "category": "문화생활",
+      "memo": "변경"
+    },
+    {
+      "id": "196",
+      "date": "2024-08-17",
+      "money": 67309,
+      "inout": true,
+      "category": "급여",
+      "memo": "수정"
+    },
+    {
+      "id": "197",
+      "date": "2023-08-18",
+      "money": 94203,
+      "inout": true,
+      "category": "용돈",
+      "memo": "검토"
+    },
+    {
+      "id": "198",
+      "date": "2023-01-10",
+      "money": 77265,
+      "inout": false,
+      "category": "기타",
+      "memo": "메모"
+    },
+    {
+      "id": "199",
+      "date": "2024-11-22",
+      "money": 11043,
+      "inout": false,
+      "category": "쇼핑",
+      "memo": "메모"
+    },
+    {
+      "id": "200",
+      "date": "2023-01-25",
+      "money": 39018,
+      "inout": true,
+      "category": "급여",
+      "memo": "참고"
     }
   ]
 }

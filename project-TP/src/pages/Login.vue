@@ -23,6 +23,7 @@
           type="password"
           v-model="password"
           style="margin-left: 60px; background-color: #fafaf5"
+          @keypress.enter="handleEnter"
         />
         <br />
         <button @click="login" type="button" class="btn btn-outline">
@@ -53,13 +54,18 @@ export default {
     login() {
       if (this.id === "TalkingPotato" && this.password === "1234") {
         // 올바른 ID와 비밀번호인 경우 홈 페이지로 이동
-        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem("isLoggedIn", "true");
         this.$router.push({ name: "Home" });
         console.log("로그인 성공");
       } else {
         // 잘못된 ID 또는 비밀번호인 경우 경고 메시지 출력
-        alert("아이디/비밀번호가 틀렸습니다!")
+        alert("아이디/비밀번호가 틀렸습니다!");
         console.log("로그인 실패");
+      }
+    },
+    handleEnter(event) {
+      if (event.key === "Enter") {
+        this.login();
       }
     },
   },
@@ -67,10 +73,10 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 
 .containerlogin {
-  font-family: 'Jua', sans-serif;
+  font-family: "Jua", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;

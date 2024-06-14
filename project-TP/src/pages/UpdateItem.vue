@@ -5,6 +5,7 @@
         <h3>상세 정보</h3>
       </div>
     </div>
+    <!--폼 제출 이벤트를 막고 saveItem 이벤트 핸들러 등록-->
     <form @submit.prevent="saveItem">
       <div class="basic-group">
         <div class="btn-group">
@@ -12,8 +13,17 @@
             class="btn-right-group"
             style="flex-wrap: wrap; justify-content: flex-end; gap: 3px"
           >
-            <button type="button" @click="cancelEdit" class="btn btn-outline">취소</button>
-            <button type="button" @click="deleteItem(editItemData.id)" class="btn btn-outline">삭제</button>
+            <!--취소, 삭제 버튼에 이벤트 핸들러 등록-->
+            <button type="button" @click="cancelEdit" class="btn btn-outline">
+              취소
+            </button>
+            <button
+              type="button"
+              @click="deleteItem(editItemData.id)"
+              class="btn btn-outline"
+            >
+              삭제
+            </button>
             <button type="submit" class="btn btn-outline">수정</button>
           </div>
         </div>
@@ -65,11 +75,12 @@
                       <label for="inout">수입/지출</label>
                     </div>
                     <div class="item-input">
+                      <!--select 태그에 handleCategoryChange 이벤트 핸들러 등록-->
                       <select
                         id="inout"
                         class="form-select"
                         v-model="editItemData.inout"
-                        @change="handleTypeChange"
+                        @change="handleCategoryChange"
                       >
                         <option :value="true">수입</option>
                         <option :value="false">지출</option>
@@ -88,6 +99,7 @@
                         id="category"
                         v-model="editItemData.category"
                       >
+                        <!--inout 선택한 값에 따른 categoryOptions 배열 출력-->
                         <option
                           v-for="option in categoryOptions"
                           :key="option"
@@ -126,59 +138,81 @@
 </template>
 
 <script>
-import { useAccountListStore } from '@/stores/store';
-import { reactive, onMounted, computed } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { useAccountListStore } from "@/stores/store";
+import { reactive, onMounted, computed } from "vue";
+import { useRoute, useRouter } from "vue-router";
 
 export default {
   setup() {
+    // composition API를 사용한 컴포넌트에서 스토어 사용
     const store = useAccountListStore();
     const route = useRoute();
     const router = useRouter();
-    const { state, fetchItemById, deleteItem: deleteItemFromStore, updateItem: updateItemInStore } = store;
+
+    const {
+      state,
+      fetchItemById,
+      deleteItem: deleteItemFromStore,
+      updateItem: updateItemInStore,
+    } = store;
 
     const editItemData = reactive({
       id: null,
-      date: '',
-      money: '',
+      date: "",
+      money: "",
       inout: true,
-      category: '',
-      memo: ''
+      category: "",
+      memo: "",
     });
 
     const categoryOptions = computed(() => {
-      return editItemData.inout ? state.incomeCategories : state.spendCategories;
+      return editItemData.inout
+        ? state.incomeCategories
+        : state.spendCategories;
     });
 
+    // 아이템 데이터를 로드하는 비동기 함수
     const loadItemData = async (id) => {
+      // 주어진 ID를 사용하여 아이템 데이터를 서버에서 가져옴
       await fetchItemById(id);
+      // 서버에서 가져온 데이터를 `editItemData` 객체에 할당하여 업데이트
       Object.assign(editItemData, state.currentItem);
+      // 현재 선택된 카테고리가 새로운 카테고리 옵션에 포함되지 않는 경우
       if (!categoryOptions.value.includes(editItemData.category)) {
+        // 카테고리를 새로운 카테고리 옵션의 첫 번째 값으로 설정
         editItemData.category = categoryOptions.value[0];
       }
     };
 
+    // 초기 설정
     onMounted(async () => {
       const id = route.params.id;
       await loadItemData(id);
     });
 
+    // 저장 이벤트 핸들러
     const saveItem = async () => {
       await updateItemInStore(editItemData);
-      router.push({ name: 'TotalView' });
+      router.push({ name: "TotalView" });
     };
 
+    // 취소 버튼 이벤트 핸들러
     const cancelEdit = () => {
-      router.push({ name: 'TotalView' });
+      router.push({ name: "TotalView" });
     };
 
+    // 삭제 버튼 이벤트 핸들러
     const deleteItem = async () => {
+      //삭제할 id를 deleteItemFromStore에 저장
       await deleteItemFromStore(editItemData.id);
-      router.push({ name: 'TotalView' });
+      router.push({ name: "TotalView" });
     };
 
+    // 수입/지출 유형 변경 시 호출되는 함수
     const handleTypeChange = () => {
+      // 현재 선택된 카테고리가 새로운 카테고리 옵션에 포함되지 않는 경우
       if (!categoryOptions.value.includes(editItemData.category)) {
+        // 카테고리를 새로운 카테고리 옵션의 첫 번째 값으로 설정
         editItemData.category = categoryOptions.value[0];
       }
     };
@@ -189,14 +223,14 @@ export default {
       cancelEdit,
       deleteItem,
       categoryOptions,
-      handleTypeChange
+      handleCategoryChange,
     };
-  }
+  },
 };
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 
 .basic-group-1 {
   background-color: #f0ecca;
@@ -208,7 +242,7 @@ export default {
   padding-right: 100px;
   padding-top: 50px;
   padding-bottom: 50px;
-  font-family: 'Jua', sans-serif;
+  font-family: "Jua", sans-serif;
 }
 
 .btn-group {
@@ -225,7 +259,7 @@ button {
   margin-top: 1rem;
   background-color: #fafaf5;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  font-family: 'Jua', sans-serif;
+  font-family: "Jua", sans-serif;
 }
 
 button:hover {
@@ -375,6 +409,6 @@ textarea {
 }
 
 h3 {
-  font-family: 'Jua', sans-serif;
+  font-family: "Jua", sans-serif;
 }
 </style>

@@ -139,7 +139,7 @@
     {
       "id": "18",
       "date": "2024-12-26",
-      "money": 8586,
+      "money": "8000",
       "inout": false,
       "category": "교통비",
       "memo": "테스트"
@@ -795,7 +795,7 @@
     {
       "id": "100",
       "date": "2024-12-12",
-      "money": 37202,
+      "money": "37000",
       "inout": false,
       "category": "기타",
       "memo": "수정"

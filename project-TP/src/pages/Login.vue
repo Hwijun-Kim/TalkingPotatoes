@@ -57,6 +57,7 @@ export default {
         console.log("로그인 성공");
       } else {
         // 잘못된 ID 또는 비밀번호인 경우 경고 메시지 출력
+        alert("아이디/비밀번호가 틀렸습니다!")
         console.log("로그인 실패");
       }
     },

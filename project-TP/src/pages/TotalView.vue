@@ -1,13 +1,16 @@
 <template>
   <div class="containerhome">
     <br /><br />
+    <!--제목 및 새로고침 버튼 영역-->
     <h3>수입 / 지출 전체 조회 <i @click="refreshPage" class="fa-solid fa-rotate-right"></i></h3>
-    
+    <!--필터링 옵션 영역-->
     <div class="basic-group-1">
       <div class="card-item basic">
         <div>
           <div class="flex-table">
+            <!-- 왼쪽 섹션 영역 -->
             <div class="left-section">
+              <!-- 시작 날짜 선택 영역 -->
               <div class="flex-cell">
                 <div class="flex-table-item">
                   <div class="item-text">
@@ -25,6 +28,7 @@
                   </div>
                 </div>
               </div>
+              <!-- 수입/지출 선택 영역 -->
               <div class="flex-cell">
                 <div class="flex-table-item">
                   <div class="item-text">
@@ -44,7 +48,9 @@
                 </div>
               </div>
             </div>
+            <!-- 오른쪽 섹션 영역 -->
             <div class="right-section">
+              <!-- 종료 날짜 선택 영역 -->
               <div class="flex-cell">
                 <div class="flex-table-item">
                   <div class="item-text">
@@ -62,6 +68,7 @@
                   </div>
                 </div>
               </div>
+              <!-- 카테고리 선택 영역 -->
               <div class="flex-cell">
                 <div class="flex-table-item">
                   <div class="item-text">
@@ -85,6 +92,7 @@
                 </div>
               </div>
             </div>
+            <!-- 가운데 섹션 영역: 필터링 버튼 -->
             <div class="center-section">
               <button type="button" class="filter_btn" @click="fliterHandler">
                 조회
@@ -95,10 +103,12 @@
       </div>
     </div>
     <br /><br />
-    <div class="row tab">
+    <!-- 결과 표시 테이블 섹션 -->
+    <div class="row">
       <ul class="list-group">
         <li class="list-group-item list_size">
           <table>
+            <!-- 테이블 헤더 영역 -->
             <thead>
               <tr class="headt">
                 <th class="th_width">날짜</th>
@@ -107,6 +117,7 @@
                 <th class="th_width"></th>
               </tr>
             </thead>
+            <!-- 테이블 리스트 영역 -->
             <tbody>
               <tr v-for="transaction in transactions" :key="transaction.id">
                 <td>{{ transaction.date }}</td>
@@ -130,6 +141,7 @@
   </div>
 </template>
 
+<!-- 스크립트 섹션 -->
 <script>
 import { useAccountListStore } from "@/stores/store";
 import { reactive, onMounted, computed, ref } from "vue";
@@ -212,275 +224,161 @@ export default {
 </script>
 <style scoped>
 
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 
-.containerhome {
-  width: 100vw;
-  max-width: 100vw; /* 최대 너비를 100%로 설정 */
-  margin: 0 auto; /* 가운데 정렬 */
-  padding: 0 260px; /* 좌우 패딩 */
-  font-family: 'Jua', sans-serif;
-}
+  /* 전체 컨테이너 스타일 */
+  .containerhome {
+    width: 100vw;
+    max-width: 100vw; /* 최대 너비를 100%로 설정 */
+    margin: 0 auto; /* 가운데 정렬 */
+    padding: 0 260px; /* 좌우 패딩 */
+    font-family: 'Jua', sans-serif;
+  }
 
-.basic-group-1 {
-  background-color: #f0ecca;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  text-align: center;
-  padding-left: 100px;
-  padding-right: 100px;
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
+  /* 필터링 옵션 외부 영역 배경 스타일 */
+  .basic-group-1 {
+    background-color: #f0ecca;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    text-align: center;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
 
-.btn-group {
-  display: flex;
-}
+  /* 필터링 옵션 내부 영역 배경 스타일 */
+  .card-item {
+    position: relative;
+    box-sizing: border-box;
+    border-radius: 20px;
+    background-color: #fff;
+  }
 
-button {
-  padding: 0.5rem 1rem;
-  background-color: white;
-  color: black;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  text-align: center;
-  background-color: #fafaf5;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
+  .card-item.basic {
+    padding: 30px;
+    background: #fff;
+    border-radius: 20px;
+  }
 
-.filter_btn {
-  width: 200px;
-  padding: 0.5rem 1rem;
-  background-color: white;
-  color: black;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  text-align: center;
-  margin-top: 1rem;
-  background-color: #fafaf5;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  border-color: rgba(255, 255, 255, 0);
-}
+  .flex-table {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+  }
 
-button:hover {
-  background-color: #f0f0f0;
-}
+  /* 필터링 옵션 왼쪽 영역 지정 */
+  .left-section {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+  }
 
-.btn-group .btn-right-group {
-  display: inline-flex;
-  align-items: center;
-  margin-left: auto;
-}
+  /* 필터링 옵션 오른쪽 영역 지정 */
+  .right-section {
+    width: 50%;
+  }
 
-.btn-right-group {
-  padding-bottom: 7px;
-}
+  /* 필터링 옵션 가운데 버튼 영역 지정 */
+  .center-section {
+    width: 100%;
+  }
 
-.card-item {
-  position: relative;
-  box-sizing: border-box;
-  border-radius: 20px;
-  background-color: #fff;
-}
+  /* 필터링 옵션 아이템 스타일 */
+  .flex-cell {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
 
-.card-item.basic {
-  padding: 30px;
-  background: #fff;
-  border-radius: 20px;
-}
+  .flex-table-item {
+    width: 100%;
+    display: flex;
+    min-height: 100%;
+    justify-content: space-between;
+  }
 
-.contents-wrap {
-  flex: 1;
-  width: 100vw;
-  box-sizing: border-box;
-  padding: 80px;
-  overflow: hidden;
-}
+  .item-text {
+    display: flex;
+    padding: 10px 39px;
+    font-size: 20px;
+    line-height: 20px;
+    color: #333;
+    box-sizing: border-box;
+    word-break: keep-all;
+  }
 
-.contents-wrap .card-item.basic {
-  margin: 0 -20px;
-}
+  .item-input {
+    width: 60%;
+  }
 
-.flex-table {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-}
+  /* 필터링 옵션 버튼 스타일 */
+  .filter_btn {
+    width: 200px;
+    padding: 0.5rem 1rem;
+    background-color: white;
+    color: black;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 1rem;
+    background-color: #fafaf5;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-color: rgba(255, 255, 255, 0);
+  }
 
-.grid-2 {
-  width: 50%;
-}
+  /* 결과 표시 테이블 헤더 스타일 */
+  .headt {
+    background-color: #f0ecca;
+  }
 
-.grid-1 {
-  width: 100%;
-}
+  /* 결과 표시 테이블 리스트 스타일 */
+  li {
+    border: none;
+    list-style-type: none;
+  }
 
-.flex-table-item {
-  display: flex;
-  min-height: 100%;
-}
+  th {
+    width: 500px;
+    height: 40px;
+    text-align: center; 
+    padding: 0px;
+  }
 
-.flex-table-item .item-title {
-  display: flex;
-  padding: 10px 20px;
-  font-size: 20px;
-  line-height: 20px;
-  color: #333;
-  background-color: #f3f4f6;
-  box-sizing: border-box;
-  word-break: keep-all;
-}
+  .th_width {
+    width: 300px;
+    height: 40px;
+    padding: 0px;
+  }
+  .th_const {
+    width: 500px;
+    height: 40px;
+    padding: 0px;
+  }
+  td {
+    border: 1px solid #dddddd;
+    border-left: none;
+    border-right: none;
+    text-align: center;
+    padding: 0px;
+    height: 40px;
+  }
 
-.item-title-bold {
-  display: flex;
-  padding: 10px 20px;
-  font-size: 20px;
-  font-weight: bold;
-  line-height: 20px;
-  color: #333;
-  background-color: #f3f4f6;
-  box-sizing: border-box;
-  word-break: keep-all;
-}
+  /* 상세보기 버튼 스타일 */
+  .btn {
+    padding: 1px;
+    color: black;
+    border-radius: 30px;
+    cursor: pointer;
+    text-align: center;
+    width: 80px;
+    background-color: #fafaf5;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
 
-.item-text {
-  display: flex;
-  padding: 10px 39px;
-  font-size: 20px;
-  line-height: 20px;
-  color: #333;
-  box-sizing: border-box;
-  word-break: keep-all;
-}
-
-.item-text-bold {
-  display: flex;
-  padding: 10px 39px;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 20px;
-  color: #333;
-  box-sizing: border-box;
-  word-break: keep-all;
-}
-
-.flex-table-item .item-data {
-  display: flex;
-  padding: 10px 20px;
-  font-size: 20px;
-  line-height: 20px;
-  color: #888;
-  background-color: #fff;
-  box-sizing: border-box;
-}
-
-.width-per-20 {
-  width: 20%;
-}
-
-.width-per-80 {
-  width: 80%;
-}
-
-.width-per-40 {
-  width: 40%;
-}
-
-.width-per-60 {
-  width: 60%;
-}
-
-.flex-table {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.left-section {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-}
-
-.right-section {
-  width: 50%;
-}
-
-.center-section {
-  width: 100%;
-}
-
-.flex-cell {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.flex-table-item {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-}
-
-.item-text {
-  width: 40%;
-}
-
-.item-input {
-  width: 60%;
-}
-
-textarea {
-  width: 100%;
-  height: 100px;
-  resize: none;
-}
-
-.headt {
-  background-color: #f0ecca;
-}
-
-th {
-  width: 500px;
-  height: 40px;
-  text-align: center; 
-  padding: 0px;
-}
-
-.th_width {
-  width: 300px;
-  height: 40px;
-  padding: 0px;
-}
-.th_const {
-  width: 500px;
-  height: 40px;
-  padding: 0px;
-}
-td {
-  border: 1px solid #dddddd;
-  border-left: none;
-  border-right: none;
-  text-align: center;
-  padding: 0px;
-  height: 40px;
-}
-
-.btn {
-  padding: 1px;
-  color: black;
-  border-radius: 30px;
-  cursor: pointer;
-  text-align: center;
-  width: 80px;
-  background-color: #fafaf5;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-li {
-  border: none;
-  list-style-type: none;
-}
+  .btn-group {
+    display: flex;
+  }
 
 </style>
